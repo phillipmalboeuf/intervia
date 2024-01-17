@@ -1,0 +1,24 @@
+// SIZES
+$base: 18px;
+$scale: 1.25;
+$gap: $base * $scale;
+
+$mobile: 888px;
+$mobile_base: 16px;
+$mobile_scale: 1.25;
+$mobile_gap: $mobile_base * $mobile_scale;
+
+// FONTS
+$display: sans-serif;
+$text: sans-serif;
+$alt: serif;
+$alt_display: serif;
+
+// COLORS
+$black: #000;
+$white: #F5F5F5;
+$green-light: #BADEC2;
+$green-dark: #366550;
+$green-darker: #416451;
+$yellow-light: #E2E48A;
+$yellow-dark: #EFB43E;
