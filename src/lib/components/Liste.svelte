@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TypeListeSkeleton } from '$lib/clients/content_types';
+  import { isTypeService, isTypeText, type TypeListeSkeleton } from '$lib/clients/content_types';
   import type { Entry } from 'contentful';
   
   import Media from './Media.svelte'
@@ -16,37 +16,30 @@
   <ol>
     {#each item.fields.items as i}
     <li>
-      {#if i.sys.contentType.sys.id === 'text'}
+      {#if isTypeText(i)}
       <h4>{i.fields.titre}</h4>
       {#if i.fields.media}
       <figure>
         <Media media={i.fields.media} small />
       </figure>
       {/if}
-      {#if i.fields.corps}
-      <Document body={i.fields.corps} />
-      {/if}
-
-      {#if item.fields.liens?.length}
+      {#if i.fields.corps}<Document body={i.fields.corps} />{/if}
+      {#if i.fields.liens?.length}
       <nav>
-        {#each item.fields.liens as lien}
+        {#each i.fields.liens as lien}
         <a class="button" href={lien.fields.route} {...lien.fields.externe ? { rel: "external", target: "_blank" } : {}}>{lien.fields.titre}</a>
         {/each}
       </nav>
       {/if}
 
-
-      {:else if i.sys.contentType.sys.id === 'service'}
+      {:else if isTypeService(i)}
       <h4>{i.fields.titre}</h4>
       {#if i.fields.illustration}
       <figure>
         <Media media={i.fields.illustration} small />
       </figure>
       {/if}
-      {#if i.fields.description}
-      <Document body={i.fields.description} />
-      {/if}
-
+      {#if i.fields.description}<Document body={i.fields.description} />{/if}
       <nav>
         <a class="button" href="/services/{i.fields.id}">En savoir plus</a>
       </nav>
@@ -88,7 +81,7 @@
         }
 
         figure {
-          padding: $gap * 2;
+          padding: $gap * 3;
         }
 
         nav {

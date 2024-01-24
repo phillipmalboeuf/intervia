@@ -10,6 +10,10 @@ export interface TypeHeroFields {
 export type TypeHeroSkeleton = EntrySkeletonType<TypeHeroFields, "hero">;
 export type TypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeHeroSkeleton, Modifiers, Locales>;
 
+export function isTypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHero<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'hero'
+}
+
 export interface TypeLienFields {
     titre?: EntryFieldTypes.Symbol;
     route?: EntryFieldTypes.Symbol;
@@ -18,6 +22,10 @@ export interface TypeLienFields {
 
 export type TypeLienSkeleton = EntrySkeletonType<TypeLienFields, "lien">;
 export type TypeLien<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeLienSkeleton, Modifiers, Locales>;
+
+export function isTypeLien<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeLien<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'lien'
+}
 
 export interface TypeListeFields {
     titre?: EntryFieldTypes.Symbol;
@@ -30,6 +38,10 @@ export interface TypeListeFields {
 export type TypeListeSkeleton = EntrySkeletonType<TypeListeFields, "liste">;
 export type TypeListe<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeListeSkeleton, Modifiers, Locales>;
 
+export function isTypeListe<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeListe<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'liste'
+}
+
 export interface TypeNavigationFields {
     id?: EntryFieldTypes.Symbol;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienSkeleton>>;
@@ -37,6 +49,10 @@ export interface TypeNavigationFields {
 
 export type TypeNavigationSkeleton = EntrySkeletonType<TypeNavigationFields, "navigation">;
 export type TypeNavigation<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeNavigationSkeleton, Modifiers, Locales>;
+
+export function isTypeNavigation<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeNavigation<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'navigation'
+}
 
 export interface TypePageFields {
     titre?: EntryFieldTypes.Symbol;
@@ -47,6 +63,10 @@ export interface TypePageFields {
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
 export type TypePage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypePageSkeleton, Modifiers, Locales>;
+
+export function isTypePage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'page'
+}
 
 export interface TypeProjetFields {
     titre?: EntryFieldTypes.Symbol;
@@ -66,6 +86,10 @@ export interface TypeProjetFields {
 export type TypeProjetSkeleton = EntrySkeletonType<TypeProjetFields, "projet">;
 export type TypeProjet<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeProjetSkeleton, Modifiers, Locales>;
 
+export function isTypeProjet<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeProjet<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'projet'
+}
+
 export interface TypeServiceFields {
     titre?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
@@ -76,6 +100,10 @@ export interface TypeServiceFields {
 
 export type TypeServiceSkeleton = EntrySkeletonType<TypeServiceFields, "service">;
 export type TypeService<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeServiceSkeleton, Modifiers, Locales>;
+
+export function isTypeService<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeService<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'service'
+}
 
 export interface TypeTextFields {
     titre?: EntryFieldTypes.Symbol;
@@ -90,3 +118,7 @@ export interface TypeTextFields {
 
 export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;
 export type TypeText<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeTextSkeleton, Modifiers, Locales>;
+
+export function isTypeText<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeText<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'text'
+}

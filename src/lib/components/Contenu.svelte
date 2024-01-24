@@ -1,22 +1,26 @@
 <script lang="ts">
+  import { isTypeHero, isTypeListe, isTypeText, type TypeHeroSkeleton, type TypeListeSkeleton, type TypeTextSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
+
   import Text from './Text.svelte'
   import Hero from './Hero.svelte'
   import Liste from './Liste.svelte'
+  
 
-  export let contenu: Entry<any, "WITHOUT_UNRESOLVABLE_LINKS", string>[]
+  export let contenu: Entry<TypeHeroSkeleton | TypeListeSkeleton | TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>[]
 </script>
 
 {#each contenu as item, i}
 <section>
-  {#if item.sys.contentType.sys.id === 'hero'}
+  {#if isTypeHero(item)}
   <Hero {item} />
-  {:else if item.sys.contentType.sys.id === 'text'}
+  {:else if isTypeText(item)}
   <Text {item} />
-  {:else if item.sys.contentType.sys.id === 'liste'}
+  {:else if isTypeListe(item)}
   <Liste {item} />
   {/if}
 </section>
+<hr>
 {/each}
 
 <style lang="scss">
