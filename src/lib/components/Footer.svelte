@@ -24,14 +24,21 @@
     background-color: var(--background-inverse);
 
     display: flex;
-    padding: $base;
     border-top: 1px solid;
 
     nav {
       display: flex;
+      padding: $gap;
       gap: $gap * 6;
 
+      &:first-child {
+        margin-left: $base;
+        border-left: 1px solid;
+      }
+
       &:last-child {
+        margin-right: $base;
+        border-right: 1px solid;
         justify-content: flex-end;
         flex: 1;
       }

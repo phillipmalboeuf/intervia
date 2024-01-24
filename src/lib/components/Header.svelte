@@ -21,16 +21,28 @@
     z-index: 10;
 
     display: flex;
-    padding: $base;
     background-color: var(--background);
+    
+    border-top: 1px solid;
     border-bottom: 1px solid;
 
     nav {
       display: flex;
       gap: $base;
-      flex: 1;
+      padding: $base;
+      width: 50%;
+
+      // border: 1px solid;
+
+      &:first-child {
+        margin-left: $base;
+        border-left: 1px solid;
+        border-right: 1px solid;
+      }
 
       &:last-child {
+        margin-right: $base;
+        border-right: 1px solid;
         justify-content: flex-end;
       }
     }

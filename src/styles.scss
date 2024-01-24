@@ -1,7 +1,7 @@
 :root {
 	--foreground: #{$green-dark};
 	--background: #{$white};
-	--foreground-inverse: #{$white};
+	--foreground-inverse: #{$green-light};
 	--background-inverse: #{$green-dark};
 
 	font-family: $text;
@@ -16,6 +16,8 @@
 }
 
 html {
+	scroll-behavior: smooth;
+	
 	&:has(.dark) {
     --foreground: #{$green-light};
     --background: #{$green-dark};
@@ -38,8 +40,8 @@ body {
   }
 }
 
-h1, h2, h3,
-.h1, .h2, .h3 {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: $display;
 	font-weight: 350;
 }
@@ -63,8 +65,32 @@ h3,
 	font-size: $base * $scale * 2;
 }
 
+h4,
+.h4 {
+	font-size: $base * $scale * 1.5;
+}
+
+h5,
+.h5 {
+	font-size: $base * $scale * 0.666;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+h6,
+.h6 {
+	font-size: $base * $scale * 0.666;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
 p {
 	line-height: $scale;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid;
 }
 
 a {
@@ -131,4 +157,8 @@ svg {
 	position: absolute;
 	width: 1px;
 	white-space: nowrap;
+}
+
+[id] {
+	scroll-margin-top: $base * 5;
 }

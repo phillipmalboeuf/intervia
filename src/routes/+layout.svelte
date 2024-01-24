@@ -9,7 +9,8 @@
 </script>
 
 <div class="app {{
-	'/projets': 'dark'
+	'/projets': 'dark',
+	// '/projets/[id]': 'dark'
 }[$page.route.id] || ''}">
 	<Header />
 

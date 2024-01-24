@@ -21,7 +21,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@types/luxon": "^3.4.1",
 		"contentful": "^10.6.16",
+		"luxon": "^3.4.4",
 		"sass": "^1.69.7"
 	}
 }

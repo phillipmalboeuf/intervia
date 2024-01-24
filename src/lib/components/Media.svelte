@@ -20,7 +20,7 @@
   audio {
     display: block;
     width: 100%;
-    max-width: 100%;
+    object-fit: cover;
   }
 
   video {

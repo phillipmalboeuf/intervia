@@ -7,9 +7,10 @@
   let visible = false
   const duration = 666
 
-  beforeNavigate((async ({ to, cancel }) => {
+  beforeNavigate((async ({ from, to, cancel, type }) => {
     
-    if (!visible) {
+    if (!visible && type !== 'leave'
+      && (from.route.id !== to.route.id || JSON.stringify(from.params) !== JSON.stringify(to.params))) {
       cancel()
       visible = true
 
@@ -46,6 +47,7 @@
 <style lang="scss">
   figure {
     position: fixed;
+    z-index: 99;
     top: 0;
     left: -37.5vw;
     width: 175vw;
