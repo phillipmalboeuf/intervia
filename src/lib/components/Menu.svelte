@@ -66,10 +66,11 @@
       padding: $base;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid;
+      border-top: 1px solid transparent;
     }
 
     ul {
+      border-top: 1px solid;
       list-style: none;
       padding: ($base * $scale * 2) $base;
     }

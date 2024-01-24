@@ -95,10 +95,10 @@
         min-height: calc(100vw / 3);
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         h5 {
           padding: $base;
+          margin-bottom: auto;
         }
 
         figure {

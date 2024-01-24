@@ -5,6 +5,38 @@
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
+
+		<style>
+			@font-face {
+				font-family: 'Graphik';
+				font-style: normal;
+				font-weight: normal;
+				font-display: swap;
+				src: local('Graphik'),
+					url('/Graphik-Regular-Web.woff2') format('woff2'),
+					url('/Graphik-Regular-Web.woff') format('woff'),
+			}
+
+			@font-face {
+				font-family: 'Graphik';
+				font-style: italic;
+				font-weight: normal;
+				font-display: swap;
+				src: local('Graphik'),
+					url('/Graphik-RegularItalic-Web.woff2') format('woff2'),
+					url('/Graphik-RegularItalic-Web.woff') format('woff'),
+			}
+
+			@font-face {
+				font-family: 'Graphik';
+				font-style: normal;
+				font-weight: bold;
+				font-display: swap;
+				src: local('Graphik'),
+					url('/Graphik-Medium-Web.woff2') format('woff2'),
+					url('/Graphik-Medium-Web.woff') format('woff'),
+			}
+		</style>
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
