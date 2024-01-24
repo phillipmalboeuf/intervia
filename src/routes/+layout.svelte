@@ -12,7 +12,9 @@
 	'/projets': 'dark',
 	'/articles': 'light',
 	// '/projets/[id]': 'dark'
-}[$page.route.id] || ''}">
+}[$page.route.id] || {
+	'/contact': 'light'
+}[$page.url.pathname] || ''}">
 	<Header />
 
 	<main>

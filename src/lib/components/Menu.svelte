@@ -34,7 +34,7 @@
     <li><a on:click={hide} href="/projets" class="h1">Nos projets</a></li>
     <li><a on:click={hide} href="/" class="h1">Carrières</a></li>
     <li><a on:click={hide} href="/articles" class="h1">Actualités</a></li>
-    <li><a on:click={hide} href="/" class="h1">Contact</a></li>
+    <li><a on:click={hide} href="/contact" class="h1">Contact</a></li>
   </ul>
 </nav>
 

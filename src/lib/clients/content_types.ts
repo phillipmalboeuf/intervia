@@ -30,6 +30,25 @@ export function isTypeCategorie<Modifiers extends ChainModifiers, Locales extend
     return entry.sys.contentType.sys.id === 'categorie'
 }
 
+export interface TypeFormulaireFields {
+    titre?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    action?: EntryFieldTypes.Symbol;
+    bouton: EntryFieldTypes.Symbol;
+    couleur?: EntryFieldTypes.Symbol<"Dark" | "Light" | "Yellow">;
+    inputs?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeInputSkeleton>>;
+    media?: EntryFieldTypes.AssetLink;
+    liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienSkeleton>>;
+    info?: EntryFieldTypes.RichText;
+}
+
+export type TypeFormulaireSkeleton = EntrySkeletonType<TypeFormulaireFields, "formulaire">;
+export type TypeFormulaire<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeFormulaireSkeleton, Modifiers, Locales>;
+
+export function isTypeFormulaire<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeFormulaire<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'formulaire'
+}
+
 export interface TypeHeroFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
@@ -42,6 +61,20 @@ export type TypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHero<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'hero'
+}
+
+export interface TypeInputFields {
+    titre: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    type?: EntryFieldTypes.Symbol<"Dropdown" | "File" | "Text" | "Textarea">;
+    info?: EntryFieldTypes.Symbol;
+}
+
+export type TypeInputSkeleton = EntrySkeletonType<TypeInputFields, "input">;
+export type TypeInput<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeInputSkeleton, Modifiers, Locales>;
+
+export function isTypeInput<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeInput<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'input'
 }
 
 export interface TypeLienFields {
@@ -88,7 +121,7 @@ export interface TypePageFields {
     titre?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     description?: EntryFieldTypes.Text;
-    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeHeroSkeleton | TypeListeSkeleton | TypeTextSkeleton>>;
+    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeHeroSkeleton | TypeListeSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;

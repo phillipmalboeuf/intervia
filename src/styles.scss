@@ -46,6 +46,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: $display;
 	font-weight: 350;
+	white-space: pre-line;
 }
 
 h1,
@@ -87,6 +88,7 @@ h6,
 
 p {
 	line-height: $scale;
+	white-space: pre-line;
 }
 
 hr {
@@ -131,6 +133,15 @@ button,
 		text-decoration: none;
 		color: $green-darker;
 		background-color: $yellow-dark;
+	}
+}
+
+table {
+	width: 100%;
+
+	td,
+	th {
+		white-space: pre-line;
 	}
 }
 
