@@ -1,65 +1,69 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
-  import { year } from '$lib/formatters'
+  import { date, year } from '$lib/formatters'
 
   import { page } from '$app/stores'
 
   import type { PageData } from './$types'
   export let data: PageData
 
-  let tab: string = 'mandat'
+  // let tab: string = 'mandat'
 
-  $: {
-    tab = $page.url.searchParams.get('t') || 'mandat'
-  }
+  // $: {
+  //   tab = $page.url.searchParams.get('t') || 'mandat'
+  // }
 </script>
 
 
 <section>
   <header>
-    <h1 class="h2">{data.projet.fields.titre}</h1>
+    <h1 class="h3">{data.article.fields.titre}</h1>
     <aside>
+      {#if data.article.fields.categorie}
       <div>
-        <h6>Client</h6>
-        {data.projet.fields.client}
+        <h6>Catégorie</h6>
+        {data.article.fields.categorie.fields.titre}
       </div>
+      {/if}
       <div>
         <h6>Année</h6>
-        {year(data.projet.fields.date)} – {data.projet.fields.status}
+        {date(data.article.fields.date)}
       </div>
     </aside>
     <figure>
-      <Media media={data.projet.fields.thumbnail} />
+      <Media media={data.article.fields.thumbnail} />
     </figure>
   </header>
   <main>
-    <nav>
+    <Document body={data.article.fields.corps} />
+
+    <!-- <nav>
       <a href="?t=mandat" class="button" class:active={tab === 'mandat'}>Mandat</a>
       <a href="?t=contexte" class="button" class:active={tab === 'contexte'}>Contexte</a>
       <a href="?t=solution" class="button" class:active={tab === 'solution'}>Solution</a>
-    </nav>
+    </nav> -->
 
-    {#if tab === 'mandat'}
+    <!-- {#if tab === 'mandat'}
     <Document body={data.projet.fields.mandat} />
     {:else if tab === 'contexte'}
     <Document body={data.projet.fields.contexte} />
     {:else if tab === 'solution'}
     <Document body={data.projet.fields.solution} />
-    {/if}
+    {/if} -->
   </main>
 
-  {#if data.projets?.items.length}
+  {#if data.articles?.items.length}
   <footer>
-    <h6>Projets similaires</h6>
+    <h6>Autres actualités</h6>
 
     <nav>
-      {#each data.projets.items as projet}
-      <a href="/projets/{projet.fields.id}">
-        <h3>{projet.fields.titre}</h3>
-        {#if projet.fields.thumbnail}
+      {#each data.articles.items as article}
+      <a href="/articles/{article.fields.id}">
+        <h3>{article.fields.titre}</h3>
+        {#if article.fields.thumbnail}
         <figure>
-          <Media media={projet.fields.thumbnail} small ar={1} />
+          <Media media={article.fields.thumbnail} small ar={1} />
         </figure>
         {/if}
       </a>

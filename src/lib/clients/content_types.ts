@@ -1,5 +1,35 @@
 import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
 
+export interface TypeArticleFields {
+    titre: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    date?: EntryFieldTypes.Date;
+    vedette?: EntryFieldTypes.Boolean;
+    thumbnail?: EntryFieldTypes.AssetLink;
+    photos?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    categorie?: EntryFieldTypes.EntryLink<TypeCategorieSkeleton>;
+    corps?: EntryFieldTypes.RichText;
+}
+
+export type TypeArticleSkeleton = EntrySkeletonType<TypeArticleFields, "article">;
+export type TypeArticle<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeArticleSkeleton, Modifiers, Locales>;
+
+export function isTypeArticle<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeArticle<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'article'
+}
+
+export interface TypeCategorieFields {
+    titre: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+}
+
+export type TypeCategorieSkeleton = EntrySkeletonType<TypeCategorieFields, "categorie">;
+export type TypeCategorie<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeCategorieSkeleton, Modifiers, Locales>;
+
+export function isTypeCategorie<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeCategorie<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'categorie'
+}
+
 export interface TypeHeroFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;

@@ -10,6 +10,7 @@
 
 <div class="app {{
 	'/projets': 'dark',
+	'/articles': 'light',
 	// '/projets/[id]': 'dark'
 }[$page.route.id] || ''}">
 	<Header />

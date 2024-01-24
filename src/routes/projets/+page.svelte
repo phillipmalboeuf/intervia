@@ -172,6 +172,12 @@
 
           &:hover,
           &:focus {
+            text-decoration: none;
+            background-color: $yellow-dark;
+          }
+
+          &:hover,
+          &:focus {
             figure {
               opacity: 1;
               visibility: visible;

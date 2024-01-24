@@ -24,6 +24,10 @@ html {
     --foreground-inverse: #{$green-dark};
     --background-inverse: #{$green-light};
 	}
+
+	&:has(.light) {
+    --background: #{$green-light};
+	}
 }
 
 body {
@@ -31,8 +35,6 @@ body {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-	
 
   @media (max-width: $mobile) {
     font-size: $mobile_base;
@@ -72,9 +74,8 @@ h4,
 
 h5,
 .h5 {
-	font-size: $base * $scale * 0.666;
-	font-weight: normal;
-	text-transform: uppercase;
+	font-size: $base * $scale;
+	font-weight: 500;
 }
 
 h6,

@@ -10,13 +10,13 @@ export const money = (value: any) => {
 }
 
 export const date = (value: string) => {
-  return DateTime.fromISO(value).setLocale('en-US').toLocaleString({ day: '2-digit', month: '2-digit', year: '2-digit' })
+  return DateTime.fromISO(value).setLocale('fr-CA').toLocaleString({ day: 'numeric', month: 'long', year: 'numeric' })
 }
 
 export const year = (value: string) => {
-  return DateTime.fromISO(value).setLocale('en-US').toLocaleString({ year: 'numeric' })
+  return DateTime.fromISO(value).setLocale('fr-CA').toLocaleString({ year: 'numeric' })
 }
 
 export const time = (value: string, timezone: number) => {
-  return DateTime.fromISO(value).setLocale('en-US').setZone(`UTC${timezone}`).toLocaleString({ hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replaceAll('/', '.')
+  return DateTime.fromISO(value).setLocale('fr-CA').setZone(`UTC${timezone}`).toLocaleString({ hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replaceAll('/', '.')
 }
