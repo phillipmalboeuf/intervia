@@ -4,7 +4,6 @@
 
   import Document from '$lib/components/document/index.svelte'
   import Media from './Media.svelte'
-  import { info } from 'sass';
 
   export let item: Entry<TypeFormulaireSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>

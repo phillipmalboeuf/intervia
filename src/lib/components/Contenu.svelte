@@ -1,13 +1,14 @@
 <script lang="ts">
-  import { isTypeFormulaire, isTypeHero, isTypeListe, isTypeText, type TypeFormulaireSkeleton, type TypeHeroSkeleton, type TypeListeSkeleton, type TypeTextSkeleton } from '$lib/clients/content_types'
+  import { isTypeFormulaire, isTypeHero, isTypeListe, isTypeParcours, isTypeText, type TypeFormulaireSkeleton, type TypeHeroSkeleton, type TypeListeSkeleton, type TypeParcoursSkeleton, type TypeTextSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
 
   import Text from './Text.svelte'
   import Hero from './Hero.svelte'
   import Liste from './Liste.svelte'
   import Formulaire from './Formulaire.svelte'
+  import Parcours from './Parcours.svelte'
 
-  export let contenu: Entry<TypeHeroSkeleton | TypeListeSkeleton | TypeTextSkeleton | TypeFormulaireSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>[]
+  export let contenu: Entry<TypeHeroSkeleton | TypeListeSkeleton | TypeTextSkeleton | TypeFormulaireSkeleton | TypeParcoursSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>[]
 </script>
 
 {#each contenu as item, i}
@@ -18,6 +19,8 @@
   <Text {item} />
   {:else if isTypeListe(item)}
   <Liste {item} />
+  {:else if isTypeParcours(item)}
+  <Parcours {item} />
   {:else if isTypeFormulaire(item)}
   <Formulaire {item} />
   {/if}
@@ -56,6 +59,14 @@
 
       &:before {
         background-color: $green-light;
+      }
+    }
+
+    &:has(> .Yellow) {
+      color: $green-dark;
+
+      &:before {
+        background-color: $yellow-light;
       }
     }
   }

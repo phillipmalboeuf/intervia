@@ -121,7 +121,7 @@ export interface TypePageFields {
     titre?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     description?: EntryFieldTypes.Text;
-    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeHeroSkeleton | TypeListeSkeleton | TypeTextSkeleton>>;
+    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeHeroSkeleton | TypeListeSkeleton | TypeParcoursSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
@@ -129,6 +129,22 @@ export type TypePage<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypePage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePage<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'page'
+}
+
+export interface TypeParcoursFields {
+    titre?: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    separateurs?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    couleur?: EntryFieldTypes.Symbol<"Dark" | "Light" | "Yellow">;
+    parcours: EntryFieldTypes.Object;
+    bouton?: EntryFieldTypes.Symbol;
+}
+
+export type TypeParcoursSkeleton = EntrySkeletonType<TypeParcoursFields, "parcours">;
+export type TypeParcours<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeParcoursSkeleton, Modifiers, Locales>;
+
+export function isTypeParcours<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeParcours<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'parcours'
 }
 
 export interface TypeProjetFields {
@@ -158,6 +174,7 @@ export interface TypeServiceFields {
     id: EntryFieldTypes.Symbol;
     illustration?: EntryFieldTypes.AssetLink;
     description?: EntryFieldTypes.RichText;
+    vedette?: EntryFieldTypes.Boolean;
     sousServices?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeServiceSkeleton>>;
 }
 

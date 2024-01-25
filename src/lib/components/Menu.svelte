@@ -30,7 +30,7 @@
 
   <ul>
     <li><a on:click={hide} href="/" class="h1">À propos</a></li>
-    <li><a on:click={hide} href="/" class="h1">Nos services</a></li>
+    <li><a on:click={hide} href="/services" class="h1">Nos services</a></li>
     <li><a on:click={hide} href="/projets" class="h1">Nos projets</a></li>
     <li><a on:click={hide} href="/" class="h1">Carrières</a></li>
     <li><a on:click={hide} href="/articles" class="h1">Actualités</a></li>
