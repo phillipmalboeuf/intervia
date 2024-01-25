@@ -22,7 +22,7 @@
 
   <form action="">
     <h1>
-      {item.fields.separateurs[0]} <span on:click={() => open = "vertical"}><u>{vertical[0]}</u></span> {item.fields.separateurs[1]} <span on:click={() => open = "horizontal"}><u>{horizontal[0]}</u></span>.
+      {item.fields.separateurs[0]} <span on:click={() => open = "vertical"}><u>{vertical[0]}</u></span> {item.fields.separateurs[1]} <span on:click={() => open = "horizontal"}><u>{horizontal[1]}</u></span>.
     </h1>
 
     <button type="submit">{item.fields.bouton || "Voir mon parcous"}</button>

@@ -54,7 +54,7 @@
     transform: skew(45deg);
     height: 100vh;
     border: 1px solid;
-    background-color: $green-light;
+    background-color: $salmon;
 
     display: flex;
     align-items: center;
