@@ -7,6 +7,9 @@
 
   import type { TopLevelBlock } from '@contentful/rich-text-types'
   export let node: TopLevelBlock
+
+  export let details = false
+  export let i: number = undefined
 </script>
 
 {#if node.nodeType === 'heading-1'}
@@ -32,13 +35,35 @@
   </ul>
 
 {:else if node.nodeType === 'table'}
+  {#if details}
+  <section class="table">
+    {#each node.content as item}<details>{#each item.content as node, i}<svelte:self node={node} details {i} />{/each}</details>{/each}
+  </section>
+  {:else}
   <table>
     {#each node.content as item}<tr>{#each item.content as node}<svelte:self node={node} />{/each}</tr>{/each}
   </table>
+  {/if}
 {:else if node.nodeType === 'table-header-cell'}
-  <th data-content="{node.content[0]?.content[0]?.value}">{#each node.content as item}<svelte:self node={item} />{/each}</th>
+  {#if details}
+  {#if i === 0}
+  <summary>{#each node.content as item}<svelte:self node={item} />{/each}</summary>
+  {:else}
+  <main>{#each node.content as item}<svelte:self node={item} />{/each}</main>
+  {/if}
+  {:else}
+  <th>{#each node.content as item}<svelte:self node={item} />{/each}</th>
+  {/if}
 {:else if node.nodeType === 'table-cell'}
+  {#if details}
+  {#if i === 0}
+  <summary>{#each node.content as item}<svelte:self node={item} />{/each}</summary>
+  {:else}
+  <main>{#each node.content as item}<svelte:self node={item} />{/each}</main>
+  {/if}
+  {:else}
   <td>{#each node.content as item}<svelte:self node={item} />{/each}</td>
+  {/if}
 
 {:else if node.nodeType === 'blockquote'}
   <blockquote>{#each node.content as code}<svelte:self node={code} />{/each}</blockquote>

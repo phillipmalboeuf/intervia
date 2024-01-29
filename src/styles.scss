@@ -155,6 +155,23 @@ svg {
 	} 
 }
 
+details {
+	
+	summary {
+		cursor: pointer;
+		
+		&::-webkit-details-marker {
+			display: none;
+			content: "";
+		}
+
+		&::marker {
+			display: none;
+			content: "";
+		}
+	}
+}
+
 .ta-center {
 	text-align: center;
 }

@@ -175,7 +175,7 @@ export interface TypeServiceFields {
     illustration?: EntryFieldTypes.AssetLink;
     description?: EntryFieldTypes.RichText;
     vedette?: EntryFieldTypes.Boolean;
-    sousServices?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeServiceSkeleton>>;
+    corps?: EntryFieldTypes.RichText;
 }
 
 export type TypeServiceSkeleton = EntrySkeletonType<TypeServiceFields, "service">;
