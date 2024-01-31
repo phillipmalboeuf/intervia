@@ -138,10 +138,35 @@ button,
 
 table {
 	width: 100%;
+	-webkit-border-horizontal-spacing: 0;
+	-webkit-border-vertical-spacing: 0;
+
+	th {
+		text-align: center;
+		text-transform: uppercase;
+	}
 
 	td,
 	th {
+		border-top: 1px solid;
+		padding: $base * 0.5;
 		white-space: pre-line;
+		width: calc(100% / var(--length));
+	}
+
+	tr {
+		&:last-child {
+			td,
+			th {
+				border-bottom: 1px solid;
+			}
+		}
+	}
+
+	td {
+		&:not(:first-child) {
+			border-left: 1px solid;
+		}
 	}
 }
 
@@ -159,7 +184,7 @@ details {
 	
 	summary {
 		cursor: pointer;
-		
+
 		&::-webkit-details-marker {
 			display: none;
 			content: "";

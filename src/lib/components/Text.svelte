@@ -39,6 +39,12 @@
       max-width: $max;
     }
 
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: $base;
+    }
+
     &.Centre {
       justify-content: center;
       text-align: center;
@@ -51,10 +57,24 @@
     }
 
     &.Tableau {
+      flex-direction: row;
+      align-items: flex-start;
+
+      h2 {
+        width: calc(100% / 3 * 1);
+      }
+
       section {
         padding: $base;
-        width: calc(100% / 5 * 3);
+        width: calc(100% / 3 * 2);
+        max-width: none;
         border-left: 1px solid;
+        margin: ($base * -1) 0;
+
+        :global(table) {
+          width: calc(100% + ($base * 3));
+          margin-left: ($base * -1);
+        }
 
         :global(details) {
           margin: 0 ($base * -1);

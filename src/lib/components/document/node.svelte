@@ -35,13 +35,13 @@
   </ul>
 
 {:else if node.nodeType === 'table'}
-  {#if details}
+  {#if details && node.content[0].content[0].nodeType !== 'table-header-cell'}
   <section class="table">
     {#each node.content as item}<details>{#each item.content as node, i}<svelte:self node={node} details {i} />{/each}</details>{/each}
   </section>
   {:else}
   <table>
-    {#each node.content as item}<tr>{#each item.content as node}<svelte:self node={node} />{/each}</tr>{/each}
+    {#each node.content as item}<tr style="--length: {item.content?.length}">{#each item.content as node}<svelte:self node={node} />{/each}</tr>{/each}
   </table>
   {/if}
 {:else if node.nodeType === 'table-header-cell'}
@@ -52,7 +52,7 @@
   <main>{#each node.content as item}<svelte:self node={item} />{/each}</main>
   {/if}
   {:else}
-  <th>{#each node.content as item}<svelte:self node={item} />{/each}</th>
+  <th colspan="2">{#each node.content as item}<svelte:self node={item} />{/each}</th>
   {/if}
 {:else if node.nodeType === 'table-cell'}
   {#if details}

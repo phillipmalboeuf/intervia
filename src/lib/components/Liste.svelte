@@ -19,7 +19,7 @@
       {#each item.fields.items as i}
       <li class={`${isTypeText(i) && i.fields.layout} slide`}>
         {#if isTypeText(i)}
-        {#if !i.fields.sansTitre}<h4>{i.fields.titre}</h4>{/if}
+        {#if !i.fields.sansTitre}<h4 class:h2={item.fields.layout === 'Slider'}>{i.fields.titre}</h4>{/if}
         {#if i.fields.media}
         <figure>
           <Media media={i.fields.media} small />
@@ -98,6 +98,17 @@
       li {
         min-height: 33vw;
         padding: $gap ($gap * 6);
+      }
+
+      figure {
+        order: -1;
+        height: 25vw;
+
+        :global(img),
+        :global(video) {
+          height: 100%;
+          object-fit: contain;
+        }
       }
     }
 
