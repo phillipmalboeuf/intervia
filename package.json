@@ -23,6 +23,9 @@
 	"dependencies": {
 		"@types/luxon": "^3.4.1",
 		"contentful": "^10.6.18",
+		"embla-carousel-auto-height": "^8.0.0-rc22",
+		"embla-carousel-autoplay": "^8.0.0-rc22",
+		"embla-carousel-svelte": "^8.0.0-rc22",
 		"luxon": "^3.4.4",
 		"sass": "^1.69.7"
 	}

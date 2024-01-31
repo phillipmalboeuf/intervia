@@ -9,12 +9,14 @@
 
 <main id={item.fields.id} class={`${item.fields.couleur} ${item.fields.layout}`}>
   {#if !item.fields.sansTitre}
-  <h2>{item.fields.titre}</h2>
+  <h2 class:h6={item.fields.layout === 'Droite'}>{item.fields.titre}</h2>
   {/if}
 
-  {#if item.fields.corps}
-  <Document body={item.fields.corps} />
-  {/if}
+  <section>
+    {#if item.fields.corps}
+    <Document details={item.fields.layout === 'Tableau'} body={item.fields.corps} />
+    {/if}
+  </section>
 
   {#if item.fields.liens?.length}
   <nav>
@@ -46,6 +48,45 @@
       display: flex;
       flex-wrap: wrap;
       gap: $gap * 0.5;
+    }
+
+    &.Tableau {
+      section {
+        padding: $base;
+        width: calc(100% / 5 * 3);
+        border-left: 1px solid;
+
+        :global(details) {
+          margin: 0 ($base * -1);
+          border-bottom: 1px solid;
+
+          &:first-child {
+            border-top: 1px solid;
+            margin-top: $base * 1;
+          }
+
+          :global(summary) {
+            padding: ($base * 0.5) ($base);
+
+            &:hover,
+            &:focus {
+              background-color: $yellow-dark;
+            }
+          }
+
+          :global(main) {
+            padding: ($base * 2) $base;
+            max-width: $max * 0.5;
+            margin: 0 auto;
+          }
+        }
+
+        :global(details[open]) {
+          :global(summary) {
+            border-bottom: 1px solid;
+          }
+        }
+      }
     }
   }
 </style>
