@@ -18,7 +18,7 @@
 
 <nav class:open>
   <aside>
-    <a href="/" on:click={hide} class="button">Joindre l'équipe</a>
+    <a href="/carrieres" on:click={hide} class="button">Joindre l'équipe</a>
 
     <button on:click={hide}>
       <svg width="27" height="27" viewBox="0 0 27 27" fill="none">
