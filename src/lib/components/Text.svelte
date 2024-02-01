@@ -3,11 +3,18 @@
   import type { Entry } from 'contentful';
 
   import Document from '$lib/components/document/index.svelte'
+  import Media from './Media.svelte';
 
   export let item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
 <main id={item.fields.id} class={`${item.fields.couleur} ${item.fields.layout}`}>
+  {#if item.fields.layout === 'Droite' && item.fields.media}
+  <figure>
+    <Media media={item.fields.media} small />
+  </figure>
+  {/if}
+
   {#if !item.fields.sansTitre}
   <h2 class:h6={item.fields.layout === 'Droite'}>{item.fields.titre}</h2>
   {/if}
@@ -50,6 +57,30 @@
       text-align: center;
     }
 
+    &.Droite {
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+
+      figure {
+        height: 100%;
+        width: calc(50% + $base);
+        margin: ($base * -1);
+        border-right: 1px solid;
+
+        :global(img),
+        :global(video) {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      section {
+        width: 50%;
+        padding-left: $base;
+      }
+    }
+
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -58,10 +89,16 @@
 
     &.Tableau {
       flex-direction: row;
-      align-items: flex-start;
+      align-items: stretch;
 
       h2 {
         width: calc(100% / 3 * 1);
+      }
+
+      nav {
+        position: absolute;
+        bottom: $base;
+        left: $base;
       }
 
       section {

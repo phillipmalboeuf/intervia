@@ -29,6 +29,7 @@
     justify-content: center;
     align-items: center;
     min-height: 66vh;
+    text-align: center;
 
     h1 {
       margin: auto 0;
