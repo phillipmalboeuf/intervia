@@ -12,7 +12,7 @@
   <h1>{item.fields.titre}</h1>
   {#if item.fields.media}
   <figure>
-    <Media media={item.fields.media} />
+    <Media media={item.fields.media} eager />
   </figure>
   {/if}
 
