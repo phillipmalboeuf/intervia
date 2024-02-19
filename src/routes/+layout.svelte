@@ -11,6 +11,8 @@
 <div class="app {{
 	'/projets': 'dark',
 	'/articles': 'light',
+	'/services/popup': 'white',
+	'/services/[id]': 'white',
 	// '/projets/[id]': 'dark'
 }[$page.route.id] || {
 	'/contact': 'light'

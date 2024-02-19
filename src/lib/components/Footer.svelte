@@ -23,6 +23,11 @@
     color: var(--foreground-inverse);
     background-color: var(--background-inverse);
 
+    :global(.white) & {
+      color: $green-dark;
+      background-color: $white;
+    }
+
     display: flex;
     border-top: 1px solid;
 

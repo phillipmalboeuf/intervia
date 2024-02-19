@@ -23,7 +23,7 @@
     display: flex;
     background-color: var(--background);
     
-    border-top: 1px solid;
+    border-top: 1px solid transparent;
     border-bottom: 1px solid;
 
     nav {

@@ -34,7 +34,7 @@ footer {
 	background-color: var(--background-inverse);
 	width: 100%;
 
-	border-top: 1px solid;
+	// border-top: 1px solid;
 
 	nav {
 		display: flex;
@@ -73,7 +73,7 @@ footer {
 			&:focus {
 				text-decoration: none;
 				color: $green-dark;
-				background-color: $yellow-light;
+				background-color: $green-light;
 
 				h3 {
 					display: none;
@@ -85,7 +85,7 @@ footer {
 			}
 		}
 
-		border-top: 1px solid;
+		// border-top: 1px solid;
 	}
 }
 </style>

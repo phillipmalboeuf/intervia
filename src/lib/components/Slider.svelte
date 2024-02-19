@@ -35,7 +35,6 @@
   overflow: hidden;
   cursor: ew-resize;
   position: relative;
-}
 
   :global(.slider__container) {
     display: flex;
@@ -47,6 +46,7 @@
       flex: 0 0 100%;
       min-width: 0;
     }
+} 
 
 nav {
   position: absolute;

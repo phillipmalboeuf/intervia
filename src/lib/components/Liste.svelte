@@ -75,6 +75,10 @@
       li {
         flex: 1;
 
+        figure {
+          margin: auto 0 0;
+        }
+
         &:not(:last-child) {
           border-right: 1px solid;
         }
