@@ -8,7 +8,7 @@
   import Transition from '$lib/components/Transition.svelte'
 </script>
 
-<div class="app {{
+<div class="app {$page.route.id.replaceAll('/', '-')} {$page.url.pathname.replaceAll('/', '-')} {{
 	'/projets': 'dark',
 	'/articles': 'light',
 	'/services/popup': 'white',

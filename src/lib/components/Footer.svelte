@@ -23,9 +23,21 @@
     color: var(--foreground-inverse);
     background-color: var(--background-inverse);
 
-    :global(.white) & {
+    :global(.-services-popup) &,
+    :global(.-services-\[id\]) & {
       color: $green-dark;
       background-color: $white;
+    }
+
+    :global(.-contact) & {
+      color: var(--foreground);
+      background-color: var(--background);
+    }
+
+    :global(.-a-propos) &,
+    :global(.-articles) & {
+      color: var(--foreground);
+      background-color: $green-light;
     }
 
     display: flex;

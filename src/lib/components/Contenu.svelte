@@ -70,4 +70,10 @@
       }
     }
   }
+
+  hr {
+    &:last-child {
+      display: none;
+    }
+  }
 </style>

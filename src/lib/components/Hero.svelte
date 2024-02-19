@@ -28,16 +28,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 66vh;
+    min-height: calc(100vh - #{$base * $scale * 4.75});
     text-align: center;
 
     h1 {
       margin: auto 0;
     }
 
+    h1,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
     &.media {
       position: relative;
-      color: $white;
+      color: white;
 
       :global(img),
       :global(video) {
@@ -48,6 +54,20 @@
         left: ($base * -2) - 1px;
         width: calc(100% + ($base * 4) + 2px);
         height: calc(100% + ($base * 2));
+      }
+
+      figure {
+        // position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          z-index: 0;
+          top: $base * -1;
+          left: ($base * -2) - 1px;
+          width: calc(100% + ($base * 4) + 2px);
+          height: calc(100% + ($base * 2));
+          background-color: fade-out($color: $black, $amount: 0.8);
+        }
       }
     }
   }
