@@ -19,7 +19,7 @@
       {#each item.fields.items as i}
       <li class={`${isTypeText(i) && i.fields.layout} slide`}>
         {#if isTypeText(i)}
-        {#if !i.fields.sansTitre}<h4 class:h2={item.fields.layout === 'Slider'}>{i.fields.titre}</h4>{/if}
+        {#if !i.fields.sansTitre}<h4 class:h1={item.fields.layout === 'Slider'} class:h1--huge={item.fields.layout === 'Slider' && item.fields.titre.length < 40}>{i.fields.titre}</h4>{/if}
         {#if i.fields.media}
         <figure>
           <Media media={i.fields.media} small />
@@ -74,6 +74,7 @@
 
       li {
         flex: 1;
+        padding: $gap;
 
         figure {
           margin: auto 0 0;
@@ -81,6 +82,10 @@
 
         &:not(:last-child) {
           border-right: 1px solid;
+        }
+
+        :global(h1) {
+          font-size: $base * $scale * 7;
         }
       }
     }
@@ -100,8 +105,9 @@
       }
 
       li {
+        text-align: center;
         min-height: 33vw;
-        padding: $gap ($gap * 6);
+        padding: ($gap * 2) ($gap * 4);
       }
 
       figure {

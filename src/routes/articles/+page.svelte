@@ -98,7 +98,7 @@
 
         h5 {
           padding: $base;
-          margin-bottom: auto;
+          margin: auto 0;
         }
 
         figure {

@@ -55,7 +55,7 @@ h1,
 	font-size: $base * $scale * 4;
 
 	&.h1--huge {
-		font-size: $base * $scale * 8;
+		font-size: $base * $scale * 7;
 	}
 }
 
@@ -77,13 +77,13 @@ h4,
 h5,
 .h5 {
 	font-size: $base * $scale;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 h6,
 .h6 {
 	font-size: $base * $scale * 0.666;
-	font-weight: normal;
+	font-weight: 600;
 	text-transform: uppercase;
 }
 

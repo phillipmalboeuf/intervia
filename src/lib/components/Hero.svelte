@@ -9,7 +9,7 @@
 </script>
 
 <header id={item.fields.id} class={``} class:media={item.fields.media}>
-  <h1>{item.fields.titre}</h1>
+  <h1 class:h1--huge={item.fields.titre.length < 40}>{item.fields.titre}</h1>
   {#if item.fields.media}
   <figure>
     <Media media={item.fields.media} eager />
@@ -58,16 +58,16 @@
 
       figure {
         // position: relative;
-        &:after {
-          content: "";
-          position: absolute;
-          z-index: 0;
-          top: $base * -1;
-          left: ($base * -2) - 1px;
-          width: calc(100% + ($base * 4) + 2px);
-          height: calc(100% + ($base * 2));
-          background-color: fade-out($color: $black, $amount: 0.8);
-        }
+        // &:after {
+        //   content: "";
+        //   position: absolute;
+        //   z-index: 0;
+        //   top: $base * -1;
+        //   left: ($base * -2) - 1px;
+        //   width: calc(100% + ($base * 4) + 2px);
+        //   height: calc(100% + ($base * 2));
+        //   background-color: fade-out($color: $black, $amount: 0.8);
+        // }
       }
     }
   }
