@@ -96,6 +96,7 @@ export interface TypeListeFields {
     layout?: EntryFieldTypes.Symbol<"Cartes" | "Slider">;
     couleur?: EntryFieldTypes.Symbol<"Dark" | "Light" | "Yellow">;
     items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProjetSkeleton | TypeServiceSkeleton | TypeTextSkeleton>>;
+    images?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
 }
 
 export type TypeListeSkeleton = EntrySkeletonType<TypeListeFields, "liste">;
@@ -136,8 +137,8 @@ export interface TypeParcoursFields {
     id: EntryFieldTypes.Symbol;
     separateurs?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
     couleur?: EntryFieldTypes.Symbol<"Dark" | "Light" | "Yellow">;
-    parcours: EntryFieldTypes.Object;
     bouton?: EntryFieldTypes.Symbol;
+    parcours: EntryFieldTypes.Object;
 }
 
 export type TypeParcoursSkeleton = EntrySkeletonType<TypeParcoursFields, "parcours">;

@@ -9,13 +9,14 @@
   export let item: Entry<TypeListeSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
-<main id={item.fields.id} class={`${item.fields.layout} ${item.fields.couleur}`}>
+<main id={item.fields.id} class:images={item.fields.images?.length} class={`${item.fields.layout} ${item.fields.couleur}`}>
   {#if item.fields.titre}
   <h2 class:h6={item.fields.layout === 'Slider'}>{item.fields.titre}</h2>
   {/if}
 
   <Slider disabled={item.fields.layout !== 'Slider'}>
     <ol class="slider__container">
+      {#if item.fields.items}
       {#each item.fields.items as i}
       <li class={`${isTypeText(i) && i.fields.layout} slide`}>
         {#if isTypeText(i)}
@@ -48,6 +49,15 @@
         {/if}
       </li>
       {/each}
+      {:else if item.fields.images}
+      {#each item.fields.images as i}
+      <li class="slide image">
+        <figure>
+          <Media media={i} small />
+        </figure>
+      </li>
+      {/each}
+      {/if}
     </ol>
   </Slider>
 </main>
@@ -58,6 +68,10 @@
     gap: $base;
     flex-direction: column;
     align-items: center;
+
+    &.images {
+      margin-top: ($base * -1) - 1.5px;
+    }
 
     &.Cartes {
       justify-content: center;
@@ -86,6 +100,13 @@
 
         :global(h1) {
           font-size: $base * $scale * 7;
+        }
+      }
+
+      .image {
+        figure {
+          padding: 0;
+          margin: ($gap * -1);
         }
       }
     }
