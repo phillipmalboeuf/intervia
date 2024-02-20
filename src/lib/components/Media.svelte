@@ -48,15 +48,15 @@
 <!-- {JSON.stringify(media, null, 2)} -->
 <picture>
   {#if small}
-  <source srcSet="{cdn(media.fields.file.url)}?w=400{ar ? `&fit=crop&h=${Math.round(400 * ar)}` : ''}" media="(max-width: 900px)" />
-  <source srcSet="{cdn(media.fields.file.url)}?w=600{ar ? `&fit=crop&h=${Math.round(600 * ar)}` : ''}" media="(max-width: 1200px)" />
-  <img src="{cdn(media.fields.file.url)}?w=800{ar ? `&fit=crop&h=${Math.round(800 * ar)}` : ''}"
+  <source srcSet="{cdn(media.fields.file.url)}?w=400{ar ? `&fit=fill&h=${Math.round(400 * ar)}` : ''}" media="(max-width: 900px)" />
+  <source srcSet="{cdn(media.fields.file.url)}?w=600{ar ? `&fit=fill&h=${Math.round(600 * ar)}` : ''}" media="(max-width: 1200px)" />
+  <img src="{cdn(media.fields.file.url)}?w=800{ar ? `&fit=fill&h=${Math.round(800 * ar)}` : ''}"
     style={ar ? `aspect-ratio: 800 / ${Math.round(ar * 800) + 2}` : ''}
     alt="{media.fields.title}" loading={eager ? "eager" : "lazy"} />
   {:else}
-  <source srcSet="{cdn(media.fields.file.url)}?w=900{ar ? `&fit=crop&h=${Math.round(900 * ar)}` : ''}" media="(max-width: 900px)" />
-  <source srcSet="{cdn(media.fields.file.url)}?w=1200{ar ? `&fit=crop&h=${Math.round(1200 * ar)}` : ''}" media="(max-width: 1200px)" />
-  <img src="{cdn(media.fields.file.url)}?w=1800{ar ? `&fit=crop&h=${Math.round(1800 * ar)}` : ''}"
+  <source srcSet="{cdn(media.fields.file.url)}?w=900{ar ? `&fit=fill&h=${Math.round(900 * ar)}` : ''}" media="(max-width: 900px)" />
+  <source srcSet="{cdn(media.fields.file.url)}?w=1200{ar ? `&fit=fill&h=${Math.round(1200 * ar)}` : ''}" media="(max-width: 1200px)" />
+  <img src="{cdn(media.fields.file.url)}?w=1800{ar ? `&fit=fill&h=${Math.round(1800 * ar)}` : ''}"
     style={ar ? `aspect-ratio: 1800 / ${Math.round(ar * 1800) + 2}` : ''}
     alt="{media.fields.title}" loading={eager ? "eager" : "lazy"} />
   {/if}
@@ -68,7 +68,7 @@
 {/if}
 {:else}
 <picture>
-  <img src="{cdn(media)}?w=100{ar ? `&fit=crop&h=${Math.round(100 * ar)}` : ''}"
+  <img src="{cdn(media)}?w=100{ar ? `&fit=fill&h=${Math.round(100 * ar)}` : ''}"
     style={ar ? `aspect-ratio: 100 / ${Math.round(ar * 100)}` : ''}
     alt="" loading={eager ? "eager" : "lazy"} />
 </picture>
