@@ -163,7 +163,7 @@
         a {
           display: flex;
           justify-content: space-between;
-          padding: $base * 0.5;
+          padding: $base * 0.75;
           padding-bottom: 0;
 
           &:hover,
@@ -173,7 +173,7 @@
           }
 
           div {
-            padding-bottom: $base * 0.5;
+            padding-bottom: $base * 0.75;
           }
 
           div:last-of-type {

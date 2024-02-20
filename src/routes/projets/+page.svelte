@@ -168,7 +168,7 @@
 
         a {
           display: block;
-          padding: $base * 0.5;
+          padding: $base * 0.75;
 
           &:hover,
           &:focus {

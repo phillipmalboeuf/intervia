@@ -103,10 +103,14 @@
 
       section {
         padding: $base;
-        width: calc(100% / 3 * 2);
+        width: calc((100% / 3 * 2) + ($base * 2));
         max-width: none;
         border-left: 1px solid;
-        margin: ($base * -1) 0;
+        margin: ($base * -1) ($base * -1) ($base * -1) 0;
+
+        :global(h6) {
+          text-align: center;
+        }
 
         :global(table) {
           width: calc(100% + ($base * 3));
@@ -119,7 +123,7 @@
 
           &:first-child {
             border-top: 1px solid;
-            margin-top: $base * 1;
+            // margin-top: $base * 1;
           }
 
           :global(summary) {

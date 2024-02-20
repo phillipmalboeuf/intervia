@@ -47,7 +47,7 @@
 {:else if node.nodeType === 'table-header-cell'}
   {#if details}
   {#if i === 0}
-  <summary>{#each node.content as item}<svelte:self node={item} />{/each}</summary>
+  <summary>{#each node.content as item}<svelte:self node={item} />{/each} <svg width="0.75em" height="0.75em" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"> <line x1="0.707107" y1="0.7072" x2="7.77817" y2="7.77827" stroke-width="2"/> <line x1="13.4337" y1="0.707107" x2="6.3626" y2="7.77817" stroke-width="2"/> </svg></summary>
   {:else}
   <main>{#each node.content as item}<svelte:self node={item} />{/each}</main>
   {/if}
@@ -57,7 +57,7 @@
 {:else if node.nodeType === 'table-cell'}
   {#if details}
   {#if i === 0}
-  <summary>{#each node.content as item}<svelte:self node={item} />{/each}</summary>
+  <summary>{#each node.content as item}<svelte:self node={item} />{/each} <svg width="0.75em" height="0.75em" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"> <line x1="0.707107" y1="0.7072" x2="7.77817" y2="7.77827" stroke-width="2"/> <line x1="13.4337" y1="0.707107" x2="6.3626" y2="7.77817" stroke-width="2"/> </svg></summary>
   {:else}
   <main>{#each node.content as item}<svelte:self node={item} />{/each}</main>
   {/if}
@@ -94,3 +94,21 @@
   {/if}
   {/if} -->
 {/if}
+
+<style lang="scss">
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap;
+
+    svg {
+      transform: rotate(0);
+      transition: transform 333ms;
+
+      :global([open]) & {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+</style>

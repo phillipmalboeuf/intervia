@@ -142,17 +142,19 @@ table {
 	-webkit-border-horizontal-spacing: 0;
 	-webkit-border-vertical-spacing: 0;
 
-	th {
-		text-align: center;
-		text-transform: uppercase;
-	}
-
 	td,
 	th {
 		border-top: 1px solid;
-		padding: $base * 0.5;
+		padding: ($base * 0.5) ($base * 0.75);
 		white-space: pre-line;
 		width: calc(100% / var(--length));
+	}
+
+	th {
+		text-align: center;
+		text-transform: uppercase;
+
+		border-top: none;
 	}
 
 	tr {
@@ -167,7 +169,27 @@ table {
 	td {
 		&:not(:first-child) {
 			border-left: 1px solid;
+			position: relative;
+
+			&:after {
+				content: "";
+				height: $base * 0.33;
+				width: 2px;
+				position: absolute;
+				top: 0;
+				left: -1px;
+				background-color: var(--background);
+			}
+
+			.Light &:after {
+				background-color: $green-light;
+			}
 		}
+	}
+
+	+ table,
+	&:first-child {
+		margin-top: $base * -1;
 	}
 }
 
