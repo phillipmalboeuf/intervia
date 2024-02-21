@@ -6,6 +6,7 @@
   import { page } from '$app/stores'
 
   import type { PageData } from './$types'
+  import Slider from '$lib/components/Slider.svelte';
   export let data: PageData
 
   let tab: string = 'mandat'
@@ -29,8 +30,24 @@
         {year(data.projet.fields.date)} – {data.projet.fields.status}
       </div>
     </aside>
-    <figure>
-      <Media media={data.projet.fields.thumbnail} />
+    <figure class:animated={data.projet.fields.full}>
+      {#if data.projet.fields.full}
+
+      {:else}
+      {#if data.projet.fields.photos?.length}
+      <Slider buttons={false} dots={data.projet.fields.photos.length}>
+        <ol class="slider__container">
+          {#each data.projet.fields.photos as media}
+          <li class="slide">
+            <Media {media} small />
+          </li>
+          {/each}
+        </ol>
+      </Slider>
+      {:else if data.projet.fields.thumbnail}
+      <Media media={data.projet.fields.thumbnail} small />
+      {/if}
+      {/if}
     </figure>
   </header>
   <main>
@@ -48,6 +65,24 @@
     <Document body={data.projet.fields.solution} />
     {/if}
   </main>
+
+  {#if data.projet.fields.full}
+  <figure class="full">
+    {#if data.projet.fields.photos?.length}
+    <Slider buttons={false} dots={data.projet.fields.photos.length}>
+      <ol class="slider__container">
+        {#each data.projet.fields.photos as media}
+        <li class="slide">
+          <Media {media} small />
+        </li>
+        {/each}
+      </ol>
+    </Slider>
+    {:else if data.projet.fields.thumbnail}
+    <Media media={data.projet.fields.thumbnail} small />
+    {/if}
+  </figure>
+  {/if}
 
   {#if data.projets?.items.length}
   <footer>
@@ -110,10 +145,16 @@
       }
 
       figure {
+        position: relative;
         border-top: 1px solid;
+        background-color: var(--background-inverse);
 
         :global(img),
         :global(video) {
+          height: 50vh;
+        }
+
+        &.animated {
           height: 50vh;
         }
       }
@@ -126,6 +167,20 @@
       padding: $base;
       margin-right: $base;
       border-right: 1px solid;
+    }
+
+    figure.full {
+      position: relative;
+      margin-left: $base;
+      margin-right: $base;
+      border-top: 1px solid;
+      border-right: 1px solid;
+      border-left: 1px solid;
+
+      :global(img),
+      :global(video) {
+        max-height: 90vh;
+      }
     }
 
     footer {

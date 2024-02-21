@@ -158,6 +158,7 @@ export interface TypeProjetFields {
     services?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeServiceSkeleton>>;
     thumbnail?: EntryFieldTypes.AssetLink;
     photos?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    full?: EntryFieldTypes.Boolean;
     mandat?: EntryFieldTypes.RichText;
     contexte?: EntryFieldTypes.RichText;
     solution?: EntryFieldTypes.RichText;

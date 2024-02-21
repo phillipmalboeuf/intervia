@@ -6,6 +6,7 @@
   import { page } from '$app/stores'
 
   import type { PageData } from './$types'
+  import Slider from '$lib/components/Slider.svelte';
   export let data: PageData
 
   // let tab: string = 'mandat'
@@ -32,7 +33,19 @@
       </div>
     </aside>
     <figure>
-      <Media media={data.article.fields.thumbnail} />
+      {#if data.article.fields.photos?.length}
+      <Slider buttons={false} dots={data.article.fields.photos.length}>
+        <ol class="slider__container">
+          {#each data.article.fields.photos as media}
+          <li class="slide">
+            <Media {media} small />
+          </li>
+          {/each}
+        </ol>
+      </Slider>
+      {:else if data.article.fields.thumbnail}
+      <Media media={data.article.fields.thumbnail} small />
+      {/if}
     </figure>
   </header>
   <main>
@@ -114,6 +127,7 @@
       }
 
       figure {
+        position: relative;
         border-top: 1px solid;
 
         :global(img),
