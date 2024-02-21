@@ -38,6 +38,9 @@ footer {
 
 	nav {
 		display: flex;
+		border-left: 1px solid;
+    border-right: 1px solid;
+    margin: 0 $base;
 
 		a {
 			position: relative;
@@ -61,6 +64,8 @@ footer {
 			figure {
 				display: none;
 				padding: 0 $gap;
+
+				max-height: calc(100vw / 4);
 
 				:global(img) {
 					width: 100%;

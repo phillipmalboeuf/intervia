@@ -8,6 +8,7 @@
 
 <header>
   <h1>Actualités {#if data.categorie}– {data.categorie.titre}{/if}</h1>
+  <hr>
   {#if data.vedettes.items.length}
   <nav>
     {#each data.vedettes.items as article}
@@ -22,6 +23,7 @@
     {/each}
   </nav>
   {/if}
+  <hr>
 </header>
 
 <main>
@@ -81,12 +83,17 @@
 <style lang="scss">
   header {
     h1 {
-      padding: $base;
-      border-bottom: 1px solid;
+      padding: ($gap * 2) $base;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      margin: 0 $base;
     }
 
     nav {
       display: flex;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      margin: 0 $base;
 
       a {
         position: relative;
@@ -113,8 +120,6 @@
           background-color: $yellow-dark;
         }
       }
-
-      border-bottom: 1px solid;
     }
   }
 
@@ -122,6 +127,9 @@
     position: relative;
     display: flex;
     align-items: flex-start;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    margin: 0 $base;
 
     figure {
       position: absolute;

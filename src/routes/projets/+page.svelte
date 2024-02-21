@@ -7,6 +7,7 @@
 
 <header>
   <h1>Nos projets {#if data.service}– {data.service.titre}{/if}</h1>
+  <hr>
   {#if data.vedettes.items.length}
   <nav>
     {#each data.vedettes.items as projet}
@@ -21,9 +22,11 @@
     {/each}
   </nav>
   {/if}
+  <hr>
 </header>
 
 <main>
+  <div>
   <aside>
     {#if data.service}
     <a href="/projets" class="button">Tous</a>
@@ -82,6 +85,7 @@
     </li>
     {/each}
   </ol>
+  </div>
 </main>
 
 <style lang="scss">
@@ -105,12 +109,17 @@
 
   header {
     h1 {
-      padding: $base;
-      border-bottom: 1px solid;
+      padding: ($gap * 2) $base;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      margin: 0 $base;
     }
 
     nav {
       display: flex;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      margin: 0 $base;
 
       a {
         position: relative;
@@ -133,16 +142,23 @@
         }
       }
 
-      border-bottom: 1px solid;
+      // border-bottom: 1px solid;
     }
   }
 
   main {
+    color: var(--foreground-inverse);
+    background-color: var(--background-inverse);
+  }
+
+  main div {
     position: relative;
     display: flex;
     align-items: flex-start;
-    color: var(--foreground-inverse);
-    background-color: var(--background-inverse);
+    
+    border-left: 1px solid;
+    border-right: 1px solid;
+    margin: 0 $base;
 
     figure {
       width: 50%;
