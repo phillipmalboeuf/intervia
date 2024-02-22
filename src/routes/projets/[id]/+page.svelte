@@ -7,6 +7,7 @@
 
   import type { PageData } from './$types'
   import Slider from '$lib/components/Slider.svelte';
+  import Arrows from '$lib/components/Arrows.svelte';
   export let data: PageData
 
   let tab: string = 'mandat'
@@ -32,7 +33,8 @@
     </aside>
     <figure class:animated={data.projet.fields.full}>
       {#if data.projet.fields.full}
-
+      <Arrows />
+      <Arrows />
       {:else}
       {#if data.projet.fields.photos?.length}
       <Slider buttons={false} dots={data.projet.fields.photos.length}>
@@ -156,6 +158,30 @@
 
         &.animated {
           height: 50vh;
+          overflow: hidden;
+
+          @keyframes slide {
+            from {
+              transform: translateX(-50%);
+            }
+
+            to {
+              transform: translateX(0%);
+            }
+          }
+
+          :global(svg) {
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+
+            // transform: translateX(-50%);
+            animation: slide 6666ms linear infinite;
+
+            :global(path) {
+              fill: var(--foreground-inverse);
+            }
+          }
         }
       }
     }
