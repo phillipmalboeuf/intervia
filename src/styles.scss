@@ -191,6 +191,18 @@ table {
 	&:first-child {
 		margin-top: $base * -1;
 	}
+
+	.-contact & {
+		td,
+		th {
+			padding: 0;
+			border: none;
+		}
+
+		tr:last-child td {
+			border: none;
+		}
+	}
 }
 
 svg {

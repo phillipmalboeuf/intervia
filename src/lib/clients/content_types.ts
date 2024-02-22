@@ -68,6 +68,7 @@ export interface TypeInputFields {
     id: EntryFieldTypes.Symbol;
     type?: EntryFieldTypes.Symbol<"Dropdown" | "File" | "Text" | "Textarea">;
     info?: EntryFieldTypes.Symbol;
+    options?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
 }
 
 export type TypeInputSkeleton = EntrySkeletonType<TypeInputFields, "input">;
