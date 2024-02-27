@@ -59,31 +59,51 @@
 <style lang="scss">
   main {
     display: flex;
+    flex-wrap: wrap;
     min-height: 88vh;
 
     aside,
     form {
       width: 50%;
       padding: $gap;
+
+      @media (max-width: $mobile) {
+        width: 100%;
+      }
     }
 
     aside {
       display: flex;
+      gap: $base;
       flex-direction: column;
       padding: ($gap*2) $gap ($gap*2) 0;
 
       margin: ($base * -1) 0;
       border-right: 1px solid;
 
+      @media (max-width: $mobile) {
+        border-right: none;
+      }
+
       figure {
         margin-top: auto;
         margin-left: auto;
         width: 66.6%;
         padding: ($gap*2);
+
+        @media (max-width: $mobile) {
+          width: 100%;
+        }
       }
     }
 
     form {
+      @media (max-width: $mobile) {
+        padding: $gap $base;
+        border-top: 1px solid;
+        width: calc(100% + ($base * 2));
+        margin: 0 ($base * -1);
+      }
 
       button[type="submit"] {
         margin-bottom: $gap * 3;

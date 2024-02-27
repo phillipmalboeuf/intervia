@@ -4,7 +4,7 @@
   
   import Media from './Media.svelte'
   import Document from './document/index.svelte'
-  import Slider from './Slider.svelte';
+  import Slider from './Slider.svelte'
 
   export let item: Entry<TypeListeSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
@@ -84,11 +84,20 @@
 
       ol {
         border-top: 1px solid;
+
+        @media (max-width: $mobile) {
+          flex-wrap: wrap;
+        }
       }
 
       li {
         flex: 1;
         padding: $gap;
+
+        @media (max-width: $mobile) {
+          flex: none;
+          width: 100%;
+        }
 
         figure {
           margin: auto 0 0;
@@ -96,10 +105,19 @@
 
         &:not(:last-child) {
           border-right: 1px solid;
+
+          @media (max-width: $mobile) {
+            border-right: none;
+            border-bottom: 1px solid;
+          }
         }
 
         :global(h1) {
           font-size: $base * $scale * 7;
+
+          @media (max-width: $mobile) {
+            font-size: $mobile_base * $mobile_scale * 3.5;
+          }
         }
       }
 
@@ -114,6 +132,10 @@
     &.Slider {
       :global(blockquote) {
         font-size: $base * $scale * 3;
+
+        @media (max-width: $mobile) {
+          font-size: $mobile_base * $mobile_scale * 1.2;
+        }
         
         :global(> p) {
           line-height: 1;

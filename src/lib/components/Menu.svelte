@@ -7,7 +7,7 @@
 </script>
 
 <button on:click={() => open = !open}>
-  <svg width="34" height="18" viewBox="0 0 34 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 34 18" fill="none" xmlns="http://www.w3.org/2000/svg">
   <line x1="-8.74228e-08" y1="1" x2="34" y2="0.999997" stroke-width="2"/>
   <line x1="-8.74228e-08" y1="17" x2="34" y2="17" stroke-width="2"/>
   <line x1="-8.74228e-08" y1="9" x2="34" y2="9" stroke-width="2"/>
@@ -51,6 +51,10 @@
     width: calc(50vw + 1px);
     height: 100vh;
 
+    @media (max-width: $mobile) {
+      width: calc(100vw - $base);
+    }
+
     color: $green-dark;
     background-color: $green-light;
     border-left: 1px solid;
@@ -67,12 +71,26 @@
       display: flex;
       justify-content: space-between;
       border-top: 1px solid transparent;
+
+      @media (max-width: $mobile) {
+        padding: $mobile_base * 0.5;
+      }
     }
 
     ul {
       border-top: 1px solid;
       list-style: none;
       padding: ($base * $scale * 2) $base;
+    }
+  }
+
+  svg {
+    width: 34px;
+    height: 18px;
+
+    @media (max-width: $mobile) {
+      width: 21px;
+      height: 10px;
     }
   }
 </style>

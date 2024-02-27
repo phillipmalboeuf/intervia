@@ -28,22 +28,34 @@
 
     nav {
       display: flex;
+      align-items: center;
       gap: $base;
       padding: $base;
       width: 50%;
 
-      // border: 1px solid;
+      @media (max-width: $mobile) {
+        padding: $mobile_base * 0.5;
+      }
 
       &:first-child {
         margin-left: $base;
         border-left: 1px solid;
         border-right: 1px solid;
+
+        @media (max-width: $mobile) {
+          width: 33.3%;
+          border-right: none;
+        }
       }
 
       &:last-child {
         margin-right: $base;
         border-right: 1px solid;
         justify-content: flex-end;
+
+        @media (max-width: $mobile) {
+          width: 66.6%;
+        }
       }
     }
   }

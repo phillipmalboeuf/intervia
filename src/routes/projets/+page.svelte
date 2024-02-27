@@ -105,6 +105,12 @@
       height: 100%;
       object-fit: cover;
     }
+
+    @media (max-width: $mobile) {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   header {
@@ -121,6 +127,10 @@
       border-right: 1px solid;
       margin: 0 $base;
 
+      @media (max-width: $mobile) {
+        flex-wrap: wrap;
+      }
+
       a {
         position: relative;
         flex: 1;
@@ -135,9 +145,30 @@
 
         &:hover,
         &:focus {
+          text-decoration: none;
+          background-color: $yellow-dark;
+          
           figure {
             opacity: 1;
             visibility: visible;
+          }
+        }
+
+        @media (max-width: $mobile) {
+          flex: none;
+          width: 100%;
+          min-height: calc(100vh / 3);
+
+          flex-direction: column;
+          gap: $base;
+
+          &:not(:last-child) { border-right: none; border-bottom: 1px solid; }
+
+          figure {
+            border-bottom: 1px solid;
+            width: calc(100% + ($base * 2));
+            margin: ($base * -1) ($base * -1) 0;
+            order: -1;
           }
         }
       }
@@ -160,8 +191,16 @@
     border-right: 1px solid;
     margin: 0 $base;
 
+    @media (max-width: $mobile) {
+      flex-wrap: wrap;
+    }
+
     figure {
       width: 50%;
+
+      @media (max-width: $mobile) {
+        display: none;
+      }
     }
 
     aside {
@@ -170,6 +209,10 @@
       display: flex;
       flex-wrap: wrap;
       gap: $base;
+
+      @media (max-width: $mobile) {
+        width: 100%;
+      }
     }
 
     ol {
@@ -178,6 +221,12 @@
       list-style: none;
       border-left: 1px solid;
       min-height: 33vw;
+
+      @media (max-width: $mobile) {
+        width: 100%;
+        border-top: 1px solid;
+        border-left: none;
+      }
 
       li {
         &:not(:last-child) { border-bottom: 1px solid; }

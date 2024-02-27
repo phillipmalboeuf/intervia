@@ -84,6 +84,7 @@
     nav {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: $gap * 0.5;
     }
 

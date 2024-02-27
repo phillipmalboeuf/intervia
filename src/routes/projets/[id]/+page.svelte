@@ -118,6 +118,12 @@
     main {
       width: calc(50% - $base);
       min-height: 88vh;
+
+      @media (max-width: $mobile) {
+        width: calc(100% - ($base * 2));
+        margin-right: $base;
+        margin-left: $base;
+      }
     }
 
     header {
@@ -128,8 +134,16 @@
       padding-bottom: 0;
       margin-left: $base;
 
+      @media (max-width: $mobile) {
+        border-bottom: 1px solid;
+      }
+
       h1 {
         padding: $base;
+
+        @media (max-width: $mobile) {
+          padding: $base ($mobile_base * 0.5);
+        }
       }
 
       aside {
@@ -139,6 +153,10 @@
         div {
           width: 50%;
           padding: 0 $base ($base * 0.25);
+
+          @media (max-width: $mobile) {
+            padding: 0 ($mobile_base * 0.5) ($mobile_base * 0.25);
+          }
 
           &:not(:first-child) {
             border-left: 1px solid;
@@ -170,6 +188,10 @@
             }
           }
 
+          @media (max-width: $mobile) {
+            // display: flex;
+          }
+
           :global(svg) {
             width: auto;
             height: 100%;
@@ -177,6 +199,10 @@
 
             // transform: translateX(-50%);
             animation: slide 6666ms linear infinite;
+
+            @media (max-width: $mobile) {
+              
+            }
 
             :global(path) {
               fill: var(--foreground-inverse);
@@ -193,6 +219,10 @@
       padding: $base;
       margin-right: $base;
       border-right: 1px solid;
+
+      @media (max-width: $mobile) {
+        border-left: 1px solid;
+      }
     }
 
     figure.full {

@@ -98,11 +98,17 @@ nav {
     right: $base * 0.5;
     transform: none;
 
+    @media (max-width: $mobile) {
+      top: $base * 0.5;
+      bottom: auto;
+    }
+
     gap: $base * 0.333;
 
     button.dot {
       font-size: 0;
       padding: $base * 0.25;
+      background-color: $white;
 
       &.active {
         background-color: $salmon;

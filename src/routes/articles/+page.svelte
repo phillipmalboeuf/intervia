@@ -95,6 +95,10 @@
       border-right: 1px solid;
       margin: 0 $base;
 
+      @media (max-width: $mobile) {
+        flex-wrap: wrap;
+      }
+
       a {
         position: relative;
         flex: 1;
@@ -119,6 +123,21 @@
           text-decoration: none;
           background-color: $yellow-dark;
         }
+
+        @media (max-width: $mobile) {
+          flex: none;
+          width: 100%;
+          min-height: calc(100vh / 3);
+
+          flex-direction: column;
+
+          &:not(:last-child) { border-right: none; border-bottom: 1px solid; }
+
+          figure {
+            border-bottom: 1px solid;
+            order: -1;
+          }
+        }
       }
     }
   }
@@ -130,6 +149,10 @@
     border-left: 1px solid;
     border-right: 1px solid;
     margin: 0 $base;
+
+    @media (max-width: $mobile) {
+      flex-wrap: wrap;
+    }
 
     figure {
       position: absolute;
@@ -147,6 +170,10 @@
         height: 100%;
         object-fit: cover;
       }
+
+      @media (max-width: $mobile) {
+        display: none;
+      }
     }
 
     aside {
@@ -155,6 +182,10 @@
       display: flex;
       flex-wrap: wrap;
       gap: $base;
+
+      @media (max-width: $mobile) {
+        width: 100%;
+      }
     }
 
     ol {
@@ -164,9 +195,18 @@
       border-left: 1px solid;
       min-height: 33vw;
 
+      @media (max-width: $mobile) {
+        width: 100%;
+        border-top: 1px solid;
+        border-left: none;
+      }
+
       li {
         border-bottom: 1px solid;
-        // &:not(:last-child) { border-bottom: 1px solid; }
+
+        @media (max-width: $mobile) {
+          &:last-child { border-bottom: none; }
+        }
 
         a {
           display: flex;

@@ -39,7 +39,7 @@ body {
 
   @media (max-width: $mobile) {
     font-size: $mobile_base;
-    line-height: $mobile_scale;
+    // line-height: $mobile_scale;
   }
 }
 
@@ -54,30 +54,54 @@ h1,
 .h1 {
 	font-size: $base * $scale * 4;
 
+	@media (max-width: $mobile) {
+		font-size: $mobile_base * $mobile_scale * 2;
+	}
+
 	&.h1--huge {
 		font-size: $base * $scale * 7;
+
+		@media (max-width: $mobile) {
+			font-size: $mobile_base * $mobile_scale * 3.5;
+		}
 	}
 }
 
 h2,
 .h2 {
 	font-size: $base * $scale * 3;
+
+	@media (max-width: $mobile) {
+		font-size: $mobile_base * $mobile_scale * 2;
+	}
 }
 
 h3,
 .h3 {
 	font-size: $base * $scale * 2;
+
+	@media (max-width: $mobile) {
+		font-size: $mobile_base * $mobile_scale * 1.2;
+	}
 }
 
 h4,
 .h4 {
 	font-size: $base * $scale * 1.5;
+
+	@media (max-width: $mobile) {
+		font-size: $mobile_base * $mobile_scale;
+	}
 }
 
 h5,
 .h5 {
 	font-size: $base * $scale;
 	font-weight: 600;
+
+	@media (max-width: $mobile) {
+		font-size: $mobile_base;
+	}
 }
 
 h6,
@@ -85,11 +109,19 @@ h6,
 	font-size: $base * $scale * 0.666;
 	font-weight: 600;
 	text-transform: uppercase;
+
+	@media (max-width: $mobile) {
+		font-size: $mobile_base * $mobile_scale * 0.75;
+	}
 }
 
 p {
 	line-height: $scale;
 	white-space: pre-line;
+
+	@media (max-width: $mobile) {
+		line-height: $mobile_scale;
+	}
 }
 
 hr {
@@ -122,6 +154,7 @@ button,
 .button {
 	cursor: pointer;
 	display: inline-block;
+	text-align: center;
 	padding: ($base * $scale * 0.333) ($base * $scale * 0.666);
 	border-radius: ($base * $scale);
 	background: transparent;
@@ -167,6 +200,8 @@ table {
 	}
 
 	td {
+		vertical-align: top;
+		
 		&:not(:first-child) {
 			border-left: 1px solid;
 			position: relative;

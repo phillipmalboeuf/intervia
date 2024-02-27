@@ -59,5 +59,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: $mobile) {
+      left: -75vh;
+      width: 200vh;
+    }
   }
 </style>
