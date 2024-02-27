@@ -34,6 +34,10 @@
     background-color: $green-light;
     border-bottom: 1px solid;
 
+    &:last-child {
+      margin-bottom: -1px;
+    }
+
     &[open] {
       summary {
         border-bottom: 1px solid;
@@ -60,15 +64,30 @@
     main {
       display: flex;
 
+      @media (max-width: $mobile) {
+        flex-wrap: wrap;
+      }
+
       figure {
         width: calc(100% / 5 * 2);
         padding: ($base * 6);
+
+        @media (max-width: $mobile) {
+          width: 100%;
+          padding: ($base * 3);
+        }
       }
 
       section {
         padding: $base;
         width: calc(100% / 5 * 3);
         border-left: 1px solid;
+
+        @media (max-width: $mobile) {
+          width: 100%;
+          border-top: 1px solid;
+          border-left: none;
+        }
 
         :global(details) {
           margin: 0 ($base * -1);

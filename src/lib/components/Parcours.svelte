@@ -101,9 +101,9 @@
     text-align: center;
 
     h6 {
-      width: 100%;
+      width: calc(100% + ($base * 4) + 2px);
       border-bottom: 1px solid;
-      padding-bottom: $base;
+      padding: 0 ($base * 2) $base;
       margin: 0 ($base * -2);
     }
 

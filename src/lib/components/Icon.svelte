@@ -2,3 +2,15 @@
   <path d="M28.7149 39.9057L43.3018 0H34.864L24.6226 28.5469L28.7149 39.9057Z"/>
   <path d="M25.4717 45H17.0561L0 0H8.66458L22.2915 36.6354L25.4717 45Z"/>
 </svg>
+
+<style lang="scss">
+  svg {
+    width: 44px;
+    height: 44px;
+
+    @media (max-width: $mobile) {
+      width: 30px;
+      width: 30px;
+    }
+  }
+</style>

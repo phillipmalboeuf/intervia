@@ -34,6 +34,7 @@
       width: 50%;
 
       @media (max-width: $mobile) {
+        gap: $mobile_base * 0.5;
         padding: $mobile_base * 0.5;
       }
 

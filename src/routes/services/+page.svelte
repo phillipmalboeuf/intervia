@@ -42,6 +42,10 @@ footer {
     border-right: 1px solid;
     margin: 0 $base;
 
+		@media (max-width: $mobile) {
+			flex-wrap: wrap;
+		}
+
 		a {
 			position: relative;
 			flex: 1;
@@ -56,6 +60,13 @@ footer {
 			justify-content: center;
 
 			&:not(:last-child) { border-right: 1px solid; }
+
+			@media (max-width: $mobile) {
+				flex: none;
+				width: 100%;
+				border-right: none;
+				border-bottom: 1px solid;
+			}
 
 			h3, figure {
 				margin: auto 0;
