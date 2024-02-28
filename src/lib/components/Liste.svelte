@@ -1,6 +1,8 @@
 <script lang="ts">
-  import { isTypeService, isTypeText, type TypeListeSkeleton } from '$lib/clients/content_types';
-  import type { Entry } from 'contentful';
+  import { isTypeService, isTypeText, type TypeListeSkeleton } from '$lib/clients/content_types'
+  import type { Entry } from 'contentful'
+
+  import { page } from '$app/stores'
   
   import Media from './Media.svelte'
   import Document from './document/index.svelte'
@@ -9,12 +11,13 @@
   export let item: Entry<TypeListeSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
-<main id={item.fields.id} class:images={item.fields.images?.length} class={`${item.fields.layout} ${item.fields.couleur}`}>
+<main id={item.fields.id} class:images={item.fields.images?.length} class={`${($page.data.device !== 'desktop' && item.fields.sliderSurMobile) ? 'Slider' : item.fields.layout} ${item.fields.couleur}`}>
   {#if item.fields.titre}
   <h2 class:h6={item.fields.layout === 'Slider'}>{item.fields.titre}</h2>
   {/if}
 
-  <Slider disabled={item.fields.layout !== 'Slider'}>
+
+  <Slider disabled={item.fields.layout !== 'Slider' && ($page.data.device === 'desktop' || !item.fields.sliderSurMobile)}>
     <ol class="slider__container">
       {#if item.fields.items}
       {#each item.fields.items as i}
@@ -130,6 +133,16 @@
     }
 
     &.Slider {
+      h2 {
+        text-align: center;
+      }
+
+      :global(h1) {
+        @media (max-width: $mobile) {
+          font-size: $mobile_base * $mobile_scale * 5;
+        }
+      }
+
       :global(blockquote) {
         font-size: $base * $scale * 3;
 
@@ -150,17 +163,34 @@
       li {
         text-align: center;
         min-height: 33vw;
-        padding: ($gap * 2) ($gap * 4);
-      }
 
-      figure {
-        order: -1;
-        height: 25vw;
+        padding: ($gap) ($gap) ($gap * 2);
 
-        :global(img),
-        :global(video) {
-          height: 100%;
-          object-fit: contain;
+        &:has(.h1--huge) {
+          padding: ($gap * 2) ($gap * 4);
+
+          @media (max-width: $mobile) {
+            padding: ($gap * 3) ($gap);
+          }
+
+          figure {
+            order: -1;
+          }
+        }
+        
+        figure {
+          // order: -1;
+          height: 25vw;
+
+          @media (max-width: $mobile) {
+            height: 33vh;
+          }
+
+          :global(img),
+          :global(video) {
+            height: 100%;
+            object-fit: contain;
+          }
         }
       }
     }
@@ -180,6 +210,10 @@
         justify-content: center;
         gap: $base;
 
+        @media (max-width: $mobile) {
+          gap: $mobile_base * 0.5;
+        }
+
         &.Centre {
           justify-content: center;
           text-align: center;
@@ -187,6 +221,10 @@
 
         figure {
           padding: $gap * 3;
+
+          @media (max-width: $mobile) {
+            padding: ($gap * 2) $gap;
+          }
         }
 
         nav {

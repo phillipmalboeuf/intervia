@@ -60,7 +60,7 @@
   main {
     display: flex;
     flex-wrap: wrap;
-    min-height: 88vh;
+    min-height: 66vh;
 
     aside,
     form {
@@ -98,6 +98,10 @@
     }
 
     form {
+      margin: 0 auto;
+      max-width: $base * 33.3;
+      align-self: center;
+
       @media (max-width: $mobile) {
         padding: $gap $base;
         border-top: 1px solid;

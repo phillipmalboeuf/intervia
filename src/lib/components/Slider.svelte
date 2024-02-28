@@ -82,6 +82,11 @@ nav {
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: $mobile) {
+    position: static;
+    gap: $mobile_base;
+  }
+
   button {
     pointer-events: auto;
     // width: 0;

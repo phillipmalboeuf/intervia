@@ -95,6 +95,7 @@ export interface TypeListeFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     layout?: EntryFieldTypes.Symbol<"Cartes" | "Slider">;
+    sliderSurMobile?: EntryFieldTypes.Boolean;
     couleur?: EntryFieldTypes.Symbol<"Dark" | "Light" | "Yellow">;
     items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProjetSkeleton | TypeServiceSkeleton | TypeTextSkeleton>>;
     images?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
