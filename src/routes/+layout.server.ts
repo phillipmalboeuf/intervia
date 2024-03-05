@@ -11,8 +11,6 @@ export const load = (async ({ locals, url, params, request }) => {
   //   content.getEntries<TypePageSkeleton>({ content_type: "page", include: 2, "fields.id": "accueil" }),
   // ])
 
-  console.log(parser)
-
   return {
     // page: pages.items[0],
     device: parser ? parser.getDevice().type || 'desktop' : 'desktop'

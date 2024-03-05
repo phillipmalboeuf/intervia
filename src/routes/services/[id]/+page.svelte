@@ -36,6 +36,12 @@
 
     &:last-child {
       margin-bottom: -1px;
+
+      &:first-child {
+        svg {
+          display: none;
+        }
+      }
     }
 
     &[open] {
@@ -113,10 +119,19 @@
           }
         }
 
+        > :global(section + p) {
+          margin: $base 0;
+        }
+
         :global(details[open]) {
           :global(summary) {
             border-bottom: 1px solid;
           }
+        }
+      
+        :global(p + section > details:first-child) {
+          border-top: 1px solid;
+          margin-top: 0;
         }
       }
     }
