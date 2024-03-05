@@ -55,16 +55,16 @@
   <main>
     <nav>
       <a href="?t=mandat" class="button" class:active={tab === 'mandat'}>Mandat</a>
-      <a href="?t=contexte" class="button" class:active={tab === 'contexte'}>Contexte</a>
-      <a href="?t=solution" class="button" class:active={tab === 'solution'}>Solution</a>
+      <a href="?t=implication" class="button" class:active={tab === 'implication'}>Implication</a>
+      <a href="?t=constat" class="button" class:active={tab === 'constat'}>Constat</a>
     </nav>
 
     {#if tab === 'mandat'}
     <Document body={data.projet.fields.mandat} />
-    {:else if tab === 'contexte'}
-    <Document body={data.projet.fields.contexte} />
-    {:else if tab === 'solution'}
-    <Document body={data.projet.fields.solution} />
+    {:else if tab === 'implication'}
+    <Document body={data.projet.fields.implication} />
+    {:else if tab === 'constat'}
+    <Document body={data.projet.fields.constat} />
     {/if}
   </main>
 

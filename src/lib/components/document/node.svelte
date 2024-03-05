@@ -106,7 +106,7 @@
       transform: rotate(0);
       transition: transform 333ms;
 
-      :global([open]) & {
+      :global([open]) > & {
         transform: rotate(-180deg);
       }
     }

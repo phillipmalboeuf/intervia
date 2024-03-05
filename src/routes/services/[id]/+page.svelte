@@ -39,7 +39,7 @@
     }
 
     &[open] {
-      summary {
+      > summary {
         border-bottom: 1px solid;
 
         svg {

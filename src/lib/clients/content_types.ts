@@ -162,8 +162,8 @@ export interface TypeProjetFields {
     photos?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     full?: EntryFieldTypes.Boolean;
     mandat?: EntryFieldTypes.RichText;
-    contexte?: EntryFieldTypes.RichText;
-    solution?: EntryFieldTypes.RichText;
+    implication?: EntryFieldTypes.RichText;
+    constat?: EntryFieldTypes.RichText;
 }
 
 export type TypeProjetSkeleton = EntrySkeletonType<TypeProjetFields, "projet">;
