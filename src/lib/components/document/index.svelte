@@ -6,6 +6,6 @@
   export let details = false
 </script>
 
-{#each body.content as node}
-<Node node={node} {details} />
+{#each body.content as node, i}
+<Node node={node} {details} {i} />
 {/each}

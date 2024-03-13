@@ -1,13 +1,14 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
+  import Slider from '$lib/components/Slider.svelte'
+  import Arrows from '$lib/components/Arrows.svelte'
+  import Scrollin from '$lib/components/Scrollin.svelte'
   import { year } from '$lib/formatters'
 
   import { page } from '$app/stores'
 
-  import type { PageData } from './$types'
-  import Slider from '$lib/components/Slider.svelte';
-  import Arrows from '$lib/components/Arrows.svelte';
+  import type { PageData } from './$types' 
   export let data: PageData
 
   let tab: string = 'mandat'
@@ -20,15 +21,15 @@
 
 <section>
   <header>
-    <h1 class="h2">{data.projet.fields.titre}</h1>
+    <h1 class="h2"><Scrollin>{data.projet.fields.titre}</Scrollin></h1>
     <aside>
       <div>
-        <h6>Client</h6>
-        {data.projet.fields.client}
+        <h6><Scrollin>Client</Scrollin></h6>
+        <Scrollin>{data.projet.fields.client}</Scrollin>
       </div>
       <div>
-        <h6>Année</h6>
-        {year(data.projet.fields.date)} – {data.projet.fields.status}
+        <h6><Scrollin>Année</Scrollin></h6>
+        <Scrollin>{year(data.projet.fields.date)} – {data.projet.fields.status}</Scrollin>
       </div>
     </aside>
     <figure class:animated={data.projet.fields.full}>
@@ -53,11 +54,13 @@
     </figure>
   </header>
   <main id="main">
+    <Scrollin>
     <nav>
       <a href="?t=mandat#main" class="button" class:active={tab === 'mandat'}>Mandat</a>
       <a href="?t=implication#main" class="button" class:active={tab === 'implication'}>Implication</a>
       <a href="?t=constat#main" class="button" class:active={tab === 'constat'}>Constat</a>
     </nav>
+    </Scrollin>
 
     {#if tab === 'mandat'}
     <Document body={data.projet.fields.mandat} />
@@ -88,12 +91,12 @@
 
   {#if data.projets?.items.length}
   <footer>
-    <h6>Projets similaires</h6>
+    <h6><Scrollin>Projets similaires</Scrollin></h6>
 
     <nav>
       {#each data.projets.items as projet}
       <a href="/projets/{projet.fields.id}">
-        <h3>{projet.fields.titre}</h3>
+        <h3><Scrollin>{projet.fields.titre}</Scrollin></h3>
         {#if projet.fields.thumbnail}
         <figure>
           <Media media={projet.fields.thumbnail} small ar={1} />

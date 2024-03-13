@@ -7,13 +7,14 @@
   import Media from './Media.svelte'
   import Document from './document/index.svelte'
   import Slider from './Slider.svelte'
+  import Scrollin from './Scrollin.svelte';
 
   export let item: Entry<TypeListeSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
 <main id={item.fields.id} class:images={item.fields.images?.length} class={`${($page.data.device !== 'desktop' && item.fields.sliderSurMobile) ? 'Slider' : item.fields.layout} ${item.fields.couleur}`}>
   {#if item.fields.titre}
-  <h2 class:h6={item.fields.layout === 'Slider'}>{item.fields.titre}</h2>
+  <h2 class:h6={item.fields.layout === 'Slider'}><Scrollin>{item.fields.titre}</Scrollin></h2>
   {/if}
 
 
@@ -23,7 +24,7 @@
       {#each item.fields.items as i}
       <li class={`${isTypeText(i) && i.fields.layout} slide`}>
         {#if isTypeText(i)}
-        {#if !i.fields.sansTitre}<h4 class:h1={item.fields.layout === 'Slider'} class:h1--huge={item.fields.layout === 'Slider' && item.fields.titre.length < 40}>{i.fields.titre}</h4>{/if}
+        {#if !i.fields.sansTitre}<h4 class:h1={item.fields.layout === 'Slider'} class:h1--huge={item.fields.layout === 'Slider' && item.fields.titre.length < 40}><Scrollin>{i.fields.titre}</Scrollin></h4>{/if}
         {#if i.fields.media}
         <figure>
           <Media media={i.fields.media} small />
@@ -33,13 +34,13 @@
         {#if i.fields.liens?.length}
         <nav>
           {#each i.fields.liens as lien}
-          <a class="button" href={lien.fields.route} {...lien.fields.externe ? { rel: "external", target: "_blank" } : {}}>{lien.fields.titre}</a>
+          <Scrollin><a class="button" href={lien.fields.route} {...lien.fields.externe ? { rel: "external", target: "_blank" } : {}}>{lien.fields.titre}</a></Scrollin>
           {/each}
         </nav>
         {/if}
 
         {:else if isTypeService(i)}
-        <h4>{i.fields.titre}</h4>
+        <h4><Scrollin>{i.fields.titre}</Scrollin></h4>
         {#if i.fields.illustration}
         <figure>
           <Media media={i.fields.illustration} small />
@@ -47,7 +48,7 @@
         {/if}
         {#if i.fields.description}<Document body={i.fields.description} />{/if}
         <nav>
-          <a class="button" href="/services/{i.fields.id}">En savoir plus</a>
+          <Scrollin><a class="button" href="/services/{i.fields.id}">En savoir plus</a></Scrollin>
         </nav>
         {/if}
       </li>

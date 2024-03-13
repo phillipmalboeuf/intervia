@@ -8,6 +8,7 @@
   import Popup from '../../routes/services/popup/+page.svelte'
 
   import { page } from '$app/stores'
+  import Scrollin from './Scrollin.svelte';
 
   // import Document from '$lib/components/document/index.svelte'
   // import Media from './Media.svelte'
@@ -25,7 +26,7 @@
 
 <main id={item.fields.id} class={`${item.fields.couleur}`}>
   {#if item.fields.titre}
-  <h6>{item.fields.titre}</h6>
+  <h6><Scrollin>{item.fields.titre}</Scrollin></h6>
   {/if}
 
   <form action="/{item.fields.id}/popup?s={encodeURIComponent(item.fields.parcours[selectedV + 1][selectedH + 1].join('|'))}" on:submit={async (e) => {
@@ -44,11 +45,13 @@
     //   goto(path)
     // }
   }}>
-    <h1>
-      {item.fields.separateurs[0]} <a on:click={() => open = "vertical"}><u>{vertical[selectedV]}</u></a> {item.fields.separateurs[1]} <a on:click={() => open = "horizontal"}><u>{horizontal[selectedH]}</u></a>.
-    </h1>
+    <Scrollin>
+      <h1>  
+        {item.fields.separateurs[0]} <a on:click={() => open = "vertical"}><u>{vertical[selectedV]}</u></a> {item.fields.separateurs[1]} <a on:click={() => open = "horizontal"}><u>{horizontal[selectedH]}</u></a>.
+      </h1>
+    </Scrollin>
 
-    <button type="submit">{item.fields.bouton || "Voir mon parcous"}</button>
+    <Scrollin><button type="submit">{item.fields.bouton || "Voir mon parcous"}</button></Scrollin>
   </form>
 
   {#if open}

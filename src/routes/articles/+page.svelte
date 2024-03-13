@@ -1,5 +1,6 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
+  import Scrollin from '$lib/components/Scrollin.svelte';
   import { year } from '$lib/formatters';
 
   import type { PageData } from './$types'
@@ -7,13 +8,13 @@
 </script>
 
 <header>
-  <h1>Actualités {#if data.categorie}– {data.categorie.titre}{/if}</h1>
+  <h1><Scrollin>Actualités</Scrollin></h1>
   <hr>
   {#if data.vedettes.items.length}
   <nav>
     {#each data.vedettes.items as article}
     <a href="/articles/{article.fields.id}">
-      <h5>{article.fields.titre}</h5>
+      <h5><Scrollin>{article.fields.titre}</Scrollin></h5>
       {#if article.fields.thumbnail}
       <figure>
         <Media media={article.fields.thumbnail} small ar={0.88} />
@@ -29,18 +30,18 @@
 <main>
   <aside>
     {#if data.categorie}
-    <a href="/articles" class="button">Tous</a>
+    <Scrollin><a href="/articles" class="button">Tous</a></Scrollin>
     {/if}
     {#each data.categories as categorie}
-    <a href="/articles?categorie={categorie.id}" class="button" class:active={data.categorie && data.categorie.id === categorie.id}>{categorie.titre}</a>
+    <Scrollin><a href="/articles?categorie={categorie.id}" class="button" class:active={data.categorie && data.categorie.id === categorie.id}>{categorie.titre}</a></Scrollin>
     {/each}
   </aside>
   <ol>
     {#each data.articles.items as article}
     <li>
       <a href="/articles/{article.fields.id}">
-        <div>{article.fields.titre}</div>
-        <div>{year(article.fields.date)}</div>
+        <div><Scrollin>{article.fields.titre}</Scrollin></div>
+        <div><Scrollin>{year(article.fields.date)}</Scrollin></div>
         {#if article.fields.thumbnail}
         <figure>
           <Media media={article.fields.thumbnail} small ar={1} />
@@ -53,8 +54,8 @@
     {#each data.articles.items as article}
     <li>
       <a href="/articles/{article.fields.id}">
-        <div>{article.fields.titre}</div>
-        <div>{year(article.fields.date)}</div>
+        <div><Scrollin>{article.fields.titre}</Scrollin></div>
+        <div><Scrollin>{year(article.fields.date)}</Scrollin></div>
         {#if article.fields.thumbnail}
         <figure>
           <Media media={article.fields.thumbnail} small ar={1} />
@@ -67,8 +68,8 @@
     {#each data.articles.items as article}
     <li>
       <a href="/articles/{article.fields.id}">
-        <div>{article.fields.titre}</div>
-        <div>{year(article.fields.date)}</div>
+        <div><Scrollin>{article.fields.titre}</Scrollin></div>
+        <div><Scrollin>{year(article.fields.date)}</Scrollin></div>
         {#if article.fields.thumbnail}
         <figure>
           <Media media={article.fields.thumbnail} small ar={1} />
@@ -106,6 +107,7 @@
         min-height: calc(100vw / 3);
         display: flex;
         flex-direction: column;
+        transition: background-color 333ms;
 
         h5 {
           padding: $base;
@@ -162,6 +164,7 @@
       width: 33.3%;
       height: 100%;
       opacity: 0;
+      transition: opacity 666ms;
       visibility: hidden;
       pointer-events: none;
 
@@ -213,6 +216,7 @@
           justify-content: space-between;
           padding: $base * 0.75;
           padding-bottom: 0;
+          transition: background-color 333ms;
 
           &:hover,
           &:focus {

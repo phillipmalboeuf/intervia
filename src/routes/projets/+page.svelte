@@ -1,18 +1,19 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
+  import Scrollin from '$lib/components/Scrollin.svelte';
 
   import type { PageData } from './$types'
   export let data: PageData
 </script>
 
 <header>
-  <h1>Nos projets</h1>
+  <h1><Scrollin>Nos projets</Scrollin></h1>
   <hr>
   {#if data.vedettes.items.length}
   <nav>
     {#each data.vedettes.items as projet}
     <a href="/projets/{projet.fields.id}">
-      <h3>{projet.fields.titre}</h3>
+      <h3><Scrollin>{projet.fields.titre}</Scrollin></h3>
       {#if projet.fields.thumbnail}
       <figure>
         <Media media={projet.fields.thumbnail} small ar={1} />
@@ -29,17 +30,17 @@
   <div>
   <aside>
     {#if data.service}
-    <a href="/projets" class="button">Tous</a>
+    <Scrollin><a href="/projets" class="button">Tous</a></Scrollin>
     {/if}
     {#each data.services as service}
-    <a href="/projets?service={service.id}#projets" class="button" class:active={data.service && data.service.id === service.id}>{service.titre}</a>
+    <Scrollin><a href="/projets?service={service.id}#projets" class="button" class:active={data.service && data.service.id === service.id}>{service.titre}</a></Scrollin>
     {/each}
   </aside>
   <ol id="projets">
     {#each data.projets.items as projet}
     <li>
       <a href="/projets/{projet.fields.id}">
-        {projet.fields.titre}
+        <Scrollin>{projet.fields.titre}</Scrollin>
         {#if projet.fields.thumbnail}
         <figure>
           <Media media={projet.fields.thumbnail} small ar={1} />
@@ -51,7 +52,7 @@
     {#each data.projets.items as projet}
     <li>
       <a href="/projets/{projet.fields.id}">
-        {projet.fields.titre}
+        <Scrollin>{projet.fields.titre}</Scrollin>
         {#if projet.fields.thumbnail}
         <figure>
           <Media media={projet.fields.thumbnail} small ar={1} />
@@ -63,7 +64,7 @@
     {#each data.projets.items as projet}
     <li>
       <a href="/projets/{projet.fields.id}">
-        {projet.fields.titre}
+        <Scrollin>{projet.fields.titre}</Scrollin>
         {#if projet.fields.thumbnail}
         <figure>
           <Media media={projet.fields.thumbnail} small ar={1} />
@@ -75,7 +76,7 @@
     {#each data.projets.items as projet}
     <li>
       <a href="/projets/{projet.fields.id}">
-        {projet.fields.titre}
+        <Scrollin>{projet.fields.titre}</Scrollin>
         {#if projet.fields.thumbnail}
         <figure>
           <Media media={projet.fields.thumbnail} small ar={1} />
@@ -97,6 +98,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    transition: opacity 666ms;
     visibility: hidden;
     pointer-events: none;
 
@@ -146,8 +148,8 @@
         &:hover,
         &:focus {
           text-decoration: none;
-          color: $green-dark;
-          background-color: $yellow-dark;
+          // color: $green-dark;
+          // background-color: $yellow-dark;
           
           figure {
             opacity: 1;

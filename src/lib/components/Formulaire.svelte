@@ -4,13 +4,14 @@
 
   import Document from '$lib/components/document/index.svelte'
   import Media from './Media.svelte'
+  import Scrollin from './Scrollin.svelte'
 
   export let item: Entry<TypeFormulaireSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
 <main id={item.fields.id} class={`${item.fields.couleur}`} class:wide={item.fields.titre.length < 50}>
   <aside>
-    <h2>{item.fields.titre}</h2>
+    <h2><Scrollin>{item.fields.titre}</Scrollin></h2>
 
     {#if item.fields.media}
     <figure>
@@ -22,30 +23,32 @@
   <form action="">
     {#each item.fields.inputs as input}
     {#if input.fields.type === 'Textarea'}
-    <label for={input.fields.id}>{input.fields.titre}</label>
+    <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin></label>
     <textarea id={input.fields.id} name={input.fields.id} placeholder={input.fields.info || " "}></textarea>
     {:else if input.fields.type === 'Dropdown'}
-    <label for={input.fields.id}>{input.fields.titre} <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0.707107" y1="0.7072" x2="7.77817" y2="7.77827" stroke-width="2"/><line x1="13.4337" y1="0.707107" x2="6.3626" y2="7.77817" stroke-width="2"/></svg></label>
+    <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin> <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0.707107" y1="0.7072" x2="7.77817" y2="7.77827" stroke-width="2"/><line x1="13.4337" y1="0.707107" x2="6.3626" y2="7.77817" stroke-width="2"/></svg></label>
     <select id={input.fields.id} name={input.fields.id} placeholder={input.fields.info || " "}>
       {#each input.fields.options as value}
       <option {value}>{value}</option>
       {/each}
     </select>
     {:else if input.fields.type === 'File'}
-    <label for={input.fields.id}>{input.fields.titre} <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"> <line x1="6" y1="4.37121e-08" x2="6" y2="12" stroke-width="2"/> <line x1="12" y1="6" x2="-8.74228e-08" y2="6" stroke-width="2"/> </svg> </label>
+    <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin> <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"> <line x1="6" y1="4.37121e-08" x2="6" y2="12" stroke-width="2"/> <line x1="12" y1="6" x2="-8.74228e-08" y2="6" stroke-width="2"/> </svg> </label>
     <input type="file" multiple id={input.fields.id} name={input.fields.id} placeholder={input.fields.info || " "} />
     {:else}
-    <label for={input.fields.id}>{input.fields.titre}</label>
+    <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin></label>
     <input type="text" id={input.fields.id} name={input.fields.id} placeholder={input.fields.info || " "} />
     {/if}
     {/each}
 
-    <button type="submit">{item.fields.bouton || 'Sauvegarder'}</button>
+    <Scrollin><button type="submit">{item.fields.bouton || 'Sauvegarder'}</button></Scrollin>
 
     {#if item.fields.liens?.length}
     <nav>
       {#each item.fields.liens as lien}
+      <Scrollin>
       <a class="button" href={lien.fields.route} {...lien.fields.externe ? { rel: "external", target: "_blank" } : {}}>{lien.fields.titre}</a>
+      </Scrollin>
       {/each}
     </nav>
     {/if}

@@ -4,12 +4,13 @@
   
   import Media from './Media.svelte'
   import Icon from './Icon.svelte'
+  import Scrollin from './Scrollin.svelte';
 
   export let item: Entry<TypeHeroSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
 <header id={item.fields.id} class={``} class:media={item.fields.media}>
-  <h1 class:h1--huge={item.fields.titre.length < 40}>{item.fields.titre}</h1>
+  <h1 class:h1--huge={item.fields.titre.length < 40}><Scrollin>{item.fields.titre}</Scrollin></h1>
   {#if item.fields.media}
   <figure>
     <Media media={item.fields.media} eager />

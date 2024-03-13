@@ -9,23 +9,23 @@
   export let node: TopLevelBlock
 
   export let details = false
-  export let i: number = undefined
+  export let i: number = 0
 </script>
 
 {#if node.nodeType === 'heading-1'}
-  <h1>{#each node.content as mark}<Mark mark={mark} />{/each}</h1>
+  <h1>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h1>
 {:else if node.nodeType === 'heading-2'}
-  <h2>{#each node.content as mark}<Mark mark={mark} />{/each}</h2>
+  <h2>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h2>
 {:else if node.nodeType === 'heading-3'}
-  <h3>{#each node.content as mark}<Mark mark={mark} />{/each}</h3>
+  <h3>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h3>
 {:else if node.nodeType === 'heading-4'}
-  <h4>{#each node.content as mark}<Mark mark={mark} />{/each}</h4>
+  <h4>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h4>
 {:else if node.nodeType === 'heading-5'}
-  <h5>{#each node.content as mark}<Mark mark={mark} />{/each}</h5>
+  <h5>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h5>
 {:else if node.nodeType === 'heading-6'}
-  <h6>{#each node.content as mark}<Mark mark={mark} />{/each}</h6>
+  <h6>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h6>
 {:else if node.nodeType === 'paragraph'}
-  <p>{#each node.content as mark}<Mark mark={mark} />{/each}</p>
+  <p>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</p>
 {:else if node.nodeType === 'hr'}
   <hr />
 

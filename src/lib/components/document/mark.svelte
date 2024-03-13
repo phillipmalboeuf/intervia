@@ -1,8 +1,12 @@
 <script lang="ts">
   import type { Block, Inline, Text } from '@contentful/rich-text-types'
+  import Scrollin from '../Scrollin.svelte';
+  
   export let mark: Block | Inline | Text
+  export let i: number = 0
 </script>
 
+<Scrollin delay={i * 100}>
 {#if mark.nodeType === 'text'}
 {#if mark.marks.length > 0}
   {#if mark.marks[0].type === 'italic'}
@@ -28,3 +32,4 @@
   {#each mark.content as m}<svelte:self mark={m} />{/each}
 </a>
 {/if}
+</Scrollin>

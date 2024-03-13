@@ -88,8 +88,8 @@ footer {
 			&:hover,
 			&:focus {
 				text-decoration: none;
-				color: $green-dark;
-				background-color: $green-light;
+				// color: $green-dark;
+				// background-color: $green-light;
 
 				h3 {
 					display: none;

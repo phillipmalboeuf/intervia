@@ -4,6 +4,7 @@
 
   import Document from '$lib/components/document/index.svelte'
   import Media from './Media.svelte';
+  import Scrollin from './Scrollin.svelte';
 
   export let item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
@@ -16,7 +17,7 @@
   {/if}
 
   {#if !item.fields.sansTitre}
-  <h2 class:h6={item.fields.layout === 'Droite'}>{item.fields.titre}</h2>
+  <h2 class:h6={item.fields.layout === 'Droite'}><Scrollin>{item.fields.titre}</Scrollin></h2>
   {/if}
 
   <section>
@@ -28,7 +29,7 @@
   {#if item.fields.liens?.length}
   <nav>
     {#each item.fields.liens as lien}
-    <a class="button" href={lien.fields.route} {...lien.fields.externe ? { rel: "external", target: "_blank" } : {}}>{lien.fields.titre}</a>
+    <Scrollin><a class="button" href={lien.fields.route} {...lien.fields.externe ? { rel: "external", target: "_blank" } : {}}>{lien.fields.titre}</a></Scrollin>
     {/each}
   </nav>
   {/if}
@@ -54,6 +55,7 @@
       display: flex;
       flex-direction: column;
       gap: $base;
+      overflow: hidden;
     }
 
     &.Centre {

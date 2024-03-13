@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Scrollin from './Scrollin.svelte';
+
   let open = false
 
   function hide() {
@@ -29,12 +31,12 @@
   </aside>
 
   <ul>
-    <li><a on:click={hide} href="/a-propos" class="h1">À propos</a></li>
-    <li><a on:click={hide} href="/services" class="h1">Nos services</a></li>
-    <li><a on:click={hide} href="/projets" class="h1">Nos projets</a></li>
-    <li><a on:click={hide} href="/carrieres" class="h1">Carrières</a></li>
-    <li><a on:click={hide} href="/articles" class="h1">Actualités</a></li>
-    <li><a on:click={hide} href="/contact" class="h1">Contact</a></li>
+    <li><a on:click={hide} href="/a-propos" class="h1"><Scrollin>À propos</Scrollin></a></li>
+    <li><a on:click={hide} href="/services" class="h1"><Scrollin delay={100}>Nos services</Scrollin></a></li>
+    <li><a on:click={hide} href="/projets" class="h1"><Scrollin delay={200}>Nos projets</Scrollin></a></li>
+    <li><a on:click={hide} href="/carrieres" class="h1"><Scrollin delay={300}>Carrières</Scrollin></a></li>
+    <li><a on:click={hide} href="/articles" class="h1"><Scrollin delay={400}>Actualités</Scrollin></a></li>
+    <li><a on:click={hide} href="/contact" class="h1"><Scrollin delay={500}>Contact</Scrollin></a></li>
   </ul>
 </nav>
 
