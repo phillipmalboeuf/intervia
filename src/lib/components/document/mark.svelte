@@ -6,7 +6,7 @@
   export let i: number = 0
 </script>
 
-<Scrollin delay={i * 100}>
+
 {#if mark.nodeType === 'text'}
 {#if mark.marks.length > 0}
   {#if mark.marks[0].type === 'italic'}
@@ -17,7 +17,7 @@
   {@html mark.value}
   {/if}
 {:else}
-{mark.value}
+<Scrollin>{mark.value}</Scrollin>
 {/if}
 {:else if mark.nodeType === 'hyperlink'}
 <a href="{mark.data.uri}" target="{mark.data.uri.indexOf('http') === 0 ? '_blank' : '_self'}">
@@ -32,4 +32,3 @@
   {#each mark.content as m}<svelte:self mark={m} />{/each}
 </a>
 {/if}
-</Scrollin>

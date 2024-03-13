@@ -14,11 +14,11 @@
 <style lang="scss">
   span {
     display: inline-flex;
-    overflow: hidden;
+    // overflow: hidden;
 
     > span {
       opacity: 0;
-      transform: translateY(100px);
+      transform: translateY(33px);
       transition: transform 666ms ease-in-out calc(var(--delay, 0) * 1ms), opacity 666ms ease-in-out calc(var(--delay, 0) * 1ms);
     }
 
