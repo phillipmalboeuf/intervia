@@ -1,12 +1,13 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
+  import Slider from '$lib/components/Slider.svelte'
+  import Scrollin from '$lib/components/Scrollin.svelte'
   import { date, year } from '$lib/formatters'
 
   import { page } from '$app/stores'
 
   import type { PageData } from './$types'
-  import Slider from '$lib/components/Slider.svelte';
   export let data: PageData
 
   // let tab: string = 'mandat'
@@ -19,17 +20,17 @@
 
 <section>
   <header>
-    <h1 class="h3">{data.article.fields.titre}</h1>
+    <h1 class="h3"><Scrollin>{data.article.fields.titre}</Scrollin></h1>
     <aside>
       {#if data.article.fields.categorie}
       <div>
-        <h6>Catégorie</h6>
-        {data.article.fields.categorie.fields.titre}
+        <h6><Scrollin>Catégorie</Scrollin></h6>
+        <Scrollin>{data.article.fields.categorie.fields.titre}</Scrollin>
       </div>
       {/if}
       <div>
-        <h6>Année</h6>
-        {date(data.article.fields.date)}
+        <h6><Scrollin>Année</Scrollin></h6>
+        <Scrollin>{date(data.article.fields.date)}</Scrollin>
       </div>
     </aside>
     <figure>
@@ -69,12 +70,12 @@
   {#if data.articles?.items.length}
   <footer>
     <div>
-      <h6>Autres actualités</h6>
+      <h6><Scrollin>Autres actualités</Scrollin></h6>
 
       <nav>
         {#each data.articles.items as article}
         <a href="/articles/{article.fields.id}">
-          <h3>{article.fields.titre}</h3>
+          <h3><Scrollin>{article.fields.titre}</Scrollin></h3>
           {#if article.fields.thumbnail}
           <figure>
             <Media media={article.fields.thumbnail} small ar={1} />
