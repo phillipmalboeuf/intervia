@@ -177,6 +177,7 @@ export interface TypeServiceFields {
     titre?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     illustration?: EntryFieldTypes.AssetLink;
+    illustrationLight?: EntryFieldTypes.AssetLink;
     description?: EntryFieldTypes.RichText;
     vedette?: EntryFieldTypes.Boolean;
     corps?: EntryFieldTypes.RichText;

@@ -14,9 +14,9 @@
 		{#each data.vedettes.items as service}
 		<a href="/services/{service.fields.id}">
 			<h3>{service.fields.titre}</h3>
-			{#if service.fields.illustration}
+			{#if service.fields.illustrationLight || service.fields.illustration}
 			<figure>
-				<Media media={service.fields.illustration} small ar={1} />
+				<Media media={service.fields.illustrationLight || service.fields.illustration} small ar={1} />
 			</figure>
 			{/if}
 
@@ -83,6 +83,12 @@ footer {
 					height: 100%;
 					object-fit: contain;
 				}
+
+				@media (max-width: $mobile) {
+					display: block;
+					max-height: calc(100vw / 2);
+					margin: $base 0;
+				}
 			}
 
 			&:hover,
@@ -91,12 +97,14 @@ footer {
 				// color: $green-dark;
 				// background-color: $green-light;
 
-				h3 {
-					display: none;
-				}
+				@media (min-width: $mobile) {
+					h3 {
+						display: none;
+					}
 
-				figure {
-					display: block;
+					figure {
+						display: block;
+					}
 				}
 			}
 		}
