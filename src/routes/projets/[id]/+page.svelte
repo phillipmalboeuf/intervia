@@ -91,20 +91,22 @@
 
   {#if data.projets?.items.length}
   <footer>
-    <h6><Scrollin>Projets similaires</Scrollin></h6>
+    <div>
+      <h6><Scrollin>Projets similaires</Scrollin></h6>
 
-    <nav>
-      {#each data.projets.items as projet}
-      <a href="/projets/{projet.fields.id}">
-        <h3><Scrollin>{projet.fields.titre}</Scrollin></h3>
-        {#if projet.fields.thumbnail}
-        <figure>
-          <Media media={projet.fields.thumbnail} small ar={1} />
-        </figure>
-        {/if}
-      </a>
-      {/each}
-    </nav>
+      <nav>
+        {#each data.projets.items as projet}
+        <a href="/projets/{projet.fields.id}">
+          <h3><Scrollin>{projet.fields.titre}</Scrollin></h3>
+          {#if projet.fields.thumbnail}
+          <figure>
+            <Media media={projet.fields.thumbnail} small ar={1} />
+          </figure>
+          {/if}
+        </a>
+        {/each}
+      </nav>
+    </div>
   </footer>
   {/if}
 </section>
@@ -256,6 +258,12 @@
 
       border-top: 1px solid;
 
+      div {
+        margin: 0 $base;
+        border-left: 1px solid;
+        border-right: 1px solid;
+      }
+
       h6 {
         text-align: center;
         padding: $base;
@@ -263,6 +271,7 @@
 
       nav {
         display: flex;
+        flex-wrap: wrap;
 
         figure {
           position: absolute;
@@ -299,6 +308,27 @@
             figure {
               opacity: 1;
               visibility: visible;
+            }
+          }
+
+          @media (max-width: $mobile) {
+            flex: none;
+            flex-direction: column;
+            gap: $base;
+            width: 100%;
+
+            &:not(:last-child) {
+              border-right: none;
+              border-bottom: 1px solid;
+            }
+
+            figure {
+              position: relative;
+              opacity: 1;
+              visibility: visible;
+              border-top: 1px solid;
+              width: calc(100% + ($base * 2));
+              margin: 0 ($base * -1) ($base * -1);
             }
           }
         }

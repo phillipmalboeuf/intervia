@@ -68,20 +68,22 @@
 
   {#if data.articles?.items.length}
   <footer>
-    <h6>Autres actualités</h6>
+    <div>
+      <h6>Autres actualités</h6>
 
-    <nav>
-      {#each data.articles.items as article}
-      <a href="/articles/{article.fields.id}">
-        <h3>{article.fields.titre}</h3>
-        {#if article.fields.thumbnail}
-        <figure>
-          <Media media={article.fields.thumbnail} small ar={1} />
-        </figure>
-        {/if}
-      </a>
-      {/each}
-    </nav>
+      <nav>
+        {#each data.articles.items as article}
+        <a href="/articles/{article.fields.id}">
+          <h3>{article.fields.titre}</h3>
+          {#if article.fields.thumbnail}
+          <figure>
+            <Media media={article.fields.thumbnail} small ar={1} />
+          </figure>
+          {/if}
+        </a>
+        {/each}
+      </nav>
+    </div>
   </footer>
   {/if}
 </section>
@@ -175,6 +177,12 @@
 
       border-top: 1px solid;
 
+      div {
+        margin: 0 $base;
+        border-left: 1px solid;
+        border-right: 1px solid;
+      }
+
       h6 {
         text-align: center;
         padding: $base;
@@ -218,6 +226,27 @@
             figure {
               opacity: 1;
               visibility: visible;
+            }
+          }
+
+          @media (max-width: $mobile) {
+            flex: none;
+            flex-direction: column;
+            gap: $base;
+            width: 100%;
+
+            &:not(:last-child) {
+              border-right: none;
+              border-bottom: 1px solid;
+            }
+
+            figure {
+              position: relative;
+              opacity: 1;
+              visibility: visible;
+              border-top: 1px solid;
+              width: calc(100% + ($base * 2));
+              margin: 0 ($base * -1) ($base * -1);
             }
           }
         }
