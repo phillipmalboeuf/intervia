@@ -1,5 +1,6 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
+  import Scrollin from '$lib/components/Scrollin.svelte'
   import Page from '../[page]/+page.svelte'
 
 	import type { PageData } from './$types'
@@ -13,14 +14,14 @@
 	<nav>
 		{#each data.vedettes.items as service}
 		<a href="/services/{service.fields.id}">
-			<h3>{service.fields.titre}</h3>
+			<h3><Scrollin>{service.fields.titre}</Scrollin></h3>
 			{#if service.fields.illustrationLight || service.fields.illustration}
 			<figure>
 				<Media media={service.fields.illustrationLight || service.fields.illustration} small ar={1} />
 			</figure>
 			{/if}
 
-			<span class="button">En lire plus</span>
+			<Scrollin><span class="button">En lire plus</span></Scrollin>
 		</a>
 		{/each}
 	</nav>
@@ -64,8 +65,11 @@ footer {
 			@media (max-width: $mobile) {
 				flex: none;
 				width: 100%;
-				border-right: none;
-				border-bottom: 1px solid;
+
+				&:not(:last-child) {
+					border-right: none;
+					border-bottom: 1px solid;
+				}
 			}
 
 			h3, figure {
