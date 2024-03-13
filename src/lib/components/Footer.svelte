@@ -24,7 +24,8 @@
     background-color: var(--background-inverse);
 
     :global(.-services-popup) &,
-    :global(.-services-\[id\]) & {
+    :global(.-services-\[id\]) &,
+    :global(.-carrieres) & {
       color: $green-dark;
       background-color: $white;
     }
@@ -59,6 +60,15 @@
       display: flex;
       padding: $gap;
       gap: $gap * 6;
+
+      a {
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: $white;
+        }
+      }
 
       &:first-child {
         margin-left: $base;

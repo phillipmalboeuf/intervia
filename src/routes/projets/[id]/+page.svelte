@@ -52,11 +52,11 @@
       {/if}
     </figure>
   </header>
-  <main>
+  <main id="main">
     <nav>
-      <a href="?t=mandat" class="button" class:active={tab === 'mandat'}>Mandat</a>
-      <a href="?t=implication" class="button" class:active={tab === 'implication'}>Implication</a>
-      <a href="?t=constat" class="button" class:active={tab === 'constat'}>Constat</a>
+      <a href="?t=mandat#main" class="button" class:active={tab === 'mandat'}>Mandat</a>
+      <a href="?t=implication#main" class="button" class:active={tab === 'implication'}>Implication</a>
+      <a href="?t=constat#main" class="button" class:active={tab === 'constat'}>Constat</a>
     </nav>
 
     {#if tab === 'mandat'}
@@ -199,6 +199,7 @@
 
             // transform: translateX(-50%);
             animation: slide 6666ms linear infinite;
+            animation-play-state: paused;
 
             @media (max-width: $mobile) {
               
@@ -206,6 +207,12 @@
 
             :global(path) {
               fill: var(--foreground-inverse);
+            }
+          }
+
+          &:hover {
+            :global(svg) {
+              animation-play-state: running;
             }
           }
         }

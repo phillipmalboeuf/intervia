@@ -157,7 +157,7 @@
         }
 
         :global(table) {
-          width: calc(100% + ($base * 3));
+          width: calc(100% + ($base * 3.5));
           margin-left: ($base * -1);
         }
 

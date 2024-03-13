@@ -83,8 +83,10 @@ nav {
   justify-content: space-between;
 
   @media (max-width: $mobile) {
-    position: static;
-    gap: $mobile_base;
+    &:not(.dots) {
+      position: static;
+      gap: $mobile_base;
+    }
   }
 
   button {

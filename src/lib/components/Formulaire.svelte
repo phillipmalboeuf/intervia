@@ -8,7 +8,7 @@
   export let item: Entry<TypeFormulaireSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
-<main id={item.fields.id} class={`${item.fields.couleur}`}>
+<main id={item.fields.id} class={`${item.fields.couleur}`} class:wide={item.fields.titre.length < 50}>
   <aside>
     <h2>{item.fields.titre}</h2>
 
@@ -68,7 +68,17 @@
       padding: $gap;
 
       @media (max-width: $mobile) {
-        width: 100%;
+        width: 100% !important;
+      }
+    }
+
+    &.wide {
+      aside {
+        width: calc((100% / 3) + ($base * 0.5) - 2px);
+      }
+
+      form {
+        width: calc(100% / 3 * 2)
       }
     }
 

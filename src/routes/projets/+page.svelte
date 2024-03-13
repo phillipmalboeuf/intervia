@@ -6,7 +6,7 @@
 </script>
 
 <header>
-  <h1>Nos projets {#if data.service}– {data.service.titre}{/if}</h1>
+  <h1>Nos projets</h1>
   <hr>
   {#if data.vedettes.items.length}
   <nav>
@@ -32,10 +32,10 @@
     <a href="/projets" class="button">Tous</a>
     {/if}
     {#each data.services as service}
-    <a href="/projets?service={service.id}" class="button" class:active={data.service && data.service.id === service.id}>{service.titre}</a>
+    <a href="/projets?service={service.id}#projets" class="button" class:active={data.service && data.service.id === service.id}>{service.titre}</a>
     {/each}
   </aside>
-  <ol>
+  <ol id="projets">
     {#each data.projets.items as projet}
     <li>
       <a href="/projets/{projet.fields.id}">
@@ -146,6 +146,7 @@
         &:hover,
         &:focus {
           text-decoration: none;
+          color: $green-dark;
           background-color: $yellow-dark;
           
           figure {

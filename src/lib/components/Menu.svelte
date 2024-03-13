@@ -75,12 +75,28 @@
       @media (max-width: $mobile) {
         padding: $mobile_base * 0.5;
       }
+
+      button {
+        &:hover,
+        &:focus {
+          // background-color: transparent;
+          // color: $white;
+        }
+      }
     }
 
     ul {
       border-top: 1px solid;
       list-style: none;
       padding: ($base * $scale * 2) $base;
+
+      a {
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: $white;
+        }
+      }
     }
   }
 

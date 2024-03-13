@@ -113,7 +113,7 @@
         }
 
         figure {
-
+          border-top: 1px solid;
         }
 
         &:not(:last-child) { border-right: 1px solid; }

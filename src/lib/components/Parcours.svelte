@@ -122,7 +122,7 @@
 
           &:hover,
           &:focus {
-            color: $black;
+            color: $white;
           }
         }
       }
