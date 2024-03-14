@@ -1,13 +1,16 @@
 <script lang="ts">
-  import type { TypeTextSkeleton } from '$lib/clients/content_types';
+  import type { TypeTextSkeleton } from '$lib/clients/content_types'
+	import type { Entry } from 'contentful'
+
   import Media from '$lib/components/Media.svelte'
   import Scrollin from '$lib/components/Scrollin.svelte'
   import Text from '$lib/components/Text.svelte'
-  import type { Entry } from 'contentful';
   import Page from '../[page]/+page.svelte'
+	import Logo from '$lib/components/Logo.svelte'
+	
+	import { page } from '$app/stores'
 
 	import type { PageData } from './$types'
-  import Logo from '$lib/components/Logo.svelte';
   export let data: PageData
 
 	const item = {
@@ -31,6 +34,7 @@
 					<td><Scrollin>{membre.fields.nom}</Scrollin></td>
 					<td><Scrollin>{membre.fields.poste}</Scrollin></td>
 
+					{#if $page.data.device !== 'desktop'}
 					<figure>
 						{#if membre.fields.photo}
 						<Media media={membre.fields.photo} small />
@@ -38,6 +42,7 @@
 						<Logo />
 						{/if}
 					</figure>
+					{/if}
 				</tr>
 				{/each}
 			</table>
@@ -48,6 +53,7 @@
 					<td><Scrollin>{membre.fields.nom}</Scrollin></td>
 					<td><Scrollin>{membre.fields.poste}</Scrollin></td>
 
+					{#if $page.data.device !== 'desktop'}
 					<figure>
 						{#if membre.fields.photo}
 						<Media media={membre.fields.photo} small />
@@ -55,6 +61,7 @@
 						<Logo />
 						{/if}
 					</figure>
+					{/if}
 				</tr>
 				{/each}
 			</table>
