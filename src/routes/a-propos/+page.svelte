@@ -34,7 +34,7 @@
 					<td><Scrollin>{membre.fields.nom}</Scrollin></td>
 					<td><Scrollin>{membre.fields.poste}</Scrollin></td>
 
-					{#if $page.data.device !== 'desktop'}
+					{#if $page.data.device === 'desktop'}
 					<figure>
 						{#if membre.fields.photo}
 						<Media media={membre.fields.photo} small />
@@ -53,7 +53,7 @@
 					<td><Scrollin>{membre.fields.nom}</Scrollin></td>
 					<td><Scrollin>{membre.fields.poste}</Scrollin></td>
 
-					{#if $page.data.device !== 'desktop'}
+					{#if $page.data.device === 'desktop'}
 					<figure>
 						{#if membre.fields.photo}
 						<Media media={membre.fields.photo} small />
