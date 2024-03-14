@@ -90,6 +90,16 @@
 				}
 			}
 		}
+
+		&:last-child {
+			margin-bottom: $base * -1;
+
+			tr:last-child {
+				td {
+					border-bottom: none;
+				}
+			}
+		}
 	}
 
 
