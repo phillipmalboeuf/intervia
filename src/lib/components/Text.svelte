@@ -23,6 +23,8 @@
   <section>
     {#if item.fields.corps}
     <Document details={item.fields.layout === 'Tableau'} body={item.fields.corps} />
+    {:else if $$slots.corps}
+    <slot name="corps" />
     {/if}
   </section>
 
@@ -55,7 +57,7 @@
       display: flex;
       flex-direction: column;
       gap: $base;
-      overflow: hidden;
+      // overflow: hidden;
     }
 
     &.Centre {
@@ -159,7 +161,7 @@
         }
 
         :global(table) {
-          width: calc(100% + ($base * 3.5));
+          width: calc(100% + ($base * 2));
           margin-left: ($base * -1);
         }
 

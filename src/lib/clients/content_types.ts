@@ -94,10 +94,10 @@ export function isTypeLien<Modifiers extends ChainModifiers, Locales extends Loc
 export interface TypeListeFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
-    layout?: EntryFieldTypes.Symbol<"Cartes" | "Slider">;
+    layout?: EntryFieldTypes.Symbol<"Cartes" | "Slider" | "Tableau">;
     sliderSurMobile?: EntryFieldTypes.Boolean;
     couleur?: EntryFieldTypes.Symbol<"Dark" | "Light" | "Yellow">;
-    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProjetSkeleton | TypeServiceSkeleton | TypeTextSkeleton>>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeMembreSkeleton | TypeProjetSkeleton | TypeServiceSkeleton | TypeTextSkeleton>>;
     images?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
 }
 
@@ -106,6 +106,21 @@ export type TypeListe<Modifiers extends ChainModifiers, Locales extends LocaleCo
 
 export function isTypeListe<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeListe<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'liste'
+}
+
+export interface TypeMembreFields {
+    nom: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    photo?: EntryFieldTypes.AssetLink;
+    poste?: EntryFieldTypes.Symbol;
+    equipe?: EntryFieldTypes.Symbol<"Direction" | "Employés">;
+}
+
+export type TypeMembreSkeleton = EntrySkeletonType<TypeMembreFields, "membre">;
+export type TypeMembre<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeMembreSkeleton, Modifiers, Locales>;
+
+export function isTypeMembre<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeMembre<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'membre'
 }
 
 export interface TypeNavigationFields {

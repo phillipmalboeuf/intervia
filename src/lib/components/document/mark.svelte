@@ -16,7 +16,7 @@
   {:else if mark.marks[0].type === 'code'}
   {@html mark.value}
   {/if}
-{:else}
+{:else if mark.value}
 <Scrollin>{mark.value}</Scrollin>
 {/if}
 {:else if mark.nodeType === 'hyperlink'}
