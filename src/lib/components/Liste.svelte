@@ -209,6 +209,10 @@
 
           @media (max-width: $mobile) {
             padding: ($gap * 3) ($gap);
+
+            .h1--huge {
+			        font-size: $mobile_base * $mobile_scale * 2.5;
+            }
           }
 
           figure {
