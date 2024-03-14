@@ -34,5 +34,9 @@
 
 	main {
 		min-height: 90vh;
+
+		@media (max-width: $mobile) {
+			overflow-x: hidden;
+		}
 	}
 </style>

@@ -49,7 +49,7 @@
   nav {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 100%;
     width: calc(50vw + 1px);
     height: 100vh;
 
@@ -61,11 +61,11 @@
     background-color: $green-light;
     border-left: 1px solid;
 
-    transform: translateX(100%);
+    transform: translateX(0);
     transition: transform 666ms;
 
     &.open {
-      transform: translateX(0);
+      transform: translateX(-100%);
     }
 
     aside {

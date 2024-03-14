@@ -23,6 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-vercel": "^5.1.1",
 		"@types/luxon": "^3.4.1",
 		"contentful": "^10.6.18",
 		"embla-carousel-auto-height": "^8.0.0-rc22",
