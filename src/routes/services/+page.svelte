@@ -44,6 +44,10 @@ footer {
     margin: 0 $base;
 
 		@media (max-width: $mobile) {
+      margin: 0 ($mobile_base * 0.75);
+    }
+
+		@media (max-width: $mobile) {
 			flex-wrap: wrap;
 		}
 

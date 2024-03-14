@@ -47,6 +47,7 @@
 
     @media (max-width: $mobile) {
       min-height: 0;
+      padding: $gap 0;
     }    
 
     > :global(*) {

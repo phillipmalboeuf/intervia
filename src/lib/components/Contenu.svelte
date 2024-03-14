@@ -36,6 +36,10 @@
     border-top: none;
     border-bottom: none;
 
+    @media (max-width: $mobile) {
+      margin: 0 ($mobile_base * 0.75);
+    }
+
     &:has(> .Dark),
     &:has(> .Light),
     &:has(> .Yellow) {

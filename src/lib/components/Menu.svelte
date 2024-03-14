@@ -54,7 +54,7 @@
     height: 100vh;
 
     @media (max-width: $mobile) {
-      width: calc(100vw - $base);
+      width: calc(100vw - ($mobile_base * 0.75));
     }
 
     color: $green-dark;

@@ -26,17 +26,20 @@
   <hr>
 </header>
 
-<main>
+<main id="projets">
   <div>
   <aside>
+    <input type="checkbox" name="filtrer" id="filtrer" checked={!!data.service}>
+    <label for="filtrer">Filtrer</label>
+
     {#if data.service}
-    <Scrollin><a href="/projets" class="button">Tous</a></Scrollin>
+    <Scrollin><a href="/projets#projets" class="button">Tous</a></Scrollin>
     {/if}
     {#each data.services as service}
     <Scrollin><a href="/projets?service={service.id}#projets" class="button" class:active={data.service && data.service.id === service.id}>{service.titre}</a></Scrollin>
     {/each}
   </aside>
-  <ol id="projets">
+  <ol>
     {#each data.projets.items as projet}
     <li>
       <a href="/projets/{projet.fields.id}">
@@ -121,6 +124,10 @@
       border-left: 1px solid;
       border-right: 1px solid;
       margin: 0 $base;
+
+      @media (max-width: $mobile) {
+        margin: 0 ($mobile_base * 0.75);
+      }
     }
 
     nav {
@@ -128,6 +135,10 @@
       border-left: 1px solid;
       border-right: 1px solid;
       margin: 0 $base;
+
+      @media (max-width: $mobile) {
+        margin: 0 ($mobile_base * 0.75);
+      }
 
       @media (max-width: $mobile) {
         flex-wrap: wrap;
@@ -195,6 +206,10 @@
     margin: 0 $base;
 
     @media (max-width: $mobile) {
+      margin: 0 ($mobile_base * 0.75);
+    }
+
+    @media (max-width: $mobile) {
       flex-wrap: wrap;
     }
 
@@ -215,6 +230,34 @@
 
       @media (max-width: $mobile) {
         width: 100%;
+      }
+
+      input[type=checkbox] {
+        display: none;
+
+        & + label {
+          display: none;
+          cursor: pointer;
+
+          @media (max-width: $mobile) {
+            display: block;
+            width: 100%;
+            text-align: right;
+            text-transform: uppercase;
+
+            & ~ :global(span) {
+              display: none;
+            }
+          }
+        }
+
+        &:checked {
+          @media (max-width: $mobile) {
+            & + label ~ :global(span) {
+              display: inline-flex;
+            }
+          }
+        }
       }
     }
 

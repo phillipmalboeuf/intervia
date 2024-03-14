@@ -44,6 +44,7 @@
         border-right: 1px solid;
 
         @media (max-width: $mobile) {
+          margin-left: ($mobile_base * 0.75);
           width: 33.3%;
           border-right: none;
         }
@@ -55,6 +56,7 @@
         justify-content: flex-end;
 
         @media (max-width: $mobile) {
+          margin-right: ($mobile_base * 0.75);
           width: 66.6%;
         }
       }

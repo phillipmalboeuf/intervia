@@ -88,28 +88,28 @@
     {/if}
   </figure>
   {/if}
-
-  {#if data.projets?.items.length}
-  <footer>
-    <div>
-      <h6><Scrollin>Projets similaires</Scrollin></h6>
-
-      <nav>
-        {#each data.projets.items as projet}
-        <a href="/projets/{projet.fields.id}">
-          <h3><Scrollin>{projet.fields.titre}</Scrollin></h3>
-          {#if projet.fields.thumbnail}
-          <figure>
-            <Media media={projet.fields.thumbnail} small ar={1} />
-          </figure>
-          {/if}
-        </a>
-        {/each}
-      </nav>
-    </div>
-  </footer>
-  {/if}
 </section>
+
+{#if data.projets?.items.length}
+<footer>
+  <div>
+    <h6><Scrollin>Projets similaires</Scrollin></h6>
+
+    <nav>
+      {#each data.projets.items as projet}
+      <a href="/projets/{projet.fields.id}">
+        <h3><Scrollin>{projet.fields.titre}</Scrollin></h3>
+        {#if projet.fields.thumbnail}
+        <figure>
+          <Media media={projet.fields.thumbnail} small ar={1} />
+        </figure>
+        {/if}
+      </a>
+      {/each}
+    </nav>
+  </div>
+</footer>
+{/if}
 
 
 
@@ -117,17 +117,20 @@
   section {
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 1px solid;
+    // border-bottom: 1px solid;
+
+    margin: 0 $base;
+    @media (max-width: $mobile) {
+      margin: 0 ($mobile_base * 0.75);
+    }
 
     header,
     main {
-      width: calc(50% - $base);
+      width: 50%;
       min-height: 88vh;
 
       @media (max-width: $mobile) {
-        width: calc(100% - ($base * 2));
-        margin-right: $base;
-        margin-left: $base;
+        width: 100%;
       }
     }
 
@@ -137,7 +140,6 @@
       border-right: 1px solid;
       border-left: 1px solid;
       padding-bottom: 0;
-      margin-left: $base;
 
       @media (max-width: $mobile) {
         border-bottom: 1px solid;
@@ -229,7 +231,6 @@
       flex-direction: column;
       gap: $base;
       padding: $base;
-      margin-right: $base;
       border-right: 1px solid;
 
       @media (max-width: $mobile) {
@@ -250,91 +251,95 @@
         max-height: 90vh;
       }
     }
+  }
 
-    footer {
-      color: var(--foreground-inverse);
-      background-color: var(--background-inverse);
-      width: 100%;
+  footer {
+    color: var(--foreground-inverse);
+    background-color: var(--background-inverse);
+    width: 100%;
 
-      border-top: 1px solid;
+    border-top: 1px solid;
 
-      div {
-        margin: 0 $base;
-        border-left: 1px solid;
-        border-right: 1px solid;
+    div {
+      margin: 0 $base;
+      @media (max-width: $mobile) {
+        margin: 0 ($mobile_base * 0.75);
       }
+      
+      border-left: 1px solid;
+      border-right: 1px solid;
+    }
 
-      h6 {
-        text-align: center;
-        padding: $base;
-      }
+    h6 {
+      text-align: center;
+      padding: $base;
+    }
 
-      nav {
-        display: flex;
-        flex-wrap: wrap;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
 
-        figure {
-          position: absolute;
-          z-index: 2;
-          top: 0;
-          left: 0;
+      figure {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        :global(img) {
           width: 100%;
           height: 100%;
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
-
-          :global(img) {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
+          object-fit: cover;
         }
-
-        a {
-          position: relative;
-          flex: 1;
-          text-align: center;
-          padding: $base;
-          min-height: calc(100vw / 3);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          &:not(:last-child) { border-right: 1px solid; }
-
-          &:hover,
-          &:focus {
-            figure {
-              opacity: 1;
-              visibility: visible;
-            }
-          }
-
-          @media (max-width: $mobile) {
-            flex: none;
-            flex-direction: column;
-            gap: $base;
-            width: 100%;
-
-            &:not(:last-child) {
-              border-right: none;
-              border-bottom: 1px solid;
-            }
-
-            figure {
-              position: relative;
-              opacity: 1;
-              visibility: visible;
-              border-top: 1px solid;
-              width: calc(100% + ($base * 2));
-              margin: 0 ($base * -1) ($base * -1);
-            }
-          }
-        }
-
-        border-top: 1px solid;
       }
+
+      a {
+        position: relative;
+        flex: 1;
+        text-align: center;
+        padding: $base;
+        min-height: calc(100vw / 3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:not(:last-child) { border-right: 1px solid; }
+
+        &:hover,
+        &:focus {
+          figure {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        @media (max-width: $mobile) {
+          flex: none;
+          flex-direction: column;
+          gap: $base;
+          width: 100%;
+
+          &:not(:last-child) {
+            border-right: none;
+            border-bottom: 1px solid;
+          }
+
+          figure {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            border-top: 1px solid;
+            width: calc(100% + ($base * 2));
+            margin: 0 ($base * -1) ($base * -1);
+          }
+        }
+      }
+
+      border-top: 1px solid;
     }
   }
 </style>

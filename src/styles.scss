@@ -119,6 +119,10 @@ p {
 	line-height: $scale;
 	white-space: pre-line;
 
+	&:empty {
+		display: none;
+	}
+
 	@media (max-width: $mobile) {
 		line-height: $mobile_scale;
 	}
@@ -286,5 +290,5 @@ details {
 }
 
 [id] {
-	scroll-margin-top: $base * 5;
+	scroll-margin-top: $base * 3;
 }

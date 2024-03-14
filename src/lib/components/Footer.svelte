@@ -75,7 +75,7 @@
         border-left: 1px solid;
 
         @media (max-width: $mobile) {
-          margin-right: $base;
+          margin: 0 ($mobile_base * 0.75);
           border-right: 1px solid;
         }
       }
@@ -87,7 +87,7 @@
         flex: 1;
 
         @media (max-width: $mobile) {
-          margin-left: $base;
+          margin: 0 ($mobile_base * 0.75);
           border-left: 1px solid;
         }
       }

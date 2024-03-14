@@ -27,14 +27,14 @@
   <hr>
 </header>
 
-<main>
+<main id="articles">
   <aside>
-    {#if data.categorie}
-    <Scrollin><a href="/articles" class="button">Tous</a></Scrollin>
+    <!-- {#if data.categorie}
+    <Scrollin><a href="/articles#articles" class="button">Tous</a></Scrollin>
     {/if}
     {#each data.categories as categorie}
-    <Scrollin><a href="/articles?categorie={categorie.id}" class="button" class:active={data.categorie && data.categorie.id === categorie.id}>{categorie.titre}</a></Scrollin>
-    {/each}
+    <Scrollin><a href="/articles?categorie={categorie.id}#articles" class="button" class:active={data.categorie && data.categorie.id === categorie.id}>{categorie.titre}</a></Scrollin>
+    {/each} -->
   </aside>
   <ol>
     {#each data.articles.items as article}
@@ -88,6 +88,9 @@
       border-left: 1px solid;
       border-right: 1px solid;
       margin: 0 $base;
+      @media (max-width: $mobile) {
+        margin: 0 ($mobile_base * 0.75);
+      }
     }
 
     nav {
@@ -95,6 +98,9 @@
       border-left: 1px solid;
       border-right: 1px solid;
       margin: 0 $base;
+      @media (max-width: $mobile) {
+        margin: 0 ($mobile_base * 0.75);
+      }
 
       @media (max-width: $mobile) {
         flex-wrap: wrap;
@@ -116,6 +122,11 @@
 
         figure {
           border-top: 1px solid;
+
+          @media (max-width: $mobile) {
+            border-top: none;
+            border-bottom: 1px solid;
+          }
         }
 
         &:not(:last-child) { border-right: 1px solid; }
@@ -151,6 +162,9 @@
     border-left: 1px solid;
     border-right: 1px solid;
     margin: 0 $base;
+    @media (max-width: $mobile) {
+      margin: 0 ($mobile_base * 0.75);
+    }
 
     @media (max-width: $mobile) {
       flex-wrap: wrap;
