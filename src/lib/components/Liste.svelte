@@ -134,14 +134,19 @@
     }
 
     &.Slider {
+      
       h2 {
         text-align: center;
       }
 
       :global(h1) {
         @media (max-width: $mobile) {
-          font-size: $mobile_base * $mobile_scale * 5;
+          font-size: $mobile_base * $mobile_scale * 4;
         }
+      }
+
+      :global(h6) {
+        font-weight: 300;
       }
 
       :global(blockquote) {
@@ -163,9 +168,14 @@
 
       li {
         text-align: center;
+        gap: $gap * 1.5;
         min-height: 33vw;
+        padding: ($gap) ($gap * 3) ($gap * 2);
 
-        padding: ($gap) ($gap) ($gap * 2);
+        @media (max-width: $mobile) {
+          gap: $gap;
+          padding: ($gap * 3) ($gap) ($gap * 3);
+        }
 
         &:has(.h1--huge) {
           padding: ($gap * 2) ($gap * 4);
@@ -184,7 +194,7 @@
           height: 25vw;
 
           @media (max-width: $mobile) {
-            height: 33vh;
+            height: 36vh;
           }
 
           :global(img),

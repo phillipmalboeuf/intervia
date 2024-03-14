@@ -71,11 +71,23 @@
       align-items: center;
       text-align: center;
 
+      @media (max-width: $mobile) {
+        padding-bottom: 0;
+      }
+
       figure {
         height: 100%;
         width: calc(50% + $base);
         margin: ($base * -1);
         border-right: 1px solid;
+
+        @media (max-width: $mobile) {
+          margin-top: $gap;
+          order: 99;
+          border-top: 1px solid;
+          margin-bottom: ($base * -1) !important;
+          border-bottom: none !important;
+        }
 
         :global(img),
         :global(video) {
