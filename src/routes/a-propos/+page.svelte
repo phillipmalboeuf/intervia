@@ -24,12 +24,12 @@
 <section id="membres">
 	<Text {item}>
 		<svelte:fragment slot="corps">
-			<h6>Direction</h6>
+			<h6><Scrollin>Direction</Scrollin></h6>
 			<table style:--length={2}>
 				{#each data.membres.items.filter(membre => membre.fields.equipe === 'Direction') as membre}
 				<tr>
-					<td>{membre.fields.nom}</td>
-					<td>{membre.fields.poste}</td>
+					<td><Scrollin>{membre.fields.nom}</Scrollin></td>
+					<td><Scrollin>{membre.fields.poste}</Scrollin></td>
 
 					<figure>
 						{#if membre.fields.photo}
@@ -41,12 +41,12 @@
 				</tr>
 				{/each}
 			</table>
-			<h6>Employés</h6>
+			<h6><Scrollin>Employés</Scrollin></h6>
 			<table style:--length={2}>
 				{#each data.membres.items.filter(membre => membre.fields.equipe === 'Employés') as membre}
 				<tr>
-					<td>{membre.fields.nom}</td>
-					<td>{membre.fields.poste}</td>
+					<td><Scrollin>{membre.fields.nom}</Scrollin></td>
+					<td><Scrollin>{membre.fields.poste}</Scrollin></td>
 
 					<figure>
 						{#if membre.fields.photo}
