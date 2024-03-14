@@ -55,6 +55,11 @@
         left: ($base * -2) - 1px;
         width: calc(100% + ($base * 4) + 2px);
         height: calc(100% + ($base * 2));
+
+        @media (max-width: $mobile) {
+          left: ($mobile_base * -2);
+          width: calc(100% + ($mobile_base * 4));
+        }
       }
 
       figure {

@@ -13,6 +13,6 @@ export const load = (async ({ locals, url, params, request }) => {
 
   return {
     // page: pages.items[0],
-    device: parser ? parser.getDevice().type || 'desktop' : 'desktop'
+    device: parser ? parser.getDevice().type || 'mobile' : 'desktop'
   }
 })

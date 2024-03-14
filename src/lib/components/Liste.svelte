@@ -7,24 +7,27 @@
   import Media from './Media.svelte'
   import Document from './document/index.svelte'
   import Slider from './Slider.svelte'
-  import Scrollin from './Scrollin.svelte';
+  import Scrollin from './Scrollin.svelte'
 
   export let item: Entry<TypeListeSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+  const layout = ($page.data.device !== 'desktop' && item.fields.sliderSurMobile) ? 'Slider' : item.fields.layout
 </script>
 
-<main id={item.fields.id} class:images={item.fields.images?.length} class={`${($page.data.device !== 'desktop' && item.fields.sliderSurMobile) ? 'Slider' : item.fields.layout} ${item.fields.couleur}`}>
+<main id={item.fields.id} class:images={item.fields.images?.length} class={`${layout} ${item.fields.couleur}`}>
   {#if item.fields.titre}
   <h2 class:h6={item.fields.layout === 'Slider'}><Scrollin>{item.fields.titre}</Scrollin></h2>
   {/if}
 
 
-  <Slider disabled={item.fields.layout !== 'Slider' && ($page.data.device === 'desktop' || !item.fields.sliderSurMobile)}>
+  <Slider disabled={item.fields.layout !== 'Slider' && ($page.data.device === 'desktop' || !item.fields.sliderSurMobile)}
+    buttons={!item.fields.images?.length}
+    dots={item.fields.images?.length}>
     <ol class="slider__container">
       {#if item.fields.items}
       {#each item.fields.items as i}
       <li class={`${isTypeText(i) && i.fields.layout} slide`}>
         {#if isTypeText(i)}
-        {#if !i.fields.sansTitre}<h4 class:h1={item.fields.layout === 'Slider'} class:h1--huge={item.fields.layout === 'Slider' && item.fields.titre.length < 40}><Scrollin>{i.fields.titre}</Scrollin></h4>{/if}
+        {#if !i.fields.sansTitre}<h4 class:h1={item.fields.layout === 'Slider'} class:h1--huge={layout === 'Slider' && item.fields.titre.length < 40}><Scrollin>{i.fields.titre}</Scrollin></h4>{/if}
         {#if i.fields.media}
         <figure>
           <Media media={i.fields.media} small />
@@ -75,6 +78,23 @@
 
     &.images {
       margin-top: ($base * -1) - 1.5px;
+
+      &.Slider {
+        margin-bottom: ($base * -1);
+
+        li {
+          padding: 0;
+
+          figure {
+            padding: 0;
+
+            :global(img),
+            :global(video) {
+              object-fit: cover;
+            }
+          }
+        }
+      }
     }
 
     &.Cartes {
@@ -175,6 +195,13 @@
         @media (max-width: $mobile) {
           gap: $gap;
           padding: ($gap * 3) ($gap) ($gap * 3);
+        }
+
+        :global(h1) {
+          @media (max-width: $mobile) {
+            font-size: $mobile_base * $mobile_scale * 6;
+            margin-bottom: $mobile_base * -1;
+          }
         }
 
         &:has(.h1--huge) {
