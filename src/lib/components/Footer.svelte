@@ -9,7 +9,7 @@
     <a href="tel:514 543-8002">514 543-8002</a>
     <div>
       <a href="">Facebook</a>
-      <a href="">Instagram</a>
+      <a href="">LinkedIn</a>
     </div>
   </nav>
   <nav>

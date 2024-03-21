@@ -113,7 +113,7 @@ export interface TypeMembreFields {
     id: EntryFieldTypes.Symbol;
     photo?: EntryFieldTypes.AssetLink;
     poste?: EntryFieldTypes.Symbol;
-    equipe?: EntryFieldTypes.Symbol<"Direction" | "Employés">;
+    equipe?: EntryFieldTypes.Symbol<"Direction" | "Employés" | "Compagnons de bureaux">;
 }
 
 export type TypeMembreSkeleton = EntrySkeletonType<TypeMembreFields, "membre">;

@@ -65,6 +65,25 @@
 				</tr>
 				{/each}
 			</table>
+			<h6><Scrollin>Compagnons de bureaux</Scrollin></h6>
+			<table style:--length={2}>
+				{#each data.membres.items.filter(membre => membre.fields.equipe === 'Compagnons de bureaux') as membre}
+				<tr>
+					<td><Scrollin>{membre.fields.nom}</Scrollin></td>
+					<td><Scrollin>{membre.fields.poste}</Scrollin></td>
+
+					{#if $page.data.device === 'desktop'}
+					<figure>
+						{#if membre.fields.photo}
+						<Media media={membre.fields.photo} small />
+						{:else}
+						<Logo />
+						{/if}
+					</figure>
+					{/if}
+				</tr>
+				{/each}
+			</table>
 		</svelte:fragment>
 	</Text>
 </section>
