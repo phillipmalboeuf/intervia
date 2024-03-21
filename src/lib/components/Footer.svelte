@@ -5,16 +5,16 @@
 <footer>
   <nav>
     <a href="/" class="logo"><Logo /></a>
-    <a href="">7505 St-Hubert,<br>Montréal (QC)<br>H2R 2N7</a>
+    <a href="https://maps.app.goo.gl/Vshp8sswbQ63tuiJ8" target="_blank" rel="external">7505 St-Hubert,<br>Montréal (QC)<br>H2R 2N7</a>
     <a href="tel:514 543-8002">514 543-8002</a>
     <div>
-      <a href="">Facebook</a>
-      <a href="">LinkedIn</a>
+      <a href="https://www.facebook.com/INTERVIAmobilite/" target="_blank" rel="external">Facebook</a>
+      <a href="https://www.linkedin.com/company/intervia/?originalSubdomain=ca" target="_blank" rel="external">LinkedIn</a>
     </div>
   </nav>
   <nav>
     <!-- <a href="/a-propos" class="button">Joindre l'équipe</a> -->
-    <a href="">© Intervia 2024</a>
+    <a href="/">© Intervia 2024</a>
   </nav>
 </footer>
 
