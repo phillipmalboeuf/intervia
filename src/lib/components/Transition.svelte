@@ -3,6 +3,7 @@
   import { beforeNavigate, goto } from '$app/navigation';
   import { navigating } from '$app/stores'
   import { fade, fly } from 'svelte/transition'
+  import { linear } from 'svelte/easing'
 
   let visible = false
   const duration = 666
@@ -39,7 +40,7 @@
 
 {#if visible}
 <figure
-  transition:fade={{ duration }}
+  transition:fade={{ duration: duration - 333, easing: linear }}
 >  
   <!-- <h2>Navigating to {$navigating.to.url.pathname}</h2> -->
 </figure>
