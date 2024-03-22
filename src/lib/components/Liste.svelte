@@ -27,7 +27,7 @@
       {#each item.fields.items as i}
       <li class={`${isTypeText(i) && i.fields.layout} slide`}>
         {#if isTypeText(i)}
-        {#if !i.fields.sansTitre}<h4 class:h1={item.fields.layout === 'Slider'} class:h1--huge={layout === 'Slider' && item.fields.titre.length < 40}><Scrollin>{i.fields.titre}</Scrollin></h4>{/if}
+        {#if !i.fields.sansTitre}<h4 class:h1={item.fields.layout === 'Slider'} class:h1--huge={layout === 'Slider' && item.fields.titre.length < 10}><Scrollin>{i.fields.titre}</Scrollin></h4>{/if}
         {#if i.fields.media}
         <figure>
           <Media media={i.fields.media} small />
@@ -204,7 +204,7 @@
           }
         }
 
-        &:has(.h1--huge) {
+        &:not(:has(nav)) {
           padding: ($gap * 2) ($gap * 4);
 
           @media (max-width: $mobile) {
