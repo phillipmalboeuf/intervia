@@ -29,12 +29,12 @@
 
 <main id="articles">
   <aside>
-    <!-- {#if data.categorie}
+    {#if data.categorie}
     <Scrollin><a href="/articles#articles" class="button">Tous</a></Scrollin>
     {/if}
     {#each data.categories as categorie}
     <Scrollin><a href="/articles?categorie={categorie.id}#articles" class="button" class:active={data.categorie && data.categorie.id === categorie.id}>{categorie.titre}</a></Scrollin>
-    {/each} -->
+    {/each}
   </aside>
   <ol>
     {#each data.articles.items as article}

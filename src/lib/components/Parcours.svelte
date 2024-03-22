@@ -22,6 +22,11 @@
   let selectedV: number = 0
 
   let open: string = undefined
+
+  // $: {
+  //   console.log(item.fields.parcours)
+  //   console.log(selectedV, selectedH, item.fields.parcours[selectedV + 1][selectedH + 1])
+  // }
 </script>
 
 <main id={item.fields.id} class={`${item.fields.couleur}`}>
@@ -47,7 +52,7 @@
   }}>
     <Scrollin>
       <h1>  
-        {item.fields.separateurs[0]} <a on:click={() => open = "vertical"}><u>{vertical[selectedV]}</u></a> {item.fields.separateurs[1]} <a on:click={() => open = "horizontal"}><u>{horizontal[selectedH]}</u></a>.
+        {item.fields.separateurs[0]} <a on:click={() => open = "vertical"}><u>{vertical[selectedV]}</u>&nbsp;<svg width="0.75em" height="0.75em" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0.707107" y1="0.7072" x2="7.77817" y2="7.77827" stroke-width="2"/><line x1="13.4337" y1="0.707107" x2="6.3626" y2="7.77817" stroke-width="2"/></svg></a> {item.fields.separateurs[1]} <a on:click={() => open = "horizontal"}><u>{horizontal[selectedH]}</u>&nbsp;<svg width="0.75em" height="0.75em" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0.707107" y1="0.7072" x2="7.77817" y2="7.77827" stroke-width="2"/><line x1="13.4337" y1="0.707107" x2="6.3626" y2="7.77817" stroke-width="2"/></svg></a>
       </h1>
     </Scrollin>
 
@@ -126,6 +131,11 @@
           &:hover,
           &:focus {
             color: $white;
+            text-decoration: none;
+          }
+
+          svg {
+            vertical-align: bottom;
           }
         }
       }

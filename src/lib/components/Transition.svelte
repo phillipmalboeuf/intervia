@@ -38,7 +38,9 @@
 </script>
 
 {#if visible}
-<figure in:fly={{ duration, opacity: 1, x: '-100%' }} out:fly={{ duration, opacity: 1, x: '100%' }}>  
+<figure
+  transition:fade={{ duration }}
+>  
   <!-- <h2>Navigating to {$navigating.to.url.pathname}</h2> -->
 </figure>
 {/if}
@@ -51,7 +53,7 @@
     top: 0;
     left: -37.5vw;
     width: 175vw;
-    transform: skew(45deg);
+    // transform: skew(45deg);
     height: 100vh;
     border: 1px solid;
     background-color: $salmon;
