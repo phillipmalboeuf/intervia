@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Calendly from '$lib/components/Calendly.svelte'
   import Media from '$lib/components/Media.svelte'
   import Scrollin from '$lib/components/Scrollin.svelte'
   import Page from '../[page]/+page.svelte'
@@ -27,6 +28,8 @@
 	</nav>
 </footer>
 {/if}
+
+<Calendly />
 
 <style lang="scss">
 

@@ -1,6 +1,7 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
+  import Calendly from '$lib/components/Calendly.svelte'
 
   import Service from '../[id]/+page.svelte'
 
@@ -15,10 +16,11 @@
 
 <main>
   {#each data.services.items as service}
-  <Service data={{ service }} open={false} />
+  <Service data={{ service, device: data.device }} open={false} />
   {/each}
 </main>
 
+<Calendly />
 
 <style lang="scss">
   h2 {

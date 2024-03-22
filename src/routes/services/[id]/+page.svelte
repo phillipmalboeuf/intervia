@@ -1,5 +1,6 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
+  import Calendly from '$lib/components/Calendly.svelte'
   import Document from '$lib/components/document/index.svelte'
   import { year } from '$lib/formatters'
 
@@ -26,7 +27,7 @@
   </main>
 </details>
 
-
+<Calendly />
 
 <style lang="scss">
   details {

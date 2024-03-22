@@ -20,6 +20,8 @@
 
 <style lang="scss">
   footer {
+    position: relative;
+    z-index: 8;
     color: var(--foreground-inverse);
     background-color: var(--background-inverse);
 
