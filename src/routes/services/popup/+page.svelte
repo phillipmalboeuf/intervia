@@ -2,6 +2,7 @@
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
   import Calendly from '$lib/components/Calendly.svelte'
+  import Contenu from '$lib/components/Contenu.svelte'
 
   import Service from '../[id]/+page.svelte'
 
@@ -16,9 +17,13 @@
 
 <main>
   {#each data.services.items as service}
-  <Service data={{ service, device: data.device }} open={false} />
+  <Service data={{ service, device: data.device, page: undefined }} open={false} />
   {/each}
 </main>
+
+{#if data.page}
+<Contenu contenu={data.page.fields.contenu} />
+{/if}
 
 <Calendly />
 

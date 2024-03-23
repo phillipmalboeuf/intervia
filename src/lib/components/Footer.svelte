@@ -25,8 +25,6 @@
     color: var(--foreground-inverse);
     background-color: var(--background-inverse);
 
-    :global(.-services-popup) &,
-    :global(.-services-\[id\]) &,
     :global(.-carrieres) & {
       color: $green-dark;
       background-color: $white;

@@ -2,18 +2,20 @@
   import Media from '$lib/components/Media.svelte'
   import Calendly from '$lib/components/Calendly.svelte'
   import Document from '$lib/components/document/index.svelte'
+  import Contenu from '$lib/components/Contenu.svelte'
   import { year } from '$lib/formatters'
 
   import { page } from '$app/stores'
 
   import type { PageData } from './$types'
+  import Scrollin from '$lib/components/Scrollin.svelte';
   export let data: PageData
 
   export let open = true
 </script>
 
 <details {open}>
-  <summary><h2>{data.service.fields.titre}</h2> <h2><svg width="1em" height="1em" viewBox="0 0 64 68" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.4708 -1.2445e-06L28.4708 54.55L5.02146 31.3522L-1.38479e-06 36.3198L32.0237 68L64 36.3198L58.9785 31.3522L35.5766 54.55L35.5766 -1.5551e-06L28.4708 -1.2445e-06Z"/></svg></h2></summary>
+  <summary><h2><Scrollin>{data.service.fields.titre}</Scrollin></h2> <h2><svg width="1em" height="1em" viewBox="0 0 64 68" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.4708 -1.2445e-06L28.4708 54.55L5.02146 31.3522L-1.38479e-06 36.3198L32.0237 68L64 36.3198L58.9785 31.3522L35.5766 54.55L35.5766 -1.5551e-06L28.4708 -1.2445e-06Z"/></svg></h2></summary>
   <main>
     <figure>
       {#if data.service.fields.illustration}<Media media={data.service.fields.illustration} small />{/if}
@@ -26,6 +28,10 @@
     </section>
   </main>
 </details>
+
+{#if data.page}
+<Contenu contenu={data.page.fields.contenu} />
+{/if}
 
 <Calendly />
 
