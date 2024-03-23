@@ -108,6 +108,12 @@
       {/each}
     </nav>
   </div>
+
+  <hr />
+
+  <center>
+    <a href="/projets" class="button">Voir tous les projets</a>
+  </center>
 </footer>
 {/if}
 
@@ -273,6 +279,18 @@
     h6 {
       text-align: center;
       padding: $base;
+    }
+
+    center {
+      border-left: 1px solid;
+      border-right: 1px solid;
+      padding: $base * 4;
+      margin: 0 $base;
+
+      @media (max-width: $mobile) {
+        margin: 0 ($mobile_base * 0.75);
+        padding: ($mobile_base * 2);
+      }
     }
 
     nav {
