@@ -129,6 +129,15 @@
           margin: $base 0;
         }
 
+        > :global(section + h4),
+        > :global(section + h5),
+        > :global(section + h6) {
+          margin: $base ($base * -1);
+          padding-bottom: $base;
+          border-bottom: 1px solid;
+          text-align: center;
+        }
+
         :global(details[open]) {
           :global(summary) {
             border-bottom: 1px solid;
