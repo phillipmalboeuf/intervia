@@ -211,6 +211,7 @@ export interface TypeTextFields {
     id?: EntryFieldTypes.Symbol;
     layout?: EntryFieldTypes.Symbol<"Centre" | "Droite" | "Tableau">;
     media?: EntryFieldTypes.AssetLink;
+    medias?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     couleur?: EntryFieldTypes.Symbol<"Dark" | "Light" | "Yellow">;
     corps?: EntryFieldTypes.RichText;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienSkeleton>>;

@@ -5,14 +5,27 @@
   import Document from '$lib/components/document/index.svelte'
   import Media from './Media.svelte';
   import Scrollin from './Scrollin.svelte';
+  import Slider from './Slider.svelte';
 
   export let item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
 
 <main id={item.fields.id} class={`${item.fields.couleur} ${item.fields.layout}`}>
-  {#if item.fields.layout === 'Droite' && item.fields.media}
+  {#if item.fields.layout === 'Droite'}
   <figure>
+    {#if item.fields.medias}
+    <Slider buttons={false} autoheight={false} dots={item.fields.medias.length}>
+      <ol class="slider__container">
+        {#each item.fields.medias as media}
+        <li class="slide">
+          <Media {media} small />
+        </li>
+        {/each}
+      </ol>
+    </Slider>
+    {:else if item.fields.media}
     <Media media={item.fields.media} small />
+    {/if}
   </figure>
   {/if}
 
@@ -76,6 +89,7 @@
       }
 
       figure {
+        position: relative;
         height: 100%;
         width: calc(50% + $base);
         margin: ($base * -1);
@@ -93,6 +107,11 @@
         :global(video) {
           height: 100%;
           object-fit: cover;
+        }
+
+        :global(.dots) {
+          top: $base * 0.5;
+          bottom: auto;
         }
       }
 

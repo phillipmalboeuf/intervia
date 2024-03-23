@@ -9,10 +9,14 @@
 
   export let disabled = false
   export let buttons = true
+  export let autoheight = true
   export let dots: number = undefined
 
   let options: EmblaOptionsType = { loop: true }
-  let plugins = [Autoplay({ stopOnFocusIn: true }), Autoheight()]
+  let plugins = [
+    Autoplay({ stopOnFocusIn: true }),
+    ...autoheight ? [Autoheight()] : []
+  ]
 
   let slider: EmblaCarouselType
   let active = 0
