@@ -6,6 +6,7 @@
 	import Header from '$lib/components/Header.svelte'
 	import Footer from '$lib/components/Footer.svelte'
   import Transition from '$lib/components/Transition.svelte'
+  import Calendly from '$lib/components/Calendly.svelte'
 </script>
 
 <div class="app {$page.route.id.replaceAll('/', '-')} {$page.url.pathname.replaceAll('/', '-')} {{
@@ -23,6 +24,7 @@
 		<slot />
 	</main>
 
+	<Calendly />
 	<Footer />
 </div>
 

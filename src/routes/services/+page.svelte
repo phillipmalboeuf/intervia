@@ -29,8 +29,6 @@
 </footer>
 {/if}
 
-<Calendly />
-
 <style lang="scss">
 
 footer {

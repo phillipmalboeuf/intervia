@@ -25,8 +25,6 @@
 <Contenu contenu={data.page.fields.contenu} />
 {/if}
 
-<Calendly />
-
 <style lang="scss">
   h2 {
     padding: ($base * 3) $base;

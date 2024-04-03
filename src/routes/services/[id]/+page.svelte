@@ -33,8 +33,6 @@
 <Contenu contenu={data.page.fields.contenu} />
 {/if}
 
-<Calendly />
-
 <style lang="scss">
   details {
     background-color: $green-light;

@@ -246,8 +246,6 @@
 
     figure.full {
       position: relative;
-      margin-left: $base;
-      margin-right: $base;
       border-top: 1px solid;
       border-right: 1px solid;
       border-left: 1px solid;

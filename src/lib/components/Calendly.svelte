@@ -1,18 +1,12 @@
 <script lang="ts">
   import { browser } from '$app/environment'
   import { onMount } from 'svelte'
-  
 </script>
 
 <button id="calendly" on:click={() => {
   // @ts-ignore
-  Calendly?.initPopupWidget({url: 'https://calendly.com/interviainfo/30min?hide_gdpr_banner=1'})
+  window.Calendly?.initPopupWidget({url: 'https://calendly.com/interviainfo/30min?hide_gdpr_banner=1'})
 }}>Parler à un expert</button>
-{@html `<link 
-href="https://calendly.com/assets/external/widget.css" 
-rel="stylesheet">
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>`}
-
 
 <style lang="scss">
   button {
