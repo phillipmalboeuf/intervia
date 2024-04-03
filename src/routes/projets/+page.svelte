@@ -52,42 +52,6 @@
       </a>
     </li>
     {/each}
-    {#each data.projets.items as projet}
-    <li>
-      <a href="/projets/{projet.fields.id}">
-        <Scrollin>{projet.fields.titre}</Scrollin>
-        {#if projet.fields.thumbnail}
-        <figure>
-          <Media media={projet.fields.thumbnail} small ar={1} />
-        </figure>
-        {/if}
-      </a>
-    </li>
-    {/each}
-    {#each data.projets.items as projet}
-    <li>
-      <a href="/projets/{projet.fields.id}">
-        <Scrollin>{projet.fields.titre}</Scrollin>
-        {#if projet.fields.thumbnail}
-        <figure>
-          <Media media={projet.fields.thumbnail} small ar={1} />
-        </figure>
-        {/if}
-      </a>
-    </li>
-    {/each}
-    {#each data.projets.items as projet}
-    <li>
-      <a href="/projets/{projet.fields.id}">
-        <Scrollin>{projet.fields.titre}</Scrollin>
-        {#if projet.fields.thumbnail}
-        <figure>
-          <Media media={projet.fields.thumbnail} small ar={1} />
-        </figure>
-        {/if}
-      </a>
-    </li>
-    {/each}
   </ol>
   </div>
 </main>

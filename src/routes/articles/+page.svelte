@@ -50,34 +50,6 @@
       </a>
     </li>
     {/each}
-
-    {#each data.articles.items as article}
-    <li>
-      <a href="/articles/{article.fields.id}">
-        <div><Scrollin>{article.fields.titre}</Scrollin></div>
-        <div><Scrollin>{year(article.fields.date)}</Scrollin></div>
-        {#if article.fields.thumbnail}
-        <figure>
-          <Media media={article.fields.thumbnail} small ar={1} />
-        </figure>
-        {/if}
-      </a>
-    </li>
-    {/each}
-
-    {#each data.articles.items as article}
-    <li>
-      <a href="/articles/{article.fields.id}">
-        <div><Scrollin>{article.fields.titre}</Scrollin></div>
-        <div><Scrollin>{year(article.fields.date)}</Scrollin></div>
-        {#if article.fields.thumbnail}
-        <figure>
-          <Media media={article.fields.thumbnail} small ar={1} />
-        </figure>
-        {/if}
-      </a>
-    </li>
-    {/each}
   </ol>
 </main>
 
