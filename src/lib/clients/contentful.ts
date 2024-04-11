@@ -1,6 +1,6 @@
 import contentful from 'contentful'
 
-const preview = true
+const preview = !!import.meta.env.VITE_PREVIEW
 export const content = contentful.createClient({
   space: 'ewssfmtpsbbm',
   host: preview ? 'preview.contentful.com' : 'cdn.contentful.com',
