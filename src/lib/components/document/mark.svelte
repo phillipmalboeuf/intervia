@@ -17,11 +17,11 @@
   {@html mark.value}
   {/if}
 {:else if mark.value}
-<Scrollin>{mark.value}</Scrollin>
+{mark.value}
 {/if}
 {:else if mark.nodeType === 'hyperlink'}
 <a href="{mark.data.uri}" target="{mark.data.uri.indexOf('http') === 0 ? '_blank' : '_self'}">
-  {#each mark.content as m}<svelte:self mark={m} />{/each}
+  <u>{#each mark.content as m}<svelte:self mark={m} />{/each}</u>
 </a>
 {:else if mark.nodeType === 'entry-hyperlink'}
 <a href="{mark.data.target.sys.contentType.sys.id}s/{mark.data.target.fields.identifier}">

@@ -2,6 +2,7 @@
   // import Gallery from '../Gallery.svelte'
   import Media from '../Media.svelte'
   import Mark from './mark.svelte'
+  import Scrollin from '../Scrollin.svelte'
 
   import { page } from '$app/stores'
 
@@ -13,25 +14,25 @@
 </script>
 
 {#if node.nodeType === 'heading-1'}
-  <h1>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h1>
+  <h1><Scrollin>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</Scrollin></h1>
 {:else if node.nodeType === 'heading-2'}
-  <h2>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h2>
+  <h2><Scrollin>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</Scrollin></h2>
 {:else if node.nodeType === 'heading-3'}
-  <h3>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h3>
+  <h3><Scrollin>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</Scrollin></h3>
 {:else if node.nodeType === 'heading-4'}
-  <h4>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h4>
+  <h4><Scrollin>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</Scrollin></h4>
 {:else if node.nodeType === 'heading-5'}
-  <h5>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h5>
+  <h5><Scrollin>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</Scrollin></h5>
 {:else if node.nodeType === 'heading-6'}
-  <h6>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</h6>
+  <h6><Scrollin>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</Scrollin></h6>
 {:else if node.nodeType === 'paragraph'}
-  <p>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</p>
+  <p><Scrollin>{#each node.content as mark}<Mark mark={mark} {i} />{/each}</Scrollin></p>
 {:else if node.nodeType === 'hr'}
   <hr />
 
 {:else if node.nodeType === 'unordered-list'}
   <ul>
-    {#each node.content as item}<li>{#each item.content as node}<svelte:self node={node} />{/each}</li>{/each}
+    {#each node.content as item}<li><Scrollin>{#each item.content as node}<svelte:self node={node} />{/each}</Scrollin></li>{/each}
   </ul>
 
 {:else if node.nodeType === 'table'}
@@ -66,7 +67,7 @@
   {/if}
 
 {:else if node.nodeType === 'blockquote'}
-  <blockquote>{#each node.content as code}<svelte:self node={code} />{/each}</blockquote>
+  <Scrollin><blockquote>{#each node.content as code}<svelte:self node={code} />{/each}</blockquote></Scrollin>
 
 {:else if node.nodeType === 'embedded-asset-block'}
 <Media media={node.data.target} />
