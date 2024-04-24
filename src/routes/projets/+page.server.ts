@@ -31,7 +31,7 @@ export const load = (async ({ locals, url, params }) => {
 
   const [vedettes, projets] = await Promise.all([
     content.getEntries<TypeProjetSkeleton>({ content_type: "projet", include: 2, "fields.vedette": true, order: ["-fields.date"], limit: 3, ...filter ? { links_to_entry: services[filter].sys } : {} }),
-    content.getEntries<TypeProjetSkeleton>({ content_type: "projet", include: 2, order: ["-fields.date"],  limit: 12, ...filter ? { links_to_entry: services[filter].sys } : {} }),
+    content.getEntries<TypeProjetSkeleton>({ content_type: "projet", include: 2, order: ["-fields.date"],  limit: 30, ...filter ? { links_to_entry: services[filter].sys } : {} }),
   ])
 
   return {
