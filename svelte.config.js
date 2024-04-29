@@ -14,7 +14,11 @@ const config = {
 		adapter: adapter({
 			// runtime: 'edge'
 		}),
-		csp: false
+		csp: {
+			directives: {
+				'frame-ancestors': ["'self'", 'https://app.contentful.com']
+			}
+		}
 	}
 };
 
