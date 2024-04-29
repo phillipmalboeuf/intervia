@@ -16,7 +16,7 @@ const config = {
 		}),
 		csp: {
 			directives: {
-				'frame-ancestors': ['self', 'https://app.contentful.com']
+				'frame-ancestors': ['https://app.contentful.com']
 			}
 		}
 	}
