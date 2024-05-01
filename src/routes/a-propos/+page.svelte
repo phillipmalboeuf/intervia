@@ -102,7 +102,7 @@
 				height: $base * 12;
 				top: 0;
 				right: 100%;
-				z-index: 1;
+				z-index: 100;
 				display: none;
 				border: 1px solid;
 				background-color: $yellow-dark;
