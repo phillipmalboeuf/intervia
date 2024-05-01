@@ -142,13 +142,18 @@
       flex-wrap: wrap;
     }
 
+    li {
+      position: relative;
+    }
+
     figure {
       position: absolute;
       z-index: 2;
-      top: 0;
-      left: 0;
-      width: 33.3%;
-      height: 100%;
+      top: -1px;
+      right: 100%;
+      width: $base * 12;
+			height: $base * 12;
+      border: 1px solid;
       opacity: 0;
       transition: opacity 666ms;
       visibility: hidden;

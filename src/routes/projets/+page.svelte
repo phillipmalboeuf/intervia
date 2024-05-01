@@ -244,6 +244,16 @@
         a {
           display: block;
           padding: $base * 0.75;
+          position: relative;
+
+          figure {
+            top: -1px;
+            right: 100%;
+            left: auto;
+            width: $base * 12;
+            height: $base * 12;
+            border: 1px solid;
+          }
 
           &:hover,
           &:focus {

@@ -15,14 +15,16 @@ export const load = (async ({ locals, url, params }) => {
   }} = {}
 
   all.items.forEach(article => {
-    if (categories[article.fields.categorie.fields.id]) {
-      categories[article.fields.categorie.fields.id].count += 1
-    } else {
-      categories[article.fields.categorie.fields.id] = {
-        id: article.fields.categorie.fields.id,
-        sys: article.fields.categorie.sys.id,
-        titre: article.fields.categorie.fields.titre,
-        count: 1
+    if (article.fields?.categorie?.fields) {
+      if (categories[article.fields.categorie.fields.id]) {
+        categories[article.fields.categorie.fields.id].count += 1
+      } else {
+        categories[article.fields.categorie.fields.id] = {
+          id: article.fields.categorie.fields.id,
+          sys: article.fields.categorie.sys.id,
+          titre: article.fields.categorie.fields.titre,
+          count: 1
+        }
       }
     }
   })
