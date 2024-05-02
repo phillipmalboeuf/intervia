@@ -13,7 +13,7 @@
 
 <style lang="scss">
   span {
-    display: inline-flex;
+    display: inline-block;
     // overflow: hidden;
 
     > span {

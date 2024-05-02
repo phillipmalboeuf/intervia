@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Block, Inline, Text } from '@contentful/rich-text-types'
-  import Scrollin from '../Scrollin.svelte';
   
   export let mark: Block | Inline | Text
   export let i: number = 0
