@@ -1,12 +1,17 @@
 <script lang="ts">
-  import type { TypeFormulaireSkeleton } from '$lib/clients/content_types';
-  import type { Entry } from 'contentful';
+  import type { TypeFormulaireSkeleton } from '$lib/clients/content_types'
+  import type { Entry } from 'contentful'
+
+  import { page } from '$app/stores'
+  import { enhance } from '$app/forms'
 
   import Document from '$lib/components/document/index.svelte'
   import Media from './Media.svelte'
   import Scrollin from './Scrollin.svelte'
 
   export let item: Entry<TypeFormulaireSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+
+  let waiting = false
 </script>
 
 <main id={item.fields.id} class={`${item.fields.couleur}`} class:wide={item.fields.titre.length < 50}>
@@ -20,7 +25,11 @@
     {/if}
   </aside>
   
-  <form action="">
+  <form action={item.fields.action} method="post" use:enhance enctype="multipart/form-data" on:submit={() => waiting = true}>
+    {#if $page.form?.Message}
+    <Scrollin><strong>Merci, nous vous contacterons sous peu!</strong></Scrollin>
+    {:else}
+
     {#each item.fields.inputs as input}
     {#if input.fields.type === 'Textarea'}
     <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin></label>
@@ -41,7 +50,8 @@
     {/if}
     {/each}
 
-    <Scrollin><button type="submit">{item.fields.bouton || 'Sauvegarder'}</button></Scrollin>
+    <Scrollin><button class:waiting={waiting} disabled={waiting} type="submit">{waiting ? 'Un instant...' : item.fields.bouton || 'Sauvegarder'}</button></Scrollin>
+    {/if}
 
     {#if item.fields.liens?.length}
     <nav>

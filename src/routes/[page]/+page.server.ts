@@ -2,6 +2,7 @@
 
 import type { TypePageSkeleton } from '$lib/clients/content_types'
 import { content } from '$lib/clients/contentful'
+import { email } from '$lib/clients/postmark'
 
 export const load = (async ({ locals, url, params }) => {
   const [pages] = await Promise.all([
@@ -12,3 +13,31 @@ export const load = (async ({ locals, url, params }) => {
     page: pages.items[0],
   }
 })
+
+export const actions = {
+	contact: async (event) => {
+    const data = Object.fromEntries(await event.request.formData())
+
+    return await email.sendEmailWithTemplate({
+        From: 'phil@phils.computer',
+        To: 'sleblanc@intervia.ca',
+        MessageStream: 'broadcast',
+        ReplyTo:  data.email as string,
+        TemplateAlias: 'base',
+        TemplateModel: {
+          subject: `Message de la part de ${data.nom}`,
+          body: JSON.stringify(data, null, 2),
+          product_url: "https://intervia.ca",
+          product_name: "https://intervia.ca",
+          company_name: "Intervia",
+          company_address: "Intervia"
+        },
+        ...data.fichiers ? { Attachments: [{
+          Name: (data.fichiers as File).name,
+          ContentID: `cid:${(data.fichiers as File).name}`,
+          Content: Buffer.from((await (data.fichiers as File).arrayBuffer())).toString('base64'),
+          ContentType: (data.fichiers as File).type
+        }] } : {}
+      })
+	},
+}
