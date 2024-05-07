@@ -39,6 +39,7 @@ body {
 
   @media (max-width: $mobile) {
     font-size: $mobile_base;
+		overflow-x: hidden;
     // line-height: $mobile_scale;
   }
 }
@@ -129,6 +130,7 @@ p {
 }
 
 hr {
+	color: currentColor;
 	border: none;
 	border-top: 1px solid;
 }
