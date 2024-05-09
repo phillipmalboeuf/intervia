@@ -32,7 +32,7 @@ export const actions = {
           company_name: "Intervia",
           company_address: "Intervia"
         },
-        ...data.fichiers ? { Attachments: [{
+        ...(data.fichiers && (data.fichiers as File).size) ? { Attachments: [{
           Name: (data.fichiers as File).name,
           ContentID: `cid:${(data.fichiers as File).name}`,
           Content: Buffer.from((await (data.fichiers as File).arrayBuffer())).toString('base64'),
