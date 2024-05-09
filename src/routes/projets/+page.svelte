@@ -59,7 +59,7 @@
 <style lang="scss">
   figure {
     position: absolute;
-    z-index: 2;
+    z-index: 9;
     top: 0;
     left: 0;
     width: 100%;
