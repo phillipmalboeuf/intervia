@@ -8,7 +8,7 @@
     <a href="/"><Logo /></a>
   </nav>
   <nav>
-    <a href="/carrieres" class="button">Joindre l'équipe</a>
+    <a href="/projets" class="button">Nos projets</a>
     <Menu />
   </nav>
 </header>
