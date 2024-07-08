@@ -7,7 +7,7 @@
 
 
 {#if $page.url.pathname !== '/contact'}
-<a class="button" href="/contact">Parler à un expert {$page.url.pathname}</a>
+<a class="button" href="/contact">Parler à un expert</a>
 {:else}
 <button id="calendly" on:click={() => {
   // @ts-ignore
