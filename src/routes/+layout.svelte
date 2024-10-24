@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { ParaglideJS } from '@inlang/paraglide-sveltekit'
+	import { i18n } from '$lib/i18n'
+
 	import '../styles.scss'
 
 	import { page } from '$app/stores'
@@ -39,6 +42,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id={ga}"></script>
 </svelte:head>
 
+<ParaglideJS {i18n}>
 <div class="app {$page.route.id.replaceAll('/', '-')} {$page.url.pathname.replaceAll('/', '-')} {{
 	'/projets': 'dark',
 	'/articles': 'light',
@@ -59,6 +63,8 @@
 </div>
 
 <Transition />
+</ParaglideJS>
+
 
 <style lang="scss">
 	.app {

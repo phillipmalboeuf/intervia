@@ -1,6 +1,8 @@
 <script lang="ts">
   import Logo from './Logo.svelte'
   import Menu from './Menu.svelte'
+  import Locales from './Locales.svelte'
+  import { languageTag } from '$lib/paraglide/runtime'
 </script>
 
 <header>
@@ -8,7 +10,8 @@
     <a href="/"><Logo /></a>
   </nav>
   <nav>
-    <a href="/projets" class="button">Nos projets</a>
+    <a href="/projets" class="button">{languageTag() === 'en' ? 'Our projects' : 'Nos projets'}</a>
+    <Locales />
     <Menu />
   </nav>
 </header>

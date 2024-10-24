@@ -3,11 +3,12 @@
   import { browser } from '$app/environment'
   
   import { onMount } from 'svelte'
+  import { languageTag } from '$lib/paraglide/runtime'
 </script>
 
 
 {#if $page.url.pathname !== '/contact'}
-<a class="button" href="/contact">Parler à un expert</a>
+<a class="button" href="/contact">{languageTag() === 'en' ? 'Talk to an expert' : 'Parler à un expert'}</a>
 {:else}
 <button id="calendly" on:click={() => {
   // @ts-ignore

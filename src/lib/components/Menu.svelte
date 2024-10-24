@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { languageTag } from '$lib/paraglide/runtime';
   import Scrollin from './Scrollin.svelte';
 
   let open = false
@@ -20,7 +21,7 @@
 
 <nav class:open>
   <aside>
-    <a href="/carrieres" on:click={hide} class="button">Joindre l'équipe</a>
+    <a href="/carrieres" on:click={hide} class="button">{languageTag() === 'en' ? 'Join the team' : 'Joindre l\'équipe'}</a>
 
     <button on:click={hide}>
       <svg width="27" height="27" viewBox="0 0 27 27" fill="none">
@@ -31,12 +32,12 @@
   </aside>
 
   <ul>
-    <li><a on:click={hide} href="/a-propos" class="h1"><Scrollin>À propos</Scrollin></a></li>
-    <li><a on:click={hide} href="/services" class="h1"><Scrollin delay={100}>Nos services</Scrollin></a></li>
-    <li><a on:click={hide} href="/projets" class="h1"><Scrollin delay={200}>Nos projets</Scrollin></a></li>
-    <li><a on:click={hide} href="/carrieres" class="h1"><Scrollin delay={300}>Carrières</Scrollin></a></li>
-    <li><a on:click={hide} href="/articles" class="h1"><Scrollin delay={400}>Actualités</Scrollin></a></li>
-    <li><a on:click={hide} href="/contact" class="h1"><Scrollin delay={500}>Contact</Scrollin></a></li>
+    <li><a on:click={hide} href="/a-propos" class="h1"><Scrollin>{languageTag() === 'en' ? 'About' : 'À propos'}</Scrollin></a></li>
+    <li><a on:click={hide} href="/services" class="h1"><Scrollin delay={100}>{languageTag() === 'en' ? 'Our services' : 'Nos services'}</Scrollin></a></li>
+    <li><a on:click={hide} href="/projets" class="h1"><Scrollin delay={200}>{languageTag() === 'en' ? 'Our projects' : 'Nos projets'}</Scrollin></a></li>
+    <li><a on:click={hide} href="/carrieres" class="h1"><Scrollin delay={300}>{languageTag() === 'en' ? 'Careers' : 'Carrières'}</Scrollin></a></li>
+    <li><a on:click={hide} href="/articles" class="h1"><Scrollin delay={400}>{languageTag() === 'en' ? 'News' : 'Actualités'}</Scrollin></a></li>
+    <li><a on:click={hide} href="/contact" class="h1"><Scrollin delay={500}>{languageTag() === 'en' ? 'Contact' : 'Contact'}</Scrollin></a></li>
   </ul>
 </nav>
 

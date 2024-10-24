@@ -1,13 +1,14 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
   import Scrollin from '$lib/components/Scrollin.svelte';
+  import { languageTag } from '$lib/paraglide/runtime';
 
   import type { PageData } from './$types'
   export let data: PageData
 </script>
 
 <header>
-  <h1><Scrollin>Nos projets</Scrollin></h1>
+  <h1><Scrollin>{languageTag() === 'en' ? 'Our projects' : 'Nos projets'}</Scrollin></h1>
   <hr>
   {#if data.vedettes.items.length}
   <nav>

@@ -8,20 +8,21 @@
   let visible = false
   const duration = 666
 
-  beforeNavigate((async ({ from, to, cancel, type }) => {
-    
-    if (!visible && type !== 'leave'
+  beforeNavigate((async ({ from, to, cancel, type, willUnload, ...rest }) => {
+    if (!visible && type !== 'leave' && !willUnload
       && (from.route.id !== to.route.id || JSON.stringify(from.params) !== JSON.stringify(to.params))) {
       cancel()
       visible = true
 
       setTimeout(() => {
-        goto(to.url)
+        goto(to.url).then(() => {
+          visible = false
+        })
       }, duration)
 
-      setTimeout(() => {
-        visible = false
-      }, duration)
+      // setTimeout(() => {
+      //   visible = false
+      // }, duration)
     }
 
     return true
