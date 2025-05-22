@@ -41,11 +41,21 @@ async function send(data: { [k: string]: FormDataEntryValue; }, to: string) {
 export const actions = {
 	contact: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
+    
+    // Check if honeypot field is filled (spam detection)
+    if (data.website) {
+      return { success: true }; // Silently fail for bots
+    }
 
     return send(data, 'info@intervia.ca')
 	},
   postuler: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
+    
+    // Check if honeypot field is filled (spam detection)
+    if (data.website) {
+      return { success: true }; // Silently fail for bots
+    }
 
     return send(data, 'talents@intervia.ca')
 	},

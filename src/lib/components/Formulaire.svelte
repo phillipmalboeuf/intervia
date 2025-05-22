@@ -50,6 +50,8 @@
     {/if}
     {/each}
 
+    <input type="text" name="website" style="display: none !important" tabindex="-1" autocomplete="off" />
+
     <Scrollin><button class:waiting={waiting} disabled={waiting} type="submit">{waiting ? 'Un instant...' : item.fields.bouton || 'Sauvegarder'}</button></Scrollin>
     {/if}
 
