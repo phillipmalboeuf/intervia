@@ -11,11 +11,12 @@
 	import { page } from '$app/stores'
 
 	import type { PageData } from './$types'
+  import { languageTag } from '$lib/paraglide/runtime';
   export let data: PageData
 
 	const item = {
 		fields: {
-			titre: 'Nous sommes intervia',
+			titre: languageTag() === 'en' ? 'We are intervia' : 'Nous sommes intervia',
 			layout: 'Tableau',
 			couleur: 'Light'
 		}
@@ -27,7 +28,7 @@
 <section id="membres">
 	<Text {item}>
 		<svelte:fragment slot="corps">
-			<h6><Scrollin>Direction</Scrollin></h6>
+			<h6><Scrollin>{languageTag() === 'en' ? 'Management' : 'Direction'}</Scrollin></h6>
 			<table style:--length={2}>
 				{#each data.membres.items.filter(membre => membre.fields.equipe === 'Direction') as membre}
 				<tr>
@@ -46,7 +47,7 @@
 				</tr>
 				{/each}
 			</table>
-			<h6><Scrollin>Employés</Scrollin></h6>
+			<h6><Scrollin>{languageTag() === 'en' ? 'Employees' : 'Employés'}</Scrollin></h6>
 			<table style:--length={2}>
 				{#each data.membres.items.filter(membre => membre.fields.equipe === 'Employés') as membre}
 				<tr>
@@ -65,7 +66,7 @@
 				</tr>
 				{/each}
 			</table>
-			<h6><Scrollin>Compagnons de bureaux</Scrollin></h6>
+			<h6><Scrollin>{languageTag() === 'en' ? 'Office companions' : 'Compagnons de bureaux'}</Scrollin></h6>
 			<table style:--length={2}>
 				{#each data.membres.items.filter(membre => membre.fields.equipe === 'Compagnons de bureaux') as membre}
 				<tr>

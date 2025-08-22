@@ -2,6 +2,7 @@
   import Calendly from '$lib/components/Calendly.svelte'
   import Media from '$lib/components/Media.svelte'
   import Scrollin from '$lib/components/Scrollin.svelte'
+  import { languageTag } from '$lib/paraglide/runtime';
   import Page from '../[page]/+page.svelte'
 
 	import type { PageData } from './$types'
@@ -22,7 +23,7 @@
 			</figure>
 			{/if}
 
-			<Scrollin><span class="button">En lire plus</span></Scrollin>
+			<Scrollin><span class="button">{languageTag() === 'en' ? 'Read more' : 'En lire plus'}</span></Scrollin>
 		</a>
 		{/each}
 	</nav>

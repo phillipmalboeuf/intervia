@@ -8,6 +8,7 @@
   import { page } from '$app/stores'
 
   import type { PageData } from './$types'
+  import { languageTag } from '$lib/paraglide/runtime';
   export let data: PageData
 
   // let tab: string = 'mandat'
@@ -71,7 +72,7 @@
 {#if data.articles?.items.length}
 <footer>
   <div>
-    <h6><Scrollin>Autres actualités</Scrollin></h6>
+    <h6><Scrollin>{languageTag() === 'en' ? 'Other news' : 'Autres actualités'}</Scrollin></h6>
 
     <nav>
       {#each data.articles.items as article}
