@@ -7,6 +7,7 @@
   import { year } from '$lib/formatters'
 
   import { page } from '$app/stores'
+  import { languageTag } from '$lib/paraglide/runtime'
 
   import type { PageData } from './$types' 
   export let data: PageData
@@ -56,9 +57,9 @@
   <main id="main">
     <Scrollin>
     <nav>
-      <a href="?t=mandat#main" class="button" class:active={tab === 'mandat'}>Mandat</a>
-      <a href="?t=implication#main" class="button" class:active={tab === 'implication'}>Implication</a>
-      <a href="?t=constat#main" class="button" class:active={tab === 'constat'}>Constat</a>
+      <a href="?t=mandat#main" class="button" class:active={tab === 'mandat'}>{languageTag() === 'en' ? 'Mandate' : 'Mandat'}</a>
+      <a href="?t=implication#main" class="button" class:active={tab === 'implication'}>{languageTag() === 'en' ? 'Involvement' : 'Implication'}</a>
+      <a href="?t=constat#main" class="button" class:active={tab === 'constat'}>{languageTag() === 'en' ? 'Observation' : 'Constat'}</a>
     </nav>
     </Scrollin>
 
@@ -93,7 +94,7 @@
 {#if data.projets?.items.length}
 <footer>
   <div>
-    <h6><Scrollin>Projets similaires</Scrollin></h6>
+    <h6><Scrollin>{languageTag() === 'en' ? 'Similar projects' : 'Projets similaires'}</Scrollin></h6>
 
     <nav>
       {#each data.projets.items as projet}
@@ -112,7 +113,7 @@
   <hr />
 
   <center>
-    <a href="/projets" class="button">Voir tous les projets</a>
+    <a href="/projets" class="button">{languageTag() === 'en' ? 'See all projects' : 'Voir tous les projets'}</a>
   </center>
 </footer>
 {/if}

@@ -1,14 +1,15 @@
 <script lang="ts">
   import Media from '$lib/components/Media.svelte'
-  import Scrollin from '$lib/components/Scrollin.svelte';
-  import { year } from '$lib/formatters';
+  import Scrollin from '$lib/components/Scrollin.svelte'
+  import { year } from '$lib/formatters'
+  import { languageTag } from '$lib/paraglide/runtime'
 
   import type { PageData } from './$types'
   export let data: PageData
 </script>
 
 <header>
-  <h1><Scrollin>Actualités</Scrollin></h1>
+  <h1><Scrollin>{languageTag() === 'en' ? 'News' : 'Actualités'}</Scrollin></h1>
   <hr>
   {#if data.vedettes.items.length}
   <nav>
@@ -30,7 +31,7 @@
 <main id="articles">
   <aside>
     {#if data.categorie}
-    <Scrollin><a href="/articles#articles" class="button">Tous</a></Scrollin>
+    <Scrollin><a href="/articles#articles" class="button">{languageTag() === 'en' ? 'All' : 'Tous'}</a></Scrollin>
     {/if}
     {#each data.categories as categorie}
     <Scrollin><a href="/articles?categorie={categorie.id}#articles" class="button" class:active={data.categorie && data.categorie.id === categorie.id}>{categorie.titre}</a></Scrollin>

@@ -23,7 +23,7 @@
 			</figure>
 			{/if}
 
-			<Scrollin><span class="button">{languageTag() === 'en' ? 'Read more' : 'En lire plus'}</span></Scrollin>
+			<Scrollin><span class="button">{languageTag() === 'en' ? 'Learn more' : 'En lire plus'}</span></Scrollin>
 		</a>
 		{/each}
 	</nav>

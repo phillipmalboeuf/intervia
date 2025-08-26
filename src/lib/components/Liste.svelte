@@ -8,6 +8,7 @@
   import Document from './document/index.svelte'
   import Slider from './Slider.svelte'
   import Scrollin from './Scrollin.svelte'
+  import { languageTag } from '$lib/paraglide/runtime';
 
   export let item: Entry<TypeListeSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   const layout = ($page.data.device !== 'desktop' && item.fields.sliderSurMobile) ? 'Slider' : item.fields.layout
@@ -51,7 +52,7 @@
         {/if}
         {#if i.fields.description}<Document body={i.fields.description} />{/if}
         <nav>
-          <Scrollin><a class="button" href="/services/{i.fields.id}">En savoir plus</a></Scrollin>
+          <Scrollin><a class="button" href="/services/{i.fields.id}">{languageTag() === 'en' ? 'Learn more' : 'En savoir plus'}</a></Scrollin>
         </nav>
         {/if}
       </li>

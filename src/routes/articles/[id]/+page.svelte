@@ -25,12 +25,12 @@
     <aside>
       {#if data.article.fields.categorie}
       <div>
-        <h6><Scrollin>Catégorie</Scrollin></h6>
+        <h6><Scrollin>{languageTag() === 'en' ? 'Category' : 'Catégorie'}</Scrollin></h6>
         <Scrollin>{data.article.fields.categorie.fields.titre}</Scrollin>
       </div>
       {/if}
       <div>
-        <h6><Scrollin>Année</Scrollin></h6>
+        <h6><Scrollin>{languageTag() === 'en' ? 'Year' : 'Année'}</Scrollin></h6>
         <Scrollin>{date(data.article.fields.date)}</Scrollin>
       </div>
     </aside>
