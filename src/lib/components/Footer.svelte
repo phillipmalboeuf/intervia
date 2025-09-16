@@ -6,6 +6,7 @@
   <nav>
     <a href="/" class="logo"><Logo /></a>
     <a href="https://maps.app.goo.gl/Vshp8sswbQ63tuiJ8" target="_blank" rel="external">7505 St-Hubert,<br>Montréal (QC)<br>H2R 2N7</a>
+    <a href="https://maps.app.goo.gl/ftf2g1vhohPvn6UK8" target="_blank" rel="external">150, rue Elgin, 8e étage<br>Ottawa (ON)<br>K2P 1L4</a>
     <a href="tel:514 543-8002">514 543-8002</a>
     <div>
       <a href="https://www.facebook.com/INTERVIAmobilite/" target="_blank" rel="external">Facebook</a>
