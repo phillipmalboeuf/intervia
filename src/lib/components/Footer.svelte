@@ -1,12 +1,13 @@
 <script lang="ts">
   import Logo from './Logo.svelte'
+  import { languageTag } from '$lib/paraglide/runtime'
 </script>
 
 <footer>
   <nav>
     <a href="/" class="logo"><Logo /></a>
-    <a href="https://maps.app.goo.gl/Vshp8sswbQ63tuiJ8" target="_blank" rel="external">7505 St-Hubert,<br>Montréal (QC)<br>H2R 2N7</a>
-    <a href="https://maps.app.goo.gl/ftf2g1vhohPvn6UK8" target="_blank" rel="external">150, rue Elgin, 8e étage<br>Ottawa (ON)<br>K2P 1L4</a>
+    <a href="https://maps.app.goo.gl/Vshp8sswbQ63tuiJ8" target="_blank" rel="external">{#if languageTag() === 'en'}7505 St-Hubert Street{:else}7505 rue St-Hubert{/if},<br>{#if languageTag() === 'en'}Montreal (QC){:else}Montréal (QC){/if}<br>H2R 2N7</a>
+    <a href="https://maps.app.goo.gl/ftf2g1vhohPvn6UK8" target="_blank" rel="external">{#if languageTag() === 'en'}150 Elgin Street, 8th floor{:else}150 rue Elgin, 8e étage{/if}<br>Ottawa (ON)<br>K2P 1L4</a>
     <a href="tel:514 543-8002">514 543-8002</a>
     <div>
       <a href="https://www.facebook.com/INTERVIAmobilite/" target="_blank" rel="external">Facebook</a>
@@ -60,7 +61,7 @@
     nav {
       display: flex;
       padding: $gap;
-      gap: $gap * 6;
+      gap: $gap * 3;
 
       a {
 
@@ -102,15 +103,15 @@
         width: 100%;
         flex-wrap: wrap;
         gap: $gap;
-        column-gap: 0;
+        // column-gap: 0;
         padding: $base;
 
         a {
           width: 50%;
 
-          &:last-of-type {
-            order: 99;
-          }
+          // &:last-of-type {
+          //   order: 99;
+          // }
         }
       }
     }
