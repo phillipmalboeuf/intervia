@@ -44,14 +44,14 @@ export const actions = {
 	contact: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
 
-    waitUntil(fetch('https://api.impreciseanalysis.com/api/spam', {
-      method: 'POST',
-      body: JSON.stringify({ query: data.message }),
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }))
+    // waitUntil(fetch('https://api.impreciseanalysis.com/api/spam', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ query: data.message }),
+    //   mode: 'cors',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // }))
     
     // Check if honeypot field is filled (spam detection)
     if (data.website) {
@@ -63,14 +63,14 @@ export const actions = {
   postuler: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
 
-    waitUntil(fetch('https://api.impreciseanalysis.com/api/spam', {
-      method: 'POST',
-      body: JSON.stringify({ query: data.message }),
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }))
+    // waitUntil(fetch('https://api.impreciseanalysis.com/api/spam', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ query: data.message }),
+    //   mode: 'cors',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // }))
     
     // Check if honeypot field is filled (spam detection)
     if (data.website) {
