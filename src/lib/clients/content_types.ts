@@ -40,6 +40,7 @@ export interface TypeFormulaireFields {
     media?: EntryFieldTypes.AssetLink;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienSkeleton>>;
     info?: EntryFieldTypes.RichText;
+    success?: EntryFieldTypes.RichText;
 }
 
 export type TypeFormulaireSkeleton = EntrySkeletonType<TypeFormulaireFields, "formulaire">;

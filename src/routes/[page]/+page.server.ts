@@ -16,7 +16,8 @@ export const load = (async ({ locals, url, params }) => {
   }
 })
 
-async function send(data: { [k: string]: FormDataEntryValue; }, to: string) {
+async function send(data: { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, to: string) {
+  console.log(data)
   return await email.sendEmailWithTemplate({
       From: 'phil@phils.computer',
       To: to || 'sleblanc@intervia.ca',
@@ -31,18 +32,20 @@ async function send(data: { [k: string]: FormDataEntryValue; }, to: string) {
         company_name: "Intervia",
         company_address: "Intervia"
       },
-      ...(data.fichiers && (data.fichiers as File).size) ? { Attachments: [{
-        Name: (data.fichiers as File).name,
-        ContentID: `cid:${(data.fichiers as File).name}`,
-        Content: Buffer.from((await (data.fichiers as File).arrayBuffer())).toString('base64'),
-        ContentType: (data.fichiers as File).type
-      }] } : {}
+      ...(data.fichiers && data.fichiers.length > 0) ? { Attachments: await Promise.all(data.fichiers.map(async (fichier: File) => ({
+        Name: fichier.name,
+        ContentID: `cid:${fichier.name}`,
+        Content: Buffer.from((await fichier.arrayBuffer())).toString('base64'),
+        ContentType: fichier.type
+      }))) } : {}
     })
 }
 
 export const actions = {
 	contact: async (event) => {
-    const data = Object.fromEntries(await event.request.formData())
+    const request = await event.request.formData()
+    const fichiers = request.getAll('fichiers')
+    const data = Object.fromEntries(request)
 
     // waitUntil(fetch('https://api.impreciseanalysis.com/api/spam', {
     //   method: 'POST',
@@ -58,10 +61,15 @@ export const actions = {
       return { success: true }; // Silently fail for bots
     }
 
-    return send(data, 'info@intervia.ca')
+    return send({
+      ...data,
+      fichiers
+    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, 'info@intervia.ca')
 	},
   postuler: async (event) => {
-    const data = Object.fromEntries(await event.request.formData())
+    const request = await event.request.formData()
+    const fichiers = request.getAll('fichiers')
+    const data = Object.fromEntries(request)
 
     // waitUntil(fetch('https://api.impreciseanalysis.com/api/spam', {
     //   method: 'POST',
@@ -77,6 +85,9 @@ export const actions = {
       return { success: true }; // Silently fail for bots
     }
 
-    return send(data, 'talents@intervia.ca')
+    return send({
+      ...data,
+      fichiers
+    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, 'phil@phils.computer')
 	},
 }

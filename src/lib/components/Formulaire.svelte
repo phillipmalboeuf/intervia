@@ -27,7 +27,13 @@
   
   <form action={item.fields.action} method="post" use:enhance enctype="multipart/form-data" on:submit={() => waiting = true}>
     {#if $page.form?.Message}
-    <Scrollin><strong>Merci, nous vous contacterons sous peu!</strong></Scrollin>
+    <Scrollin>
+    {#if item.fields.success}
+      <Document body={item.fields.success} />
+    {:else}
+    <strong>Merci, nous vous contacterons sous peu!</strong>
+    {/if}
+    </Scrollin>
     {:else}
 
     {#each item.fields.inputs as input}
