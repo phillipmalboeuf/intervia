@@ -88,6 +88,6 @@ export const actions = {
     return send({
       ...data,
       fichiers
-    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, 'phil@phils.computer')
+    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, 'talents@intervia.ca')
 	},
 }
