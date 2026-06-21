@@ -40,6 +40,7 @@
 
 <svelte:head>
   <script async src="https://www.googletagmanager.com/gtag/js?id={ga}"></script>
+	<!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/debf339c6e36ddd5e41efdc861c190cb/script.js"></script> <!-- End cookieyes banner -->
 </svelte:head>
 
 <ParaglideJS {i18n}>
