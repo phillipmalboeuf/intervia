@@ -6,6 +6,7 @@
   import { enhance } from '$app/forms'
 
   import Document from '$lib/components/document/index.svelte'
+  import FileUpload from './FileUpload.svelte'
   import Media from './Media.svelte'
   import Scrollin from './Scrollin.svelte'
 
@@ -25,7 +26,13 @@
     {/if}
   </aside>
   
-  <form action={item.fields.action} method="post" use:enhance enctype="multipart/form-data" on:submit={() => waiting = true}>
+  <form action={item.fields.action} method="post" use:enhance={() => {
+    waiting = true
+    return async ({ update }) => {
+      await update()
+      waiting = false
+    }
+  }} enctype="multipart/form-data">
     {#if $page.form?.Message}
     <Scrollin>
     {#if item.fields.success}
@@ -48,15 +55,21 @@
       {/each}
     </select>
     {:else if input.fields.type === 'File'}
-    <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin> <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"> <line x1="6" y1="4.37121e-08" x2="6" y2="12" stroke-width="2"/> <line x1="12" y1="6" x2="-8.74228e-08" y2="6" stroke-width="2"/> </svg> </label>
-    <input type="file" multiple id={input.fields.id} name={input.fields.id} placeholder={input.fields.info || " "} />
+    <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin></label>
+    {#if input.fields.info}<Scrollin><small>{input.fields.info}</small></Scrollin>{/if}
+    <FileUpload id={input.fields.id} name={input.fields.id} />
     {:else}
     <label for={input.fields.id}><Scrollin>{input.fields.titre}</Scrollin></label>
     <input type="text" id={input.fields.id} name={input.fields.id} placeholder={input.fields.info || " "} />
     {/if}
+    
     {/each}
 
     <input type="text" name="website" style="display: none !important" tabindex="-1" autocomplete="off" />
+
+    {#if $page.form?.error}
+    <Scrollin><p class="error">{$page.form.error}</p></Scrollin>
+    {/if}
 
     <Scrollin><button class:waiting={waiting} disabled={waiting} type="submit">{waiting ? 'Un instant...' : item.fields.bouton || 'Sauvegarder'}</button></Scrollin>
     {/if}
@@ -176,41 +189,13 @@
     }
   }
 
-  input,
-  select,
-  textarea {
-    appearance: none;
-    font-size: $base;
-    line-height: 1;
-    color: var(--foreground);
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid;
-    padding: ($base * 0.5) 0;
-    margin-bottom: $base * 1.5;
-
-    &:focus {
-      outline: 1px solid $yellow-dark;
-    }
-
-    &[type=file] {
-      padding: ($base * 0.5);
-      border: 1px solid;
-    }
-
-    &::file-selector-button {
-      color: currentColor;
-      background: none;
-      border: none;
-      padding: 0;
-    }
+  small {
+    display: block;
+    margin-bottom: $base * 0.5;
   }
 
-  textarea {
-    padding: ($base * 0.5);
-    border: 1px solid;
-    height: $gap * 6;
+  .error {
+    color: $salmon;
+    margin-bottom: $base * 1.5;
   }
 </style>

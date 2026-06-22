@@ -178,6 +178,44 @@ button,
 	}
 }
 
+input,
+select,
+textarea {
+	appearance: none;
+	font-size: $base;
+	line-height: 1;
+	color: var(--foreground);
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid;
+	padding: ($base * 0.5) 0;
+	margin-bottom: $base * 1.5;
+
+	&:focus {
+		outline: 1px solid $yellow-dark;
+	}
+
+	&[type=file] {
+		padding: ($base * 0.5);
+		border: 1px solid;
+	}
+
+	&::file-selector-button {
+		color: currentColor;
+		background: none;
+		border: none;
+		padding: 0;
+	}
+}
+
+textarea {
+	padding: ($base * 0.5);
+	border: 1px solid;
+	height: $gap * 6;
+}
+
 table {
 	width: 100%;
 	-webkit-border-horizontal-spacing: 0;

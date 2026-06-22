@@ -1,4 +1,5 @@
 // import { error } from '@sveltejs/kit'
+import { fail } from '@sveltejs/kit'
 import { waitUntil } from '@vercel/functions'
 
 import type { TypePageSkeleton } from '$lib/clients/content_types'
@@ -15,6 +16,18 @@ export const load = (async ({ locals, url, params }) => {
     page: pages.items[0],
   }
 })
+
+function formatSendError(error: unknown) {
+  const message = error instanceof Error ? error.message : ''
+  if (message.includes('Attachments too big')) {
+    return languageTag() === 'en'
+      ? 'Attachments are too large. Total size must be under 10 MB.'
+      : 'Les fichiers joints sont trop volumineux. La taille totale doit être inférieure à 10 Mo.'
+  }
+  return languageTag() === 'en'
+    ? 'Unable to send your message. Please try again.'
+    : 'Impossible d\'envoyer votre message. Veuillez réessayer.'
+}
 
 async function send(data: { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, to: string) {
   console.log(data)
@@ -65,10 +78,14 @@ export const actions = {
       ? 'talents@intervia.ca'
       : 'info@intervia.ca'
 
-    return send({
-      ...data,
-      fichiers
-    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, to)
+    try {
+      return await send({
+        ...data,
+        fichiers
+      } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, to)
+    } catch (error) {
+      return fail(422, { error: formatSendError(error) })
+    }
 	},
   postuler: async (event) => {
     const request = await event.request.formData()
@@ -89,9 +106,13 @@ export const actions = {
       return { success: true }; // Silently fail for bots
     }
 
-    return send({
-      ...data,
-      fichiers
-    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, 'talents@intervia.ca')
+    try {
+      return await send({
+        ...data,
+        fichiers
+      } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, 'talents@intervia.ca')
+    } catch (error) {
+      return fail(422, { error: formatSendError(error) })
+    }
 	},
 }
