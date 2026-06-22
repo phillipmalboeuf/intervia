@@ -61,10 +61,14 @@ export const actions = {
       return { success: true }; // Silently fail for bots
     }
 
+    const to = (data.sujet === "Opportunités d'emploi" || data.sujet === 'Career Opportunities')
+      ? 'talents@intervia.ca'
+      : 'info@intervia.ca'
+
     return send({
       ...data,
       fichiers
-    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, 'info@intervia.ca')
+    } as { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, to)
 	},
   postuler: async (event) => {
     const request = await event.request.formData()
