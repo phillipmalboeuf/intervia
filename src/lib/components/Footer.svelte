@@ -10,6 +10,7 @@
     <a href="https://maps.app.goo.gl/ftf2g1vhohPvn6UK8" target="_blank" rel="external">{#if languageTag() === 'en'}150 Elgin Street, 8th floor{:else}150 rue Elgin, 8e étage{/if}<br>Ottawa (ON)<br>K2P 1L4</a>
     <a href="tel:514 543-8002">514 543-8002</a>
     <div>
+      <a href="http://eepurl.com/iB558A">{languageTag() === 'en' ? "Join our newsletter" : "Joindre l'infolettre"}</a>
       <a href="https://www.facebook.com/INTERVIAmobilite/" target="_blank" rel="external">Facebook</a>
       <a href="https://www.linkedin.com/company/intervia/?originalSubdomain=ca" target="_blank" rel="external">LinkedIn</a>
     </div>
