@@ -6,11 +6,13 @@
 <footer>
   <nav>
     <a href="/" class="logo"><Logo /></a>
-    <a href="https://maps.app.goo.gl/Vshp8sswbQ63tuiJ8" target="_blank" rel="external">{#if languageTag() === 'en'}7505 St-Hubert Street{:else}7505 rue St-Hubert{/if},<br>{#if languageTag() === 'en'}Montreal (QC){:else}Montréal (QC){/if}<br>H2R 2N7</a>
-    <a href="https://maps.app.goo.gl/ftf2g1vhohPvn6UK8" target="_blank" rel="external">{#if languageTag() === 'en'}150 Elgin Street, 8th floor{:else}150 rue Elgin, 8e étage{/if}<br>Ottawa (ON)<br>K2P 1L4</a>
-    <a href="tel:514 543-8002">514 543-8002</a>
+    <a href="https://maps.app.goo.gl/Vshp8sswbQ63tuiJ8" target="_blank" rel="external">{#if languageTag() === 'en'}7505, Saint-Hubert Street{:else}7505, rue Saint-Hubert{/if},<br>{#if languageTag() === 'en'}Montreal (QC){:else}Montréal (QC){/if}<br>H2R 2N7</a>
+    <a href="https://maps.app.goo.gl/ftf2g1vhohPvn6UK8" target="_blank" rel="external">{#if languageTag() === 'en'}150, Elgin Street, 8th floor{:else}150, rue Elgin, 8e étage{/if}<br>Ottawa (ON)<br>K2P 1L4</a>
+    <a href="https://maps.app.goo.gl/MRvYEqrY94xuCJjp8" target="_blank" rel="external">{#if languageTag() === 'en'}20, Charest O. Boulevard, suite 102{:else}20, boulevard Charest Ouest, suite 102{/if}<br>{#if languageTag() === 'en'}Quebec (QC){:else}Québec (QC){/if}<br>G1K 1X2</a>
+    
     <div>
-      <a href="http://eepurl.com/iB558A">{languageTag() === 'en' ? "Join our newsletter" : "Joindre l'infolettre"}</a>
+      <a href="http://eepurl.com/iB558A">{languageTag() === 'en' ? "Join our newsletter" : "Joindre l'infolettre"}</a><br>
+      <a href="tel:514 543-8002">514 543-8002</a>
       <a href="https://www.facebook.com/INTERVIAmobilite/" target="_blank" rel="external">Facebook</a>
       <a href="https://www.linkedin.com/company/intervia/?originalSubdomain=ca" target="_blank" rel="external">LinkedIn</a>
     </div>
