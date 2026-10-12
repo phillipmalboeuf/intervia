@@ -16,7 +16,13 @@ export const load = (async ({ locals, url, params }) => {
   }
 })
 
+function isFile(value: FormDataEntryValue): value is File {
+  return typeof value !== 'string'
+}
+
 async function send(data: { [k: string]: FormDataEntryValue; } & { fichiers?: FormDataEntryValue[] }, to: string) {
+  const fichiers = (data.fichiers ?? []).filter((fichier) => isFile(fichier) && fichier.size > 0)
+
   console.log(data)
   return await email.sendEmailWithTemplate({
       From: 'phil@phils.computer',
@@ -32,10 +38,10 @@ async function send(data: { [k: string]: FormDataEntryValue; } & { fichiers?: Fo
         company_name: "Intervia",
         company_address: "Intervia"
       },
-      ...(data.fichiers && data.fichiers.length > 0) ? { Attachments: await Promise.all(data.fichiers.map(async (fichier: File) => ({
+      ...(fichiers.length > 0) ? { Attachments: await Promise.all(fichiers.map(async (fichier) => ({
         Name: fichier.name,
         ContentID: `cid:${fichier.name}`,
-        Content: Buffer.from((await fichier.arrayBuffer())).toString('base64'),
+        Content: Buffer.from(await fichier.arrayBuffer()).toString('base64'),
         ContentType: fichier.type
       }))) } : {}
     })

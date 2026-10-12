@@ -14,6 +14,7 @@
       <a href="http://eepurl.com/iB558A">{languageTag() === 'en' ? "Join our newsletter" : "Joindre l'infolettre"}</a><br>
       <a href="tel:514 543-8002">514 543-8002</a>
       <a href="https://www.facebook.com/INTERVIAmobilite/" target="_blank" rel="external">Facebook</a>
+      <a href="https://www.instagram.com/groupeintervia/" target="_blank" rel="external">Instagram</a>
       <a href="https://www.linkedin.com/company/intervia/?originalSubdomain=ca" target="_blank" rel="external">LinkedIn</a>
     </div>
   </nav>
